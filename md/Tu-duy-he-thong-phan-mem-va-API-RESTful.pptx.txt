@@ -1,0 +1,658 @@
+Tư duy hệ thống phần mềm và viết API chuẩn RESTful
+Từ yêu cầu của khách hàng đến database, cấu trúc code và API
+1
+Phân tích
+2
+Database
+3
+Routers
+4
+API
+Mở đầu: buổi học đi theo đúng thứ tự làm một chức năng ngoài thực tế — phân tích, thiết kế database, tổ chức code, rồi mới viết API.
+1
+
+Bốn bước đi từ yêu cầu đến API
+1
+Phân tích chức năng
+Hiểu bài toán thật, xác định chức năng và quy tắc của từng chức năng
+→
+2
+Database
+Chuyển chức năng thành bảng, cột và quan hệ giữa các bảng
+→
+3
+Cách chia folder, routers
+Tổ chức code theo lớp, mỗi lớp một trách nhiệm
+→
+4
+Viết API
+Đặt URL, method, status code và response theo chuẩn RESTful
+Làm sai thứ tự là nguyên nhân phổ biến nhất khiến phải viết lại code.
+2
+Nhấn mạnh thứ tự: viết API là bước cuối. Sai ở bước trước thì bước sau phải làm lại.
+2
+
+1
+Phân tích chức năng
+Hiểu đúng bài toán trước khi nghĩ đến code
+3
+
+Bước 1: Hiểu yêu cầu trước khi nghĩ giải pháp
+Yêu cầu của khách chưa phải là yêu cầu cuối cùng của hệ thống
+Hãy đặt câu hỏi cho đến khi thấy được vấn đề thật.
+1
+Tại sao cần làm nó?
+Mục đích kinh doanh đứng sau yêu cầu
+2
+Hiện tại họ đang làm như thế nào?
+Excel, giấy tờ hay phần mềm cũ
+3
+Vấn đề hiện tại là gì?
+Chậm, sai sót, thiếu thông tin
+4
+Ai sử dụng?
+Mỗi vai trò cần những thao tác khác nhau
+5
+Kết quả mong muốn là gì?
+Tiêu chí để biết chức năng đã đạt
+4
+Khách hàng mô tả giải pháp họ nghĩ ra, không phải vấn đề họ gặp. Việc của người phân tích là quay ngược về vấn đề.
+4
+
+Ví dụ: “Tôi muốn làm chức năng quản lý nhân viên”
+Câu hỏi đào sâu
+Câu trả lời của khách hàng (ví dụ)
+Tại sao cần quản lý nhân viên?
+Đang quản lý bằng Excel, mỗi phòng giữ một file, số liệu không khớp nhau
+Vấn đề hiện tại là gì?
+Tra cứu thông tin nhân viên mất nhiều thời gian, không biết ai đã sửa gì
+Ai sử dụng?
+Phòng nhân sự, trưởng phòng, kế toán
+Họ cần làm gì?
+Xem hồ sơ, cập nhật quá trình công tác, tra thu nhập hàng tháng
+Kết quả mong muốn là gì?
+Tìm được một hồ sơ trong vài giây, có đầy đủ lịch sử
+Điều phát hiện sau khi phân tích
+Khách hàng không cần “quản lý nhân viên” đơn thuần. Họ cần quản lý thông tin cơ bản, lịch sử công tác và thu nhập hàng tháng. Đó mới là giá trị của phân tích.
+5
+Các câu trả lời trong bảng là ví dụ minh họa; khi dạy có thể thay bằng câu trả lời thật của khách hàng.
+5
+
+Bước 2: Xác định chính xác hệ thống phải làm gì
+Sau khi hiểu bài toán, chuyển nó thành các chức năng cụ thể.
+Quản lý nhân viên
+→
+Tạo nhân viên
+Sửa nhân viên
+Khóa nhân viên
+Phân quyền
+Điều chuyển phòng ban
+Theo dõi lịch sử thay đổi
+Import Excel
+Export Excel
+Tìm kiếm / lọc
+Mỗi ô là một chức năng có thể ước lượng, giao việc và kiểm thử riêng.
+6
+Từ một cụm từ chung chung, tách ra thành các chức năng có thể giao việc và kiểm thử được.
+6
+
+Quan trọng hơn: quy tắc (luồng) của từng chức năng
+Ví dụ
+Chuyển nhân viên từ phòng A sang phòng B
+Một chức năng nghe đơn giản, nhưng chưa trả lời bốn câu hỏi bên cạnh thì chưa thể thiết kế.
+?
+Ai được phép làm?
+Quyết định phần phân quyền
+?
+Có cần duyệt không?
+Quyết định có trạng thái chờ duyệt hay không
+?
+Ngày hiệu lực là ngày nào?
+Quyết định dữ liệu cần lưu thêm cột gì
+?
+Lịch sử cũ có được sửa không?
+Quyết định lưu lịch sử thành bảng riêng
+7
+Danh sách chức năng mới chỉ là tên. Quy tắc mới quyết định database và API trông như thế nào.
+7
+
+Bài tập: “Tôi muốn làm chức năng nhắn tin nội bộ”
+Đề bài
+Khách hàng chỉ nói đúng một câu. Hãy phân tích theo hai bước vừa học.
+Viết ra các câu hỏi cần hỏi khách hàng
+Liệt kê các chức năng cụ thể
+Nêu quy tắc cho ít nhất ba chức năng
+Câu hỏi gợi mở
+Nhắn tin một – một, theo nhóm, hay cả hai?
+Ai được nhắn cho ai? Có giới hạn theo phòng ban không?
+Có gửi file, hình ảnh không? Dung lượng tối đa?
+Tin nhắn có được sửa, thu hồi không? Trong bao lâu?
+Có cần biết đã xem, đang trực tuyến không?
+Nhân viên nghỉ việc thì tin nhắn cũ xử lý ra sao?
+Lưu tin nhắn trong bao lâu? Ai được xem lại?
+8
+Cho học viên 10 phút làm theo nhóm. Yêu cầu nộp: danh sách câu hỏi, danh sách chức năng, ít nhất 3 quy tắc.
+8
+
+Gợi ý lời giải: chức năng và quy tắc của nhắn tin nội bộ
+Chức năng
+Danh sách nhân viên
+Tạo hội thoại 1 – 1
+Tạo nhóm, thêm / xóa thành viên
+Gửi tin nhắn, gửi file
+Sửa, thu hồi tin nhắn
+Đánh dấu đã đọc
+Tìm kiếm tin nhắn
+Thông báo tin mới
+Quy tắc cần chốt với khách hàng
+Chức năng
+Quy tắc (ví dụ)
+Gửi tin nhắn
+Chỉ thành viên của hội thoại mới được gửi và đọc
+Thu hồi
+Chỉ người gửi, trong 15 phút sau khi gửi
+Quản lý nhóm
+Chỉ trưởng nhóm được thêm, xóa thành viên
+Gửi file
+Tối đa 20 MB, chỉ một số định dạng cho phép
+Nghỉ việc
+Khóa tài khoản, giữ nguyên tin nhắn cũ
+9
+Đây là một lời giải mẫu, không phải đáp án duy nhất. Điểm cần chấm là học viên có nêu được quy tắc hay không.
+9
+
+2
+Database
+Chuyển chức năng và quy tắc thành bảng dữ liệu
+10
+
+Từ chức năng đến bảng dữ liệu trong bốn bước
+1
+Tìm danh từ
+Nhân viên, phòng ban, vai trò… mỗi danh từ chính là một bảng
+2
+Tìm thuộc tính
+Mỗi thông tin cần lưu là một cột, kèm kiểu dữ liệu và ràng buộc
+3
+Tìm quan hệ
+1 – 1, 1 – n, n – n giữa các bảng, thể hiện bằng khóa ngoại
+4
+Soát lại quy tắc
+Mỗi quy tắc ở phần phân tích phải có chỗ lưu trong database
+Quy tắc → dữ liệu
+“Có cần duyệt không?”
+→ cột status, approved_by
+ 
+“Ngày hiệu lực là ngày nào?”
+→ cột effective_date
+ 
+“Lịch sử cũ có được sửa không?”
+→ bảng lịch sử riêng, chỉ thêm
+11
+Database là bản dịch của phần phân tích. Nếu không biết thêm bảng nào thì quay lại hỏi tiếp ở phần phân tích.
+11
+
+Quy ước đặt tên và các cột nên có ở mọi bảng
+Hạng mục
+Quy ước
+Ví dụ
+Tên bảng
+snake_case, danh từ số nhiều
+employees, departments
+Tên cột
+snake_case, không viết tắt khó hiểu
+full_name, effective_date
+Khóa chính
+Luôn có, đặt tên id
+id
+Khóa ngoại
+Tên bảng số ít + _id
+department_id
+Bảng trung gian n – n
+Ghép tên hai bảng
+employee_roles
+Thời gian
+Có ở mọi bảng
+created_at, updated_at
+Xóa mềm
+Đánh dấu thay vì xóa hẳn
+deleted_at
+Thêm UNIQUE cho dữ liệu không được trùng (email, mã nhân viên) và INDEX cho cột hay dùng để tìm kiếm, lọc.
+12
+Quy ước nào cũng được, miễn cả nhóm dùng một quy ước. Đây là bộ phổ biến nhất.
+12
+
+Ba kiểu quan hệ giữa các bảng
+1 – 1
+Một – một
+Một nhân viên có một hồ sơ lương
+employees ↔ salary_profiles
+Khóa ngoại + UNIQUE ở một bên
+1 – n
+Một – nhiều
+Một phòng ban có nhiều nhân viên
+departments → employees
+Khóa ngoại nằm ở bên “nhiều”
+n – n
+Nhiều – nhiều
+Một nhân viên có nhiều vai trò, một vai trò gán cho nhiều nhân viên
+employees ↔ roles
+Cần bảng trung gian employee_roles
+13
+Hỏi học viên: một nhân viên có thể thuộc nhiều phòng ban không? Câu trả lời của khách hàng quyết định kiểu quan hệ.
+13
+
+Ví dụ: database cho quản lý nhân viên
+departments
+id           PK
+name
+parent_id    FK
+created_at
+updated_at
+employees
+id             PK
+code           UNIQUE
+full_name
+email          UNIQUE
+department_id  FK
+status
+created_at
+updated_at
+deleted_at
+employee_transfers
+id                  PK
+employee_id         FK
+from_department_id  FK
+to_department_id    FK
+effective_date
+status
+approved_by         FK
+created_at
+1 – n
+1 – n
+Lịch sử điều chuyển là một bảng riêng
+Mỗi lần điều chuyển thêm một dòng mới, không sửa dòng cũ. Nhờ vậy trả lời được: ai duyệt, hiệu lực ngày nào, trước đó ở phòng nào.
+14
+Chỉ ra từng quy tắc ở phần 1 nằm ở đâu trong sơ đồ: ai duyệt → approved_by, ngày hiệu lực → effective_date, lịch sử không sửa → bảng employee_transfers chỉ thêm.
+14
+
+Áp dụng cho bài tập: database nhắn tin nội bộ
+employees
+id         PK
+full_name
+email
+status
+conversation_members
+id               PK
+conversation_id  FK
+employee_id      FK
+role
+last_read_message_id
+joined_at
+conversations
+id          PK
+type
+name
+created_by  FK
+created_at
+messages
+id          PK
+conversation_id
+sender_id   FK
+content
+type
+created_at
+deleted_at
+1–n
+n–1
+1–n
+type
+direct hoặc group: hai loại hội thoại dùng chung một cấu trúc
+conversation_members
+bảng trung gian n – n, đồng thời lưu vai trò trong nhóm
+deleted_at
+thu hồi tin nhắn bằng xóa mềm, không mất dữ liệu
+15
+Điểm đáng nói: hội thoại 1 – 1 và nhóm dùng chung một cấu trúc, chỉ khác cột type. last_read_message_id giải quyết chức năng “đã đọc”.
+15
+
+3
+Cách chia folder, routers
+Mỗi lớp một trách nhiệm, tìm code ở đâu cũng đoán được
+16
+
+Một request đi qua bốn lớp, mỗi lớp một việc
+Router
+Khai báo URL và method
+Gắn middleware: xác thực, phân quyền, validate
+→
+Controller
+Nhận request, trả response
+Đọc tham số, gọi service, chọn status code
+→
+Service
+Xử lý nghiệp vụ
+Nơi đặt các quy tắc đã phân tích ở phần 1
+→
+Repository
+Làm việc với database
+Truy vấn, thêm, sửa, xóa dữ liệu
+Controller không viết câu truy vấn. Service không biết gì về request hay response.
+Đổi database chỉ sửa repository. Đổi quy tắc nghiệp vụ chỉ sửa service.
+17
+Lỗi hay gặp: viết hết nghiệp vụ và truy vấn database trong controller. Khi đó không tái sử dụng và không kiểm thử được.
+17
+
+Cấu trúc thư mục gợi ý
+src/
+├── app.js              # khởi tạo app, middleware chung
+├── routes/             # khai báo URL
+│   ├── index.js        # gắn tiền tố /api/v1
+│   └── employee.routes.js
+├── controllers/        # nhận request, trả response
+├── services/           # nghiệp vụ, quy tắc
+├── repositories/       # truy vấn database
+├── models/             # định nghĩa bảng
+├── middlewares/        # auth, phân quyền, bắt lỗi
+├── validators/         # kiểm tra dữ liệu đầu vào
+└── utils/              # hàm dùng chung
+Nguyên tắc
+Một tài nguyên có đủ bộ file cùng tên: employee.routes, employee.controller, employee.service
+Tên file và tên thư mục thống nhất một kiểu viết
+Dự án lớn có thể chia theo module: mỗi module chứa đủ các lớp của mình
+Ví dụ dùng Node.js và Express, nhưng cách chia áp dụng cho mọi framework
+18
+Ví dụ dùng Node.js và Express. Với Laravel, NestJS, Spring hay FastAPI thì tên thư mục khác nhưng cách phân lớp giống hệt.
+18
+
+Router: mỗi tài nguyên một file, đọc là hiểu API
+// routes/employee.routes.js
+const router = express.Router();
+
+router.get('/',       auth, ctrl.list);
+router.post('/',      auth, can('employee.create'), validate(createSchema), ctrl.create);
+router.get('/:id',    auth, ctrl.detail);
+router.patch('/:id',  auth, can('employee.update'), validate(updateSchema), ctrl.update);
+router.delete('/:id', auth, can('employee.delete'), ctrl.remove);
+
+// routes/index.js
+app.use('/api/v1/employees', employeeRoutes);
+auth
+Đã đăng nhập chưa?
+→
+can(...)
+Có quyền làm việc này không?
+→
+validate(...)
+Dữ liệu gửi lên có hợp lệ không?
+→
+ctrl.*
+Qua hết mới đến xử lý
+19
+Đọc từ trái sang phải: method và URL, rồi các lớp kiểm tra, cuối cùng mới đến hàm xử lý.
+19
+
+4
+Viết API chuẩn RESTful
+URL là danh từ, method là động từ, status code là kết quả
+20
+
+REST: tài nguyên là danh từ, HTTP method là động từ
+Method
+Ý nghĩa
+Ví dụ
+Gọi lặp lại
+GET
+Lấy dữ liệu, không thay đổi gì
+GET /employees/15
+An toàn
+POST
+Tạo mới một tài nguyên
+POST /employees
+Tạo thêm bản ghi
+PUT
+Thay thế toàn bộ tài nguyên
+PUT /employees/15
+Kết quả như nhau
+PATCH
+Cập nhật một phần
+PATCH /employees/15
+Tùy cách cài đặt
+DELETE
+Xóa tài nguyên
+DELETE /employees/15
+Kết quả như nhau
+Cách đọc một API
+URL cho biết đang nói về cái gì. Method cho biết muốn làm gì với nó. Không đưa động từ vào URL.
+21
+An toàn = không làm thay đổi dữ liệu. Lặp lại được (idempotent) = gọi nhiều lần cho kết quả như gọi một lần.
+21
+
+Quy tắc đặt URL: nên và không nên
+Không nên
+Nên
+Vì sao
+GET /getAllEmployees
+GET /employees
+Danh từ số nhiều, không có động từ
+POST /employee/create
+POST /employees
+Method đã nói lên hành động
+GET /employees/delete/15
+DELETE /employees/15
+Không dùng GET để thay đổi dữ liệu
+GET /Employee_Transfers
+GET /employee-transfers
+Chữ thường, nối bằng gạch ngang
+GET /departmentEmployees?id=3
+GET /departments/3/employees
+Quan hệ cha – con thể hiện trên URL
+POST /employees/15/doTransfer
+POST /employees/15/transfers
+Hành động nghiệp vụ thành tài nguyên con
+22
+Cho học viên che cột bên phải và tự sửa cột bên trái trước khi xem đáp án.
+22
+
+Status code: nói đúng kết quả của request
+2xx
+Thành công
+200 OK
+Lấy hoặc cập nhật thành công
+201 Created
+Tạo mới thành công
+204 No Content
+Thành công, không có dữ liệu trả về
+4xx
+Lỗi từ phía client
+400 Bad Request
+Request sai cú pháp
+401 Unauthorized
+Chưa đăng nhập
+403 Forbidden
+Không có quyền
+404 Not Found
+Không tìm thấy
+409 Conflict
+Xung đột dữ liệu
+422 Unprocessable
+Dữ liệu không hợp lệ
+5xx
+Lỗi từ phía server
+500 Internal Server Error
+Lỗi chưa lường trước
+503 Service Unavailable
+Hệ thống tạm ngưng
+23
+Lỗi kinh điển: luôn trả 200 rồi nhét success: false vào body. Client và công cụ giám sát sẽ không phân biệt được thành công hay thất bại.
+23
+
+Lọc, sắp xếp, phân trang đều nằm trên query string
+GET /api/v1/employees?department_id=3&status=active&q=nguyen&sort=-created_at&page=2&limit=20
+Nhu cầu
+Tham số
+Quy ước
+Lọc
+department_id=3&status=active
+Tên tham số trùng tên trường dữ liệu
+Tìm kiếm
+q=nguyen
+Một tham số chung cho từ khóa
+Sắp xếp
+sort=-created_at
+Dấu trừ đứng trước là giảm dần
+Phân trang
+page=2&limit=20
+Có giá trị mặc định và giới hạn tối đa cho limit
+Chọn trường
+fields=id,full_name
+Chỉ trả những trường client cần
+Không dùng POST chỉ để tìm kiếm, và không bao giờ trả toàn bộ bảng mà không phân trang.
+24
+Luôn phân trang với API trả danh sách, kể cả khi hiện tại dữ liệu còn ít.
+24
+
+Response có cấu trúc thống nhất cho mọi API
+Thành công: 200 OK
+{
+  "data": [
+    { "id": 15, "full_name": "Nguyễn Văn A" }
+  ],
+  "meta": {
+    "page": 2,
+    "limit": 20,
+    "total": 135
+  }
+}
+Lỗi: 422 Unprocessable Entity
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Dữ liệu không hợp lệ",
+    "details": [
+      { "field": "email",
+        "message": "Email đã tồn tại" }
+    ]
+  }
+}
+Tên trường thống nhất một kiểu viết, thời gian theo chuẩn ISO 8601 (2026-10-08T09:30:00Z)
+Không trả mật khẩu, token hay thông tin nội bộ của hệ thống trong response
+25
+Client chỉ cần viết một đoạn xử lý lỗi dùng chung cho toàn bộ hệ thống nếu mọi API trả lỗi cùng một dạng.
+25
+
+Ví dụ hoàn chỉnh: bộ API quản lý nhân viên
+Chức năng
+Method và URL
+Thành công
+Tìm kiếm, lọc danh sách
+GET    /api/v1/employees
+200
+Xem chi tiết
+GET    /api/v1/employees/{id}
+200
+Tạo nhân viên
+POST   /api/v1/employees
+201
+Sửa nhân viên
+PATCH  /api/v1/employees/{id}
+200
+Khóa nhân viên
+PATCH  /api/v1/employees/{id}  { status }
+200
+Điều chuyển phòng ban
+POST   /api/v1/employees/{id}/transfers
+201
+Lịch sử điều chuyển
+GET    /api/v1/employees/{id}/transfers
+200
+Import Excel
+POST   /api/v1/employees/imports
+201
+Export Excel
+GET    /api/v1/employees/exports
+200
+Chín chức năng ở phần 1 trở thành chín dòng API, dùng chung một tài nguyên employees.
+26
+Nối lại với phần 1: mỗi chức năng đã phân tích ứng với một dòng. Điều chuyển phòng ban là tài nguyên con transfers, khớp với bảng employee_transfers ở phần 2.
+26
+
+Sáu điều làm API an toàn và dễ bảo trì
+1
+Xác thực
+Mọi API cần đăng nhập đều kiểm tra token, ví dụ Authorization: Bearer
+2
+Phân quyền
+Kiểm tra quyền ở server cho từng hành động, không tin vào giao diện
+3
+Validate đầu vào
+Kiểm tra kiểu, độ dài, định dạng trước khi vào nghiệp vụ
+4
+Đánh phiên bản
+Thêm /api/v1 ngay từ đầu để sau này thay đổi không làm hỏng client cũ
+5
+Tài liệu
+Viết mô tả bằng OpenAPI (Swagger) và cập nhật cùng lúc với code
+6
+Ghi log và giới hạn tần suất
+Biết ai gọi gì, khi nào, và chặn gọi dồn dập
+27
+Không cần dạy sâu từng mục; mục tiêu là học viên biết những việc này tồn tại và phải làm.
+27
+
+Bài tập tổng hợp: thiết kế API cho nhắn tin nội bộ
+Chức năng
+Method và URL
+Danh sách hội thoại của tôi
+GET    /api/v1/conversations
+Tạo hội thoại 1 – 1 hoặc nhóm
+POST   /api/v1/conversations
+Thêm thành viên vào nhóm
+POST   /api/v1/conversations/{id}/members
+Xóa thành viên khỏi nhóm
+DELETE /api/v1/conversations/{id}/members/{employeeId}
+Lấy tin nhắn (phân trang)
+GET    /api/v1/conversations/{id}/messages?limit=30
+Gửi tin nhắn
+POST   /api/v1/conversations/{id}/messages
+Sửa tin nhắn
+PATCH  /api/v1/messages/{id}
+Thu hồi tin nhắn
+DELETE /api/v1/messages/{id}
+Đánh dấu đã đọc
+PUT    /api/v1/conversations/{id}/read
+Tự kiểm tra: gửi tin vào hội thoại mình không tham gia trả về mã gì? Thu hồi sau 15 phút trả về mã gì?
+28
+Cho học viên tự viết trước, sau đó mới chiếu bảng. Nhắn tin tức thời thường cần thêm WebSocket; REST vẫn dùng để lấy lịch sử và quản lý hội thoại.
+28
+
+Checklist trước khi bàn giao một API
+URL là danh từ số nhiều, không chứa động từ
+Dùng đúng method cho từng hành động
+Trả đúng status code, không trả 200 cho mọi trường hợp
+Danh sách có phân trang, lọc, sắp xếp
+Response thành công và lỗi theo đúng một cấu trúc
+Có xác thực và kiểm tra quyền ở server
+Dữ liệu đầu vào được validate
+Quy tắc nghiệp vụ nằm ở service, không nằm ở controller
+Có tiền tố phiên bản /api/v1
+Tài liệu API đã cập nhật
+29
+Có thể in slide này làm phiếu review code cho nhóm.
+29
+
+Hiểu bài toán trước, viết API sau
+1
+Phân tích
+Hỏi cho ra vấn đề thật và quy tắc của từng chức năng
+2
+Database
+Mỗi quy tắc đều có chỗ lưu trong dữ liệu
+3
+Cấu trúc code
+Router, controller, service, repository: mỗi lớp một việc
+4
+API
+Danh từ trên URL, đúng method, đúng status code, response thống nhất
+Kết thúc: nhắc lại bốn bước và giao bài tập về nhà — tự phân tích, thiết kế database và API cho một chức năng trong dự án đang làm.
+30
