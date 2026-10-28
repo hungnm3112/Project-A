@@ -1,91 +1,316 @@
-<mxfile host="app.diagrams.net">
-  <diagram id="dfd-level-0" name="DFD Level 0">
-    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1750" pageHeight="1450" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="dfd_title" value="SƠ ĐỒ NGỮ CẢNH HỆ THỐNG (DFD LEVEL 0) - CÔNG TY TNHH ABC" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
-          <mxGeometry x="500" y="20" width="750" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="legend_box" value="CHÚ THÍCH:&#xa;Mũi tên màu (cam, xanh dương, tím, vàng): Input, Actor gửi vào hệ thống&#xa;Mũi tên xanh lá: Output, Actor nhận lại. Cùng mã = cùng hành động" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
-          <mxGeometry x="40" y="20" width="420" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="central_system" value="[0]&#xa;HỆ THỐNG QUẢN LÝ BÁN HÀNG TẬP TRUNG&#xa;(CÔNG TY TNHH ABC)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#1e293b;strokeColor=#0f172a;strokeWidth=3;fontColor=#ffffff;fontStyle=1;fontSize=15;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="100" width="400" height="1250" as="geometry" />
-        </mxCell>
-
-        <mxCell id="btn_customer" value="KHÁCH HÀNG&#xa;(Customer)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffedd5;strokeColor=#ea580c;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#c2410c;align=center;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="110" width="200" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="btn_sales" value="NHÂN VIÊN BÁN HÀNG&#xa;(Sales Staff, gồm CSKH)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;align=center;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="230" width="200" height="440" as="geometry" />
-        </mxCell>
-        <mxCell id="btn_admin" value="QUẢN TRỊ VIÊN&#xa;(System Admin)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ede9fe;strokeColor=#7c3aed;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#6d28d9;align=center;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="710" width="200" height="260" as="geometry" />
-        </mxCell>
-        <mxCell id="note_customer" value="LƯU Ý KÊNH ĐẶT HÀNG&#xa;&#xa;Zalo, cửa hàng, điện thoại: Nhân viên bán hàng đặt hộ đơn. Form website: Khách tự gửi, nhân viên liên hệ lại xác nhận." style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;dashed=1;fillColor=#f1f5f9;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;fontColor=#475569;align=center;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1010" width="300" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="btn_warehouse" value="NHÂN VIÊN KHO&#xa;(Warehouse Staff)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;align=center;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="110" width="200" height="530" as="geometry" />
-        </mxCell>
-        <mxCell id="btn_accountant" value="KẾ TOÁN&#xa;(Accountant)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=7;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;align=center;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="680" width="200" height="350" as="geometry" />
-        </mxCell>
-        <mxCell id="btn_manager" value="QUẢN LÝ&#xa;(Manager)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#854d0e;align=center;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="1070" width="200" height="260" as="geometry" />
-        </mxCell>
-
-        <mxCell id="kh1_in" value="[KH1] Gửi form đặt hàng" style="endArrow=classic;html=1;strokeColor=#ea580c;strokeWidth=2;fontSize=11;fontColor=#c2410c;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="135" as="sourcePoint" /><mxPoint x="640" y="135" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kh1_out" value="[KH1] Kết quả gửi form đặt hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="172" as="sourcePoint" /><mxPoint x="240" y="172" as="targetPoint" /></mxGeometry></mxCell>
-
-        <mxCell id="bh1_in" value="[BH1] Tra cứu tồn kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="255" as="sourcePoint" /><mxPoint x="640" y="255" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh1_out" value="[BH1] Kết quả tra cứu tồn kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="292" as="sourcePoint" /><mxPoint x="240" y="292" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh2_in" value="[BH2] Tạo đơn hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="345" as="sourcePoint" /><mxPoint x="640" y="345" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh2_out" value="[BH2] Kết quả tạo đơn hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="382" as="sourcePoint" /><mxPoint x="240" y="382" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh3_in" value="[BH3] Xử lý yêu cầu đặt hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="435" as="sourcePoint" /><mxPoint x="640" y="435" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh3_out" value="[BH3] Kết quả xử lý yêu cầu đặt hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="472" as="sourcePoint" /><mxPoint x="240" y="472" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh4_in" value="[BH4] Quản lý khách hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="525" as="sourcePoint" /><mxPoint x="640" y="525" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh4_out" value="[BH4] Kết quả quản lý khách hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="562" as="sourcePoint" /><mxPoint x="240" y="562" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh5_in" value="[BH5] Tạo yêu cầu đổi trả" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="615" as="sourcePoint" /><mxPoint x="640" y="615" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="bh5_out" value="[BH5] Kết quả tạo yêu cầu đổi trả" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="652" as="sourcePoint" /><mxPoint x="240" y="652" as="targetPoint" /></mxGeometry></mxCell>
-
-        <mxCell id="qt1_in" value="[QT1] Quản lý tài khoản" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="735" as="sourcePoint" /><mxPoint x="640" y="735" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="qt1_out" value="[QT1] Kết quả quản lý tài khoản" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="772" as="sourcePoint" /><mxPoint x="240" y="772" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="qt2_in" value="[QT2] Quản lý danh mục" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="825" as="sourcePoint" /><mxPoint x="640" y="825" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="qt2_out" value="[QT2] Kết quả quản lý danh mục" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="862" as="sourcePoint" /><mxPoint x="240" y="862" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="qt3_in" value="[QT3] Quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="240" y="915" as="sourcePoint" /><mxPoint x="640" y="915" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="qt3_out" value="[QT3] Kết quả quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="640" y="952" as="sourcePoint" /><mxPoint x="240" y="952" as="targetPoint" /></mxGeometry></mxCell>
-
-        <mxCell id="kho1_in" value="[KHO1] Quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="135" as="sourcePoint" /><mxPoint x="1040" y="135" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho1_out" value="[KHO1] Kết quả quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="172" as="sourcePoint" /><mxPoint x="1440" y="172" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho2_in" value="[KHO2] Nhập kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="225" as="sourcePoint" /><mxPoint x="1040" y="225" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho2_out" value="[KHO2] Kết quả nhập kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="262" as="sourcePoint" /><mxPoint x="1440" y="262" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho3_in" value="[KHO3] Xuất kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="315" as="sourcePoint" /><mxPoint x="1040" y="315" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho3_out" value="[KHO3] Kết quả xuất kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="352" as="sourcePoint" /><mxPoint x="1440" y="352" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho4_in" value="[KHO4] Cập nhật trạng thái giao hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="405" as="sourcePoint" /><mxPoint x="1040" y="405" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho4_out" value="[KHO4] Kết quả cập nhật trạng thái giao hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="442" as="sourcePoint" /><mxPoint x="1440" y="442" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho5_in" value="[KHO5] Kiểm kê kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="495" as="sourcePoint" /><mxPoint x="1040" y="495" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho5_out" value="[KHO5] Kết quả kiểm kê kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="532" as="sourcePoint" /><mxPoint x="1440" y="532" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho6_in" value="[KHO6] Kiểm tra hàng trả" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="585" as="sourcePoint" /><mxPoint x="1040" y="585" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kho6_out" value="[KHO6] Kết quả kiểm tra hàng trả" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="622" as="sourcePoint" /><mxPoint x="1440" y="622" as="targetPoint" /></mxGeometry></mxCell>
-
-        <mxCell id="kt1_in" value="[KT1] Ghi nhận thanh toán" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="705" as="sourcePoint" /><mxPoint x="1040" y="705" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt1_out" value="[KT1] Kết quả ghi nhận thanh toán" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="742" as="sourcePoint" /><mxPoint x="1440" y="742" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt2_in" value="[KT2] Hoàn tiền khách hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="795" as="sourcePoint" /><mxPoint x="1040" y="795" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt2_out" value="[KT2] Kết quả hoàn tiền khách hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="832" as="sourcePoint" /><mxPoint x="1440" y="832" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt3_in" value="[KT3] Đối soát công nợ" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="885" as="sourcePoint" /><mxPoint x="1040" y="885" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt3_out" value="[KT3] Kết quả đối soát công nợ" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="922" as="sourcePoint" /><mxPoint x="1440" y="922" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt4_in" value="[KT4] Đối chiếu hàng trả" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="975" as="sourcePoint" /><mxPoint x="1040" y="975" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="kt4_out" value="[KT4] Kết quả đối chiếu hàng trả" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="1012" as="sourcePoint" /><mxPoint x="1440" y="1012" as="targetPoint" /></mxGeometry></mxCell>
-
-        <mxCell id="ql1_in" value="[QL1] Duyệt đơn hàng" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=11;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="1095" as="sourcePoint" /><mxPoint x="1040" y="1095" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="ql1_out" value="[QL1] Kết quả duyệt đơn hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="1132" as="sourcePoint" /><mxPoint x="1440" y="1132" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="ql2_in" value="[QL2] Xem báo cáo" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=11;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="1185" as="sourcePoint" /><mxPoint x="1040" y="1185" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="ql2_out" value="[QL2] Kết quả xem báo cáo" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="1222" as="sourcePoint" /><mxPoint x="1440" y="1222" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="ql3_in" value="[QL3] Theo dõi hiệu quả nhân viên" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=11;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1440" y="1275" as="sourcePoint" /><mxPoint x="1040" y="1275" as="targetPoint" /></mxGeometry></mxCell>
-        <mxCell id="ql3_out" value="[QL3] Kết quả theo dõi hiệu quả nhân viên" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1040" y="1312" as="sourcePoint" /><mxPoint x="1440" y="1312" as="targetPoint" /></mxGeometry></mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram id="dfd-level-0" name="DFD Level 0">
+        <mxGraphModel dx="481" dy="480" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1750" pageHeight="1450" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="dfd_title" value="SƠ ĐỒ NGỮ CẢNH HỆ THỐNG (DFD LEVEL 0) - CÔNG TY TNHH ABC" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="20" width="750" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_box" value="CHÚ THÍCH:&#10;Mũi tên màu (cam, xanh dương, tím, vàng): Input, Actor gửi vào hệ thống&#10;Mũi tên xanh lá: Output, Actor nhận lại. Cùng mã định danh = cùng hành động&#10;Mã định danh chuẩn hóa rõ nghĩa [Tên vai trò - STT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="440" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="central_system" value="[0]&#10;HỆ THỐNG QUẢN LÝ BÁN HÀNG TẬP TRUNG&#10;(CÔNG TY TNHH ABC)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#1e293b;strokeColor=#0f172a;strokeWidth=3;fontColor=#ffffff;fontStyle=1;fontSize=15;align=center;verticalAlign=middle;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="100" width="400" height="1210" as="geometry"/>
+                </mxCell>
+                <mxCell id="btn_customer" value="KHÁCH HÀNG&#10;(Customer)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffedd5;strokeColor=#ea580c;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#c2410c;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="110" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="btn_sales" value="NHÂN VIÊN BÁN HÀNG&#10;(Sales Staff, gồm CSKH)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="230" width="200" height="440" as="geometry"/>
+                </mxCell>
+                <mxCell id="btn_admin" value="QUẢN TRỊ VIÊN&#10;(System Admin)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ede9fe;strokeColor=#7c3aed;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#6d28d9;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="710" width="200" height="350" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_customer" value="LƯU Ý KÊNH ĐẶT HÀNG&#10;&#10;Zalo, cửa hàng, điện thoại: Nhân viên bán hàng đặt hộ đơn. Form website: Khách tự gửi, nhân viên liên hệ lại xác nhận." style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;dashed=1;fillColor=#f1f5f9;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;fontColor=#475569;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1100" width="300" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="btn_warehouse" value="NHÂN VIÊN KHO&#10;(Warehouse Staff)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1440" y="110" width="200" height="620" as="geometry"/>
+                </mxCell>
+                <mxCell id="btn_accountant" value="KẾ TOÁN&#10;(Accountant)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=7;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1440" y="750" width="200" height="350" as="geometry"/>
+                </mxCell>
+                <mxCell id="btn_manager" value="QUẢN LÝ&#10;(Manager)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#854d0e;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1440" y="1120" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="kh1_in" value="[Khách hàng - 01] Gửi form đặt hàng" style="endArrow=classic;html=1;strokeColor=#ea580c;strokeWidth=2;fontSize=11;fontColor=#c2410c;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="135" as="sourcePoint"/>
+                        <mxPoint x="640" y="135" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kh1_out" value="[Khách hàng - 01] Kết quả gửi form đặt hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="172" as="sourcePoint"/>
+                        <mxPoint x="240" y="172" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh1_in" value="[Bán hàng - 01] Tra cứu tồn kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="255" as="sourcePoint"/>
+                        <mxPoint x="640" y="255" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh1_out" value="[Bán hàng - 01] Kết quả tra cứu tồn kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="292" as="sourcePoint"/>
+                        <mxPoint x="240" y="292" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh2_in" value="[Bán hàng - 02] Tạo đơn hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="345" as="sourcePoint"/>
+                        <mxPoint x="640" y="345" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh2_out" value="[Bán hàng - 02] Kết quả tạo đơn hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="382" as="sourcePoint"/>
+                        <mxPoint x="240" y="382" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh3_in" value="[Bán hàng - 03] Xử lý yêu cầu đặt hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="435" as="sourcePoint"/>
+                        <mxPoint x="640" y="435" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh3_out" value="[Bán hàng - 03] Kết quả xử lý yêu cầu đặt hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="472" as="sourcePoint"/>
+                        <mxPoint x="240" y="472" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh4_in" value="[Bán hàng - 04] Quản lý khách hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="525" as="sourcePoint"/>
+                        <mxPoint x="640" y="525" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh4_out" value="[Bán hàng - 04] Kết quả quản lý khách hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="562" as="sourcePoint"/>
+                        <mxPoint x="240" y="562" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh5_in" value="[Bán hàng - 05] Tạo yêu cầu đổi trả" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="615" as="sourcePoint"/>
+                        <mxPoint x="640" y="615" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bh5_out" value="[Bán hàng - 05] Kết quả tạo yêu cầu đổi trả" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="652" as="sourcePoint"/>
+                        <mxPoint x="240" y="652" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt1_in" value="[Quản trị - 01] Quản lý tài khoản" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="735" as="sourcePoint"/>
+                        <mxPoint x="640" y="735" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt1_out" value="[Quản trị - 01] Kết quả quản lý tài khoản" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="772" as="sourcePoint"/>
+                        <mxPoint x="240" y="772" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt2_in" value="[Quản trị - 02] Quản lý danh mục" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="825" as="sourcePoint"/>
+                        <mxPoint x="640" y="825" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt2_out" value="[Quản trị - 02] Kết quả quản lý danh mục" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="862" as="sourcePoint"/>
+                        <mxPoint x="240" y="862" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt3_in" value="[Quản trị - 03] Quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="915" as="sourcePoint"/>
+                        <mxPoint x="640" y="915" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt3_out" value="[Quản trị - 03] Kết quả quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="952" as="sourcePoint"/>
+                        <mxPoint x="240" y="952" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt4_in" value="[Quản trị - 04] Quản lý chi nhánh và kho hàng" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="1005" as="sourcePoint"/>
+                        <mxPoint x="640" y="1005" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qt4_out" value="[Quản trị - 04] Kết quả quản lý chi nhánh và kho hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="1042" as="sourcePoint"/>
+                        <mxPoint x="240" y="1042" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho1_in" value="[Kho - 01] Quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="135" as="sourcePoint"/>
+                        <mxPoint x="1040" y="135" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho1_out" value="[Kho - 01] Kết quả quản lý sản phẩm" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="172" as="sourcePoint"/>
+                        <mxPoint x="1440" y="172" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho2_in" value="[Kho - 02] Nhập kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="225" as="sourcePoint"/>
+                        <mxPoint x="1040" y="225" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho2_out" value="[Kho - 02] Kết quả nhập kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="262" as="sourcePoint"/>
+                        <mxPoint x="1440" y="262" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho3_in" value="[Kho - 03] Xuất kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="315" as="sourcePoint"/>
+                        <mxPoint x="1040" y="315" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho3_out" value="[Kho - 03] Kết quả xuất kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="352" as="sourcePoint"/>
+                        <mxPoint x="1440" y="352" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho4_in" value="[Kho - 04] Cập nhật trạng thái giao hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="405" as="sourcePoint"/>
+                        <mxPoint x="1040" y="405" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho4_out" value="[Kho - 04] Kết quả cập nhật trạng thái giao hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="442" as="sourcePoint"/>
+                        <mxPoint x="1440" y="442" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho5_in" value="[Kho - 05] Kiểm kê kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="495" as="sourcePoint"/>
+                        <mxPoint x="1040" y="495" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho5_out" value="[Kho - 05] Kết quả kiểm kê kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="532" as="sourcePoint"/>
+                        <mxPoint x="1440" y="532" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho6_in" value="[Kho - 06] Kiểm tra hàng trả" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="585" as="sourcePoint"/>
+                        <mxPoint x="1040" y="585" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho6_out" value="[Kho - 06] Kết quả kiểm tra hàng trả" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="622" as="sourcePoint"/>
+                        <mxPoint x="1440" y="622" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho7_in" value="[Kho - 07] Điều chuyển kho" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="675" as="sourcePoint"/>
+                        <mxPoint x="1040" y="675" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kho7_out" value="[Kho - 07] Kết quả điều chuyển kho" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="712" as="sourcePoint"/>
+                        <mxPoint x="1440" y="712" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt1_in" value="[Kế toán - 01] Ghi nhận thanh toán" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="775" as="sourcePoint"/>
+                        <mxPoint x="1040" y="775" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt1_out" value="[Kế toán - 01] Kết quả ghi nhận thanh toán" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="812" as="sourcePoint"/>
+                        <mxPoint x="1440" y="812" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt2_in" value="[Kế toán - 02] Hoàn tiền khách hàng" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="865" as="sourcePoint"/>
+                        <mxPoint x="1040" y="865" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt2_out" value="[Kế toán - 02] Kết quả hoàn tiền khách hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="902" as="sourcePoint"/>
+                        <mxPoint x="1440" y="902" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt3_in" value="[Kế toán - 03] Đối soát công nợ" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="955" as="sourcePoint"/>
+                        <mxPoint x="1040" y="955" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt3_out" value="[Kế toán - 03] Kết quả đối soát công nợ" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="992" as="sourcePoint"/>
+                        <mxPoint x="1440" y="992" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt4_in" value="[Kế toán - 04] Đối chiếu hàng trả" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="1045" as="sourcePoint"/>
+                        <mxPoint x="1040" y="1045" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kt4_out" value="[Kế toán - 04] Kết quả đối chiếu hàng trả" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="1082" as="sourcePoint"/>
+                        <mxPoint x="1440" y="1082" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ql1_in" value="[Quản lý - 01] Xem báo cáo" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=11;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="1145" as="sourcePoint"/>
+                        <mxPoint x="1040" y="1145" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ql1_out" value="[Quản lý - 01] Kết quả xem báo cáo" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="1182" as="sourcePoint"/>
+                        <mxPoint x="1440" y="1182" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ql2_in" value="[Quản lý - 02] Theo dõi hiệu quả nhân viên" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=11;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1440" y="1235" as="sourcePoint"/>
+                        <mxPoint x="1040" y="1235" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ql2_out" value="[Quản lý - 02] Kết quả theo dõi hiệu quả nhân viên" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="1272" as="sourcePoint"/>
+                        <mxPoint x="1440" y="1272" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

@@ -99,8 +99,10 @@ Danh sách này là đầu vào cho sơ đồ phân rã chức năng (FDD): mỗ
 
 ## 9. Đầu ra cho sơ đồ DFD Level 0
 
-- Mỗi hành động của Actor tách thành **một dòng riêng**, có mã (ví dụ BH1, KHO2) và cặp **Input - Output**.
+- Mỗi hành động của Actor tách thành **một dòng riêng**, có mã định danh rõ ràng theo quy tắc chuẩn hóa và cặp **Input - Output**.
+- **Quy tắc định danh mã hành động rõ nghĩa:** Tuyệt đối không dùng chữ viết tắt mơ hồ (như BH1, KHO2, QT4) khiến người xem phải đoán. Chuẩn hóa theo cú pháp `[Tên vai trò - STT]` (ví dụ: `[Bán hàng - 01]`, `[Kho - 02]`, `[Quản trị - 04]`, `[Tự động - 01]`) để người xem tài liệu và sơ đồ nhận biết tức thì vai trò phụ trách.
 - **Input:** dữ liệu Actor gửi vào hệ thống.
 - **Output:** dữ liệu Actor **nhận lại** (phiếu, báo cáo, thông báo, kết quả). Không ghi thay đổi trạng thái nội bộ của hệ thống thành Output.
 - Trên sơ đồ, mũi tên vào và mũi tên ra của cùng một hành động mang **cùng mã**, để biết Output nào trả lời Input nào.
 - Tác vụ tự chạy (không có Actor) được ghi riêng như chức năng hệ thống, không vẽ vào DFD Level 0.
+

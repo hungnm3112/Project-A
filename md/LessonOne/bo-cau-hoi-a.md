@@ -43,7 +43,7 @@ Vấn đề chung: **dữ liệu phân tán, không có nguồn sự thật duy 
 | Quản lý | "người quản lý phải tổng hợp dữ liệu" | Xem báo cáo doanh thu, lợi nhuận, công nợ, theo dõi hiệu quả nhân viên |
 | Quản trị viên | Mục tiêu 1 "quản lý nhân viên", "quản lý sản phẩm, danh mục" | Tạo tài khoản, phân quyền, quản lý sản phẩm **[Đã xác nhận]**; quản lý danh mục **[Giả định]** |
 
-> **Khách hàng:** Là **Actor** chỉ ở luồng **form đặt hàng website** (dữ liệu đi thẳng vào hệ thống, 1 hành động [KH1]). Với Zalo/cửa hàng/điện thoại, Nhân viên bán hàng đặt hộ đơn. Khách không có đăng nhập hay theo dõi đơn. Hồ sơ khách còn là **Entity** do nhân viên quản lý **[Đã xác nhận]**.
+> **Khách hàng:** Là **Actor** chỉ ở luồng **form đặt hàng website** (dữ liệu đi thẳng vào hệ thống, 1 hành động [Khách hàng - 01]). Với Zalo/cửa hàng/điện thoại, Nhân viên bán hàng đặt hộ đơn. Khách không có đăng nhập hay theo dõi đơn. Hồ sơ khách còn là **Entity** do nhân viên quản lý **[Đã xác nhận]**.
 
 > **CSKH:** Chỉ là chức danh, gộp vào Nhân viên bán hàng **[Đã xác nhận]**.
 
@@ -68,13 +68,12 @@ Hệ thống đạt yêu cầu khi đáp ứng 6 mục tiêu trong đề, mỗi 
 
 ## Đã chốt
 
-1. Form website: **Khách hàng là Actor** ([KH1] Gửi form đặt hàng), Nhân viên bán hàng (CSKH) liên hệ lại xác nhận. Zalo/cửa hàng/điện thoại: Nhân viên bán hàng đặt hộ đơn. CSKH = Nhân viên bán hàng.
-2. **Không** tích hợp cổng thanh toán và đơn vị vận chuyển → không có Actor hệ thống ngoài.
+1. Form website: **Khách hàng là Actor** ([Khách hàng - 01] Gửi form đặt hàng), Nhân viên bán hàng (CSKH) liên hệ lại xác nhận. Zalo/cửa hàng/điện thoại: Nhân viên bán hàng đặt hộ đơn. CSKH = Nhân viên bán hàng.
+2. **Không** tích hợp cổng thanh toán và đơn vị vận chuyển bên ngoài → không có Actor hệ thống ngoài.
 3. Tác vụ tự chạy theo thời gian là chức năng của hệ thống → **không có Actor Scheduler**.
-4. Tạo và sửa sản phẩm do **Nhân viên kho và Quản trị viên** cùng đảm nhiệm.
+4. Tạo và sửa sản phẩm do **Nhân viên kho và Quản trị viên** cùng đảm nhiệm. Cập nhật trạng thái giao hàng / đơn hàng do cả **Nhân viên kho và Nhân viên bán hàng** cùng có quyền thực hiện **[Đã xác nhận]**.
+5. **Cơ chế giữ chỗ tồn kho (Đã chốt A1):** Có áp dụng cơ chế giữ chỗ tồn kho (Stock Reservation) có thời hạn khi tạo đơn nháp / đặt hàng; hệ thống có tác vụ tự động nhả tồn khả dụng khi đơn hết hạn giữ chỗ.
+6. **Mô hình đa kho / đa chi nhánh (Đã chốt A2):** Công ty ABC có nhiều kho, nhiều chi nhánh (Multi-branch / Multi-warehouse). Cần quản lý tồn kho theo từng kho/chi nhánh, hỗ trợ điều chuyển kho nội bộ và tra cứu tồn liên chi nhánh.
+7. **Quy trình duyệt đơn hàng (Đã chốt A3):** Không cần quy trình duyệt đơn hàng từ Quản lý. Đơn hàng sau khi tạo/xác nhận thành công sẽ chuyển thẳng sang trạng thái chờ chuẩn bị hàng (Kho) và thanh toán (Kế toán). Quản lý tập trung hoàn toàn vào giám sát số liệu và xem báo cáo.
 
-## Câu hỏi còn mở (cần xác nhận)
 
-Q1. Có **giữ chỗ tồn kho** có thời hạn khi tạo đơn nháp không (liên quan tác vụ tự động của hệ thống)?
-Q2. Có **nhiều kho hoặc nhiều chi nhánh** không?
-Q3. Có cần **duyệt đơn** (ví dụ đơn giá trị lớn hoặc công nợ) không?
