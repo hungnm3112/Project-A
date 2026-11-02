@@ -1,0 +1,1517 @@
+{
+    "info":  {
+                 "name":  "Warehouse API - Module 02: Quản lý danh mục",
+                 "description":  "Tài liệu API Module 02 - Hệ thống quản lý kho tập trung Công ty ABC.\nChi tiết: md/LessonTwo/api-module-02.md. Quy ước chung: md/LessonTwo/api-module-01.md mục 1.\nResponse thành công: { data: ... }. Response lỗi: { error: { code, message, details } }, HTTP status ở header.\nTrạng thái: tài liệu thiết kế, chưa có code.",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "item":  [
+                 {
+                     "name":  "2.1 Warehouses - Kho hàng",
+                     "item":  [
+                                  {
+                                      "name":  "Danh sách kho",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/warehouses?page=1\u0026limit=20\u0026keyword=\u0026status=1\u0026fromDate=2026-11-01\u0026toDate=2026-11-30",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "warehouses"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "page",
+                                                                                    "value":  "1",
+                                                                                    "description":  "Trang hiện tại"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "limit",
+                                                                                    "value":  "20",
+                                                                                    "description":  "Số bản ghi / trang"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "keyword",
+                                                                                    "value":  "",
+                                                                                    "description":  "Từ khóa tìm kiếm"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "status",
+                                                                                    "value":  "1",
+                                                                                    "description":  "0 dừng hoạt động, 1 đang hoạt động"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "fromDate",
+                                                                                    "value":  "2026-11-01",
+                                                                                    "description":  "Từ ngày tạo"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "toDate",
+                                                                                    "value":  "2026-11-30",
+                                                                                    "description":  "Đến ngày tạo"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Manager, Accountant xem tất cả; Warehouse Staff chỉ nhận kho có trong warehouse_ids.\n200: { data: { items: [{ _id, ID, name, phone, address, branch_id, status, createdAt }], pagination } }\nLỗi: 401, 403.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Chi tiết kho",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/warehouses/{{warehouse_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "warehouses",
+                                                                               "{{warehouse_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Manager, Accountant; Staff chỉ xem kho được gán (kho khác trả 403).\n200: { data: kho }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.1.1 Tạo kho",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/warehouses",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "warehouses"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nBắt buộc: ID (không trùng), name. Không bắt buộc: phone, address, branch_id (mặc định null). status = 1, unsign_search tự sinh.\n201: { data: kho vừa tạo }\nLỗi: 400, 401, 403, 409 (trùng ID).",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"ID\": \"KHO01\",\n  \"name\": \"Kho Hà Nội\",\n  \"phone\": \"0241234567\",\n  \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n  \"branch_id\": null\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.1.2 Cập nhật kho",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/warehouses/{{warehouse_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "warehouses",
+                                                                               "{{warehouse_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nGửi trường nào cập nhật trường đó (trừ status).\n200: { data: kho sau cập nhật }\nLỗi: 400, 401, 403, 404, 409 (trùng ID).",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"name\": \"Kho Hà Nội - Cầu Giấy\",\n  \"phone\": \"0247654321\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.1.3 Khóa / mở khóa kho",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/warehouses/{{warehouse_id}}/status",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "warehouses",
+                                                                               "{{warehouse_id}}",
+                                                                               "status"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nstatus: 0 khóa, 1 mở khóa.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"status\": 0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Xóa kho",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/warehouses/{{warehouse_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "warehouses",
+                                                                               "{{warehouse_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nChỉ xóa khi kho chưa được gán cho nhân viên nào; ngược lại trả 409, phải khóa bằng status = 0.\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "2.2 + 2.3 Customers - Khách hàng và nhà cung cấp",
+                     "item":  [
+                                  {
+                                      "name":  "Danh sách khách hàng / nhà cung cấp",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers?t=y\u00262=\u00261= \u0026page=1\u0026limit=20\u0026keyword=\u0026status=1\u0026fromDate=2026-11-01\u0026toDate=2026-11-30",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "t",
+                                                                                    "value":  "y",
+                                                                                    "description":  "p"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "2",
+                                                                                    "value":  null,
+                                                                                    "description":  null
+                                                                                },
+                                                                                {
+                                                                                    "key":  "1",
+                                                                                    "value":  " ",
+                                                                                    "description":  "k"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "page",
+                                                                                    "value":  "1",
+                                                                                    "description":  "Trang hiện tại"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "limit",
+                                                                                    "value":  "20",
+                                                                                    "description":  "Số bản ghi / trang"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "keyword",
+                                                                                    "value":  "",
+                                                                                    "description":  "Từ khóa tìm kiếm"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "status",
+                                                                                    "value":  "1",
+                                                                                    "description":  "0 dừng hoạt động, 1 đang hoạt động"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "fromDate",
+                                                                                    "value":  "2026-11-01",
+                                                                                    "description":  "Từ ngày tạo"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "toDate",
+                                                                                    "value":  "2026-11-30",
+                                                                                    "description":  "Đến ngày tạo"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Manager, Accountant. Warehouse Staff: 403.\ntype=1 khách hàng, type=2 nhà cung cấp. keyword tìm theo tên, mã, sđt.\n200: { data: { items: [{ _id, ID, type, name, phone, email, tax, status, createdAt }], pagination } }\nLỗi: 401, 403.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Chi tiết khách hàng / nhà cung cấp",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers/{{customer_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers",
+                                                                               "{{customer_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Manager, Accountant.\n200: { data: bản ghi đầy đủ }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Tạo nhà cung cấp",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nBắt buộc: ID (không trùng), type (1 | 2), name, phone. Không bắt buộc: gender (mặc định 0), birthday (mặc định null), address (mảng, mặc định []), email, tax.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409 (trùng ID).",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"ID\": \"NCC001\",\n  \"type\": 2,\n  \"name\": \"Công ty TNHH Linh Kiện Việt\",\n  \"phone\": \"0281234567\",\n  \"address\": [\"12 Lý Thường Kiệt, Q.10, TP.HCM\"],\n  \"email\": \"lienhe@linhkienviet.vn\",\n  \"tax\": \"0312345678\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Tạo khách hàng",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nGiống tạo nhà cung cấp, với type = 1.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"ID\": \"KH001\",\n  \"type\": 1,\n  \"name\": \"Trần Thị B\",\n  \"phone\": \"0912345678\",\n  \"gender\": 2,\n  \"birthday\": \"1995-05-20\",\n  \"address\": [\"25 Trần Duy Hưng, Hà Nội\"],\n  \"email\": \"tranthib@gmail.com\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Cập nhật khách hàng / nhà cung cấp",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers/{{customer_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers",
+                                                                               "{{customer_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nGửi trường nào cập nhật trường đó. Không cho đổi type.\n200: { data: bản ghi sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"phone\": \"0287654321\",\n  \"address\": [\"12 Lý Thường Kiệt, Q.10, TP.HCM\", \"Kho 2: 45 Cộng Hòa, Tân Bình\"]\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Khóa / mở khóa khách hàng / nhà cung cấp",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers/{{customer_id}}/status",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers",
+                                                                               "{{customer_id}}",
+                                                                               "status"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nstatus: 0 khóa, 1 mở khóa.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"status\": 0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Xóa khách hàng / nhà cung cấp",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/customers/{{customer_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "customers",
+                                                                               "{{customer_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nTrả 409 nếu đã phát sinh chứng từ (áp dụng khi có module nhập / xuất).\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "2.5 Categories - Danh mục sản phẩm",
+                     "item":  [
+                                  {
+                                      "name":  "Danh sách danh mục",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories?p=a\u0026=\u0026L=ọ\u0026page=1\u0026limit=20\u0026keyword=\u0026status=1\u0026fromDate=2026-11-01\u0026toDate=2026-11-30",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "p",
+                                                                                    "value":  "a",
+                                                                                    "description":  "r"
+                                                                                },
+                                                                                {
+                                                                                    "key":  null,
+                                                                                    "value":  null,
+                                                                                    "description":  null
+                                                                                },
+                                                                                {
+                                                                                    "key":  "L",
+                                                                                    "value":  "ọ",
+                                                                                    "description":  "c"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "page",
+                                                                                    "value":  "1",
+                                                                                    "description":  "Trang hiện tại"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "limit",
+                                                                                    "value":  "20",
+                                                                                    "description":  "Số bản ghi / trang"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "keyword",
+                                                                                    "value":  "",
+                                                                                    "description":  "Từ khóa tìm kiếm"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "status",
+                                                                                    "value":  "1",
+                                                                                    "description":  "0 dừng hoạt động, 1 đang hoạt động"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "fromDate",
+                                                                                    "value":  "2026-11-01",
+                                                                                    "description":  "Từ ngày tạo"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "toDate",
+                                                                                    "value":  "2026-11-30",
+                                                                                    "description":  "Đến ngày tạo"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\nparentId lọc danh mục con trực tiếp (parentId=null lấy danh mục gốc).\n200: { data: { items: [{ _id, parent_id, name, status, createdAt }], pagination } }\nLỗi: 401.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Cây danh mục",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories/tree?s=t\u00261=\u0026C=h",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories",
+                                                                               "tree"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "s",
+                                                                                    "value":  "t",
+                                                                                    "description":  "a"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "1",
+                                                                                    "value":  null,
+                                                                                    "description":  null
+                                                                                },
+                                                                                {
+                                                                                    "key":  "C",
+                                                                                    "value":  "h",
+                                                                                    "description":  "ỉ"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\nKhai báo route trước /categories/:id.\n200: { data: [{ _id, name, children: [{ _id, name, children: [] }] }] }\nLỗi: 401.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Chi tiết danh mục",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories/{{category_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories",
+                                                                               "{{category_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: { _id, parent_id, name, status } }\nLỗi: 400, 401, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.5.1 Tạo danh mục",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nBắt buộc: name. Không bắt buộc: parent_id (danh mục đang hoạt động, mặc định null = danh mục gốc).\n201: { data: danh mục vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục cha không tồn tại).",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"name\": \"Laptop Gaming\",\n  \"parent_id\": \"{{parent_category_id}}\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.5.2 Cập nhật danh mục",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories/{{category_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories",
+                                                                               "{{category_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nparent_id không được trỏ về chính nó hoặc danh mục con của nó (400).\n200: { data: danh mục sau cập nhật }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"name\": \"Laptop Gaming cao cấp\",\n  \"parent_id\": \"{{parent_category_id}}\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.5.3 Ẩn / hiện danh mục",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories/{{category_id}}/status",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories",
+                                                                               "{{category_id}}",
+                                                                               "status"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nstatus: 0 ẩn, 1 hiện.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"status\": 0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.5.3 Xóa danh mục",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/categories/{{category_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "categories",
+                                                                               "{{category_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nTrả 409 nếu còn danh mục con hoặc còn sản phẩm (subcategories.category_id).\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "2.6 Units - Đơn vị tính",
+                     "item":  [
+                                  {
+                                      "name":  "Danh sách đơn vị tính",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/units?page=1\u0026limit=20\u0026keyword=\u0026status=1\u0026fromDate=2026-11-01\u0026toDate=2026-11-30",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "units"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "page",
+                                                                                    "value":  "1",
+                                                                                    "description":  "Trang hiện tại"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "limit",
+                                                                                    "value":  "20",
+                                                                                    "description":  "Số bản ghi / trang"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "keyword",
+                                                                                    "value":  "",
+                                                                                    "description":  "Từ khóa tìm kiếm"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "status",
+                                                                                    "value":  "1",
+                                                                                    "description":  "0 dừng hoạt động, 1 đang hoạt động"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "fromDate",
+                                                                                    "value":  "2026-11-01",
+                                                                                    "description":  "Từ ngày tạo"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "toDate",
+                                                                                    "value":  "2026-11-30",
+                                                                                    "description":  "Đến ngày tạo"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: { items: [{ _id, name, status, createdAt }], pagination } }\nLỗi: 401.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Chi tiết đơn vị tính",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/units/{{unit_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "units",
+                                                                               "{{unit_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: { _id, name, status } }\nLỗi: 400, 401, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.6.1 Tạo đơn vị tính",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/units",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "units"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nBắt buộc: name (không trùng, không phân biệt hoa thường).\n201: { data: đơn vị tính vừa tạo }\nLỗi: 400, 401, 403, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"name\": \"Chiếc\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.6.2 Cập nhật đơn vị tính",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/units/{{unit_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "units",
+                                                                               "{{unit_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\n200: { data: đơn vị tính sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"name\": \"Cái\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.6.3 Vô hiệu hóa / kích hoạt đơn vị tính",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/units/{{unit_id}}/status",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "units",
+                                                                               "{{unit_id}}",
+                                                                               "status"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nstatus: 0 vô hiệu hóa, 1 kích hoạt.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"status\": 0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Xóa đơn vị tính",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/units/{{unit_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "units",
+                                                                               "{{unit_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin.\nTrả 409 nếu còn sản phẩm dùng đơn vị tính này.\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "2.4 + 2.7 Subcategories - Sản phẩm, SKU, barcode",
+                     "item":  [
+                                  {
+                                      "name":  "Danh sách sản phẩm",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories?categoryId={{category_id}}\u0026unitId=\u0026page=1\u0026limit=20\u0026keyword=\u0026status=1\u0026fromDate=2026-11-01\u0026toDate=2026-11-30",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "categoryId",
+                                                                                    "value":  "{{category_id}}",
+                                                                                    "description":  "Lọc theo danh mục"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "unitId",
+                                                                                    "value":  "",
+                                                                                    "description":  "Lọc theo đơn vị tính"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "page",
+                                                                                    "value":  "1",
+                                                                                    "description":  "Trang hiện tại"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "limit",
+                                                                                    "value":  "20",
+                                                                                    "description":  "Số bản ghi / trang"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "keyword",
+                                                                                    "value":  "",
+                                                                                    "description":  "Từ khóa tìm kiếm"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "status",
+                                                                                    "value":  "1",
+                                                                                    "description":  "0 dừng hoạt động, 1 đang hoạt động"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "fromDate",
+                                                                                    "value":  "2026-11-01",
+                                                                                    "description":  "Từ ngày tạo"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "toDate",
+                                                                                    "value":  "2026-11-30",
+                                                                                    "description":  "Đến ngày tạo"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\nkeyword tìm theo tên, SKU, barcode.\n200: { data: { items: [{ _id, name, sku, barcode, price, warranty, status, category: { _id, name }, unit: { _id, name }, createdAt }], pagination } }\nLỗi: 401.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.7.3 Tra cứu theo SKU / barcode",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories/lookup?c=o\u00268=9\u0026B=a",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories",
+                                                                               "lookup"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "c",
+                                                                                    "value":  "o",
+                                                                                    "description":  "d"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "8",
+                                                                                    "value":  "9",
+                                                                                    "description":  "3"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "B",
+                                                                                    "value":  "a",
+                                                                                    "description":  "r"
+                                                                                }
+                                                                            ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập (dùng cho máy quét).\nTìm chính xác theo barcode hoặc sku. Khai báo route trước /subcategories/:id.\n200: { data: sản phẩm }\nLỗi: 400 (thiếu code), 401, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Chi tiết sản phẩm",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories/{{subcategory_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories",
+                                                                               "{{subcategory_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: sản phẩm kèm category, unit }\nLỗi: 400, 401, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.4.1 Tạo sản phẩm (kèm SKU, barcode)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Warehouse Manager.\nBắt buộc: category_id, unit_id (đang hoạt động), name, sku (chữ, số, -, _; lưu chữ hoa; không trùng). Không bắt buộc: barcode (EAN-8 / EAN-13 / UPC, không trùng, mặc định null), price (\u003e= 0, mặc định 0), warranty (tháng, mặc định 0).\n201: { data: sản phẩm vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục / đơn vị tính không tồn tại), 409 (trùng sku hoặc barcode).",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"category_id\": \"{{category_id}}\",\n  \"unit_id\": \"{{unit_id}}\",\n  \"name\": \"Laptop ASUS ROG Strix G16\",\n  \"sku\": \"LAP-ASUS-G16-001\",\n  \"barcode\": \"8934567890123\",\n  \"price\": 32990000,\n  \"warranty\": 24\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.4.2 Cập nhật sản phẩm",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories/{{subcategory_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories",
+                                                                               "{{subcategory_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Warehouse Manager.\nGửi trường nào cập nhật trường đó; đổi sku / barcode vẫn kiểm tra trùng.\n200: { data: sản phẩm sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"price\": 31490000,\n  \"barcode\": \"8934567890999\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "2.4.3 Ngừng / mở kinh doanh",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories/{{subcategory_id}}/status",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories",
+                                                                               "{{subcategory_id}}",
+                                                                               "status"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Warehouse Manager.\nstatus: 0 ngừng kinh doanh, 1 đang kinh doanh.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"status\": 0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Xóa sản phẩm",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{base_url}}/subcategories/{{subcategory_id}}",
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "subcategories",
+                                                                               "{{subcategory_id}}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Quyền: Admin, Warehouse Manager.\nTrả 409 nếu sản phẩm đã phát sinh phiếu nhập / xuất (áp dụng khi có module nhập / xuất).\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{access_token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               }
+                                                  }
+                                  }
+                              ]
+                 }
+             ],
+    "variable":  [
+                     {
+                         "key":  "customer_id",
+                         "value":  "6720f1a2b3c4d5e6f7a8b301"
+                     },
+                     {
+                         "key":  "parent_category_id",
+                         "value":  "6720f1a2b3c4d5e6f7a8b601"
+                     },
+                     {
+                         "key":  "category_id",
+                         "value":  "6720f1a2b3c4d5e6f7a8b602"
+                     },
+                     {
+                         "key":  "unit_id",
+                         "value":  "6720f1a2b3c4d5e6f7a8b501"
+                     },
+                     {
+                         "key":  "subcategory_id",
+                         "value":  "6720f1a2b3c4d5e6f7a8b401"
+                     }
+                 ]
+}
