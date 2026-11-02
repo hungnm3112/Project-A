@@ -25,23 +25,23 @@ slug: string;
 
 // ObjectId (reference)
 @Prop({ type: Types.ObjectId, ref: 'Category', index: true })
-parentId: Types.ObjectId;
+parent_id: Types.ObjectId;
 
 // Number (có giá trị mặc định)
 @Prop({ type: Number, default: 0 })
-sortOrder: number;
+sort_order: number;
 
 // Boolean
 @Prop({ type: Boolean, default: false })
-isActive: boolean;
+is_active: boolean;
 
 // Date
 @Prop({ type: Date })
-publishedAt: Date;
+published_at: Date;
 
 // Enum
 @Prop({ type: String, enum: ['in_stock', 'coming_soon', 'out_of_stock'], default: 'in_stock' })
-stockStatus: string;
+stock_status: string;
 
 // Mixed / JSON object
 @Prop({ type: mongoose.Schema.Types.Mixed, default: {} })
@@ -62,7 +62,7 @@ export class Product {
   slug: string;
 
   @Prop({ type: Types.ObjectId, ref: 'Category', index: true, required: true })
-  categoryId: Types.ObjectId;
+  category_id: Types.ObjectId;
 
   @Prop({ type: Number, default: 1 })
   status: number;
@@ -99,7 +99,7 @@ export class CreateProductDto {
 
   @IsEnum(['in_stock', 'coming_soon', 'out_of_stock'])
   @IsOptional()
-  stockStatus?: string;
+  stock_status?: string;
 }
 
 // update-product.dto.ts

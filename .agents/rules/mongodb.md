@@ -85,7 +85,7 @@ await this.productModel
 
 ## Performance Standards
 
-* Tạo index cho trường search (`slug`, `status`, `parentId`, `createdAt`).
+* Tạo index cho trường search (`slug`, `status`, `parent_id`, `unsign_search`, `createdAt`).
 * Tránh regex không có index đi kèm.
 * Tránh giá trị `skip` quá lớn — dùng cursor-based pagination khi cần.
 * Dùng cursor cho dataset khổng lồ.
@@ -137,27 +137,19 @@ Tránh dùng `save()` cho bulk operations.
 * Dùng `$facet` cho combined statistics
 * Dùng `$lookup` pipeline syntax thay vì post-processing trong code TypeScript
 
-## Xử Lý Danh Mục Lồng Nhau (Materialized Path)
+## Xử Lý Danh Mục Cha - Con
 
-Để tránh N+1 query khi truy vấn danh mục con lồng nhau không giới hạn, bắt buộc dùng pattern **Materialized Path**.
-* Cấm dùng đệ quy `parentId` để query.
-* Trong Schema của Category, thêm các trường `ancestors` (mảng ID cha), `path` (chuỗi đường dẫn) và `level`:
+Theo chuẩn leader (xem `database_design.md` mục 3.7): danh mục cha - con dùng trường `parent_id`.
 
 ```typescript
-@Prop({ type: [Types.ObjectId], ref: 'Category', default: [], index: true })
-ancestors: Types.ObjectId[];   // VD: [ObjectId(iphone), ObjectId(iphone-17-series)]
-
-@Prop({ type: String, index: true })
-path: string;                  // VD: '/iphone/iphone-17-series/iphone-17-pro-max'
-
-@Prop({ type: Number, default: 0, index: true })
-level: number;                 // 0 = gốc
+@Prop({ type: Types.ObjectId, ref: 'Category', default: null, index: true })
+parent_id: Types.ObjectId | null;   // null = danh mục gốc
 ```
 
 ## Chiến Lược Giá (Denormalization)
 
 Để tối ưu tốc độ filter và sort danh sách sản phẩm theo giá mà không cần `$lookup` mảng variants phức tạp:
 * **Ngoại lệ có chủ đích**: Cho phép lưu trữ lặp dữ liệu giá trị min/max trực tiếp trên document Product.
-* Bổ sung `priceFrom: number` và `priceTo: number` vào `ProductSchema`.
-* Đánh index `{ categoryIds: 1, status: 1, priceFrom: 1 }`.
+* Bổ sung `price_from: number` và `price_to: number` vào `ProductSchema`.
+* Đánh index `{ category_ids: 1, status: 1, price_from: 1 }`.
 * Bắt buộc phải có Mongoose Middleware hoặc Logic đồng bộ (`recalcPriceRange`) mỗi khi Variant cập nhật giá.

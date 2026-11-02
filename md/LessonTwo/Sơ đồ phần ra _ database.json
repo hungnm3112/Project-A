@@ -1,0 +1,2310 @@
+{
+  "version": "32.6.9",
+  "pages": [
+    {
+      "id": "uTJIGn7m_SwkVWc4Nsk0",
+      "name": "Trang-1",
+      "cells": [
+        {
+          "id": "1",
+          "type": "layer"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-9",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-1",
+          "target": "aXoS3wgvJaW0N9AnGjGw-2"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-10",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-9",
+          "label": "kq đăng nhập"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-13",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-1",
+          "target": "aXoS3wgvJaW0N9AnGjGw-2"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-14",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-13",
+          "label": "kq xuất bán"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-17",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-1",
+          "target": "aXoS3wgvJaW0N9AnGjGw-4"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-18",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-17",
+          "label": "kq nhập hàng"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-21",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-1",
+          "target": "aXoS3wgvJaW0N9AnGjGw-4"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-22",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-21",
+          "label": "kq bao cáo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-25",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-1",
+          "target": "aXoS3wgvJaW0N9AnGjGw-5"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-26",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-25",
+          "label": "kq phân quyền"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-1",
+          "type": "node",
+          "parent": "1",
+          "label": "Hệ thống",
+          "html": "<font style=\"font-size: 14px;\">Hệ thống</font>"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-7",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-2",
+          "target": "aXoS3wgvJaW0N9AnGjGw-1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-8",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-7",
+          "label": "yc đăng nhập"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-11",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-2",
+          "target": "aXoS3wgvJaW0N9AnGjGw-1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-12",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-11",
+          "label": "Tạo đơn xuất bán"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-2",
+          "type": "node",
+          "parent": "1",
+          "label": "Nhân viên bán hàng"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-3",
+          "type": "node",
+          "parent": "1",
+          "label": "- Nhân viên bán hàng\n- Quản trị viên\n- Kế toán\n- các sếp",
+          "html": "- Nhân viên bán hàng<br><div style=\"text-align: left;\"><span style=\"background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\">- Quản trị viên</span></div><div style=\"text-align: left;\"><span style=\"background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\">- Kế toán</span></div><div style=\"text-align: left;\"><span style=\"background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\">- các sếp</span></div>"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-15",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-4",
+          "target": "aXoS3wgvJaW0N9AnGjGw-1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-16",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-15",
+          "label": "nhập hàng"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-19",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-4",
+          "target": "aXoS3wgvJaW0N9AnGjGw-1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-20",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-19",
+          "label": "xem báo cáo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-4",
+          "type": "node",
+          "parent": "1",
+          "label": "Quản lý cấp cáo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-23",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-5",
+          "target": "aXoS3wgvJaW0N9AnGjGw-1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-24",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-23",
+          "label": "phân quyền"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-5",
+          "type": "node",
+          "parent": "1",
+          "label": "Quản trị viên"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-29",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-27"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-27",
+          "type": "node",
+          "parent": "1",
+          "label": "Hệ thống"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-31",
+          "type": "edge",
+          "parent": "1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-35",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-32"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-36",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-32"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-32",
+          "type": "node",
+          "parent": "1",
+          "label": "Auth"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-33",
+          "type": "edge",
+          "parent": "1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-39",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-38"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-38",
+          "type": "node",
+          "parent": "1",
+          "label": "đăng nhập"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-41",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-40"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-40",
+          "type": "node",
+          "parent": "1",
+          "label": "đăng xuất"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-42",
+          "type": "edge",
+          "parent": "1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-43",
+          "type": "node",
+          "parent": "1",
+          "label": "Qly sản phẩm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-44",
+          "type": "node",
+          "parent": "1",
+          "label": "Qly danh mục sản phẩm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-45",
+          "type": "node",
+          "parent": "1",
+          "label": "Xuất bán hàng"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-46",
+          "type": "node",
+          "parent": "1",
+          "label": "Nhập hàng"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-47",
+          "type": "node",
+          "parent": "1",
+          "label": "Đổi trả hàng"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-48",
+          "type": "node",
+          "parent": "1",
+          "label": "Thống kê báo cáo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-52",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-49"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-49",
+          "type": "node",
+          "parent": "1",
+          "label": "Công nợ khách"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-50",
+          "type": "node",
+          "parent": "1",
+          "label": "Tài khoản nhân viên"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-51",
+          "type": "node",
+          "parent": "1",
+          "label": "qLY KHÁCH HÀNG"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-53",
+          "type": "node",
+          "parent": "1",
+          "label": "xem"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-54",
+          "type": "node",
+          "parent": "1",
+          "label": "Thêm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-55",
+          "type": "node",
+          "parent": "1",
+          "label": "Sửa"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-56",
+          "type": "node",
+          "parent": "1",
+          "label": "Thêm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-57",
+          "type": "node",
+          "parent": "1",
+          "label": "Sửa"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-58",
+          "type": "node",
+          "parent": "1",
+          "label": "phiếu thu/chi"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-59",
+          "type": "node",
+          "parent": "1",
+          "label": "employees"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-60",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-61",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-60",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-62",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-60",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-63",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-60",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-64",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-60",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-65",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-66",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-65",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-67",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-65",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-68",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-65",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-69",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-65",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-70",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-71",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-70",
+          "label": "ID"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-72",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-70",
+          "label": "String \nunique",
+          "html": "String&nbsp;<br>unique"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-73",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-70",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-74",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-70",
+          "label": "ID nhân viên"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-75",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-76",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-75",
+          "label": "name"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-77",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-75",
+          "label": "String"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-78",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-75",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-79",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-75",
+          "label": "tên nhân viên"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-90",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-91",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-90",
+          "label": "phone"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-92",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-90",
+          "label": "string, qunique"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-93",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-90",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-94",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-90",
+          "label": "số điện thoại"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-85",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-86",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-85",
+          "label": "password"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-87",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-85",
+          "label": "String"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-88",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-85",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-89",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-85",
+          "label": "mật khẩu (dạng mã hóa sha512)"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-80",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-81",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-80",
+          "label": "status"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-82",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-80",
+          "label": "Number\nIndex",
+          "html": "Number<br>Index"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-83",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-80",
+          "label": "true, default = 1"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-84",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-80",
+          "label": "0 dừng hoạt động, 1 đang đang hoạt động"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-95",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-59"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-96",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-95",
+          "label": "unsign_search"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-97",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-95",
+          "label": "String\nIndex",
+          "html": "String<br>Index"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-98",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-95"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-99",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-95",
+          "label": " "
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-100",
+          "type": "node",
+          "parent": "1",
+          "label": " "
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-101",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-102",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-101",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-103",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-101",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-104",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-101",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-105",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-101",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-106",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-107",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-106",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-108",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-106",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-109",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-106",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-110",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-106",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-111",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-112",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-111",
+          "label": "sku"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-113",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-111",
+          "label": "string"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-114",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-111",
+          "label": "default: null"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-115",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-111",
+          "label": "mã sản phẩm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-116",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-117",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-116",
+          "label": "name"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-118",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-116",
+          "label": "string"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-119",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-116",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-120",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-116",
+          "label": "tên sản phẩm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-121",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-122",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-121",
+          "label": "quantity"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-123",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-121",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-124",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-121",
+          "label": "Default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-125",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-121",
+          "label": "tồn kho"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-126",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-127",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-126",
+          "label": "price"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-128",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-126",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-129",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-126",
+          "label": "Default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-130",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-126",
+          "label": "giá bán"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-131",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-132",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-131",
+          "label": "warranty"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-133",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-131",
+          "label": "Number",
+          "html": "Number<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-134",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-131",
+          "label": "Default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-135",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-131"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-136",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-137",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-136",
+          "label": "category_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-138",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-136",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-139",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-136",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-140",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-136",
+          "label": "danh mục"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-182",
+          "type": "node",
+          "parent": "1",
+          "label": "categories"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-183",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-182"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-184",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-183",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-185",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-183",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-186",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-183",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-187",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-183",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-188",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-182"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-189",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-188",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-190",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-188",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-191",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-188",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-192",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-188",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-193",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-182"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-194",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-193",
+          "label": "parent_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-195",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-193",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-196",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-193",
+          "label": "default: null"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-197",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-193",
+          "label": "id danh mục"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-198",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-182"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-199",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-198",
+          "label": "name"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-200",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-198",
+          "label": "string"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-201",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-198",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-202",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-198",
+          "label": "tên sản phẩm"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-233",
+          "type": "node",
+          "parent": "1",
+          "label": "customers"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-234",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-235",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-234",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-236",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-234",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-237",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-234",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-238",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-234",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-239",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-240",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-239",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-241",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-239",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-242",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-239",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-243",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-239",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-249",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-250",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-249",
+          "label": "name"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-251",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-249",
+          "label": "string"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-252",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-249",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-253",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-249",
+          "label": " "
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-270",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-271",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-270",
+          "label": "phone"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-272",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-270",
+          "label": "String"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-273",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-270",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-274",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-270"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-265",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-266",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-265",
+          "label": "gender"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-267",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-265",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-268",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-265",
+          "label": "default: 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-269",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-265"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-260",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-261",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-260",
+          "label": "birthday"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-262",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-260",
+          "label": "Date"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-263",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-260",
+          "label": "default: null"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-264",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-260"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-255",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-256",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-255",
+          "label": "address"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-257",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-255",
+          "label": "Array"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-258",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-255",
+          "label": "default : [ ]"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-259",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-255",
+          "label": "&nbsp; "
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-275",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-276",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-275",
+          "label": "email"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-277",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-275"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-278",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-275"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-279",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-275"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-280",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-233"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-281",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-280",
+          "label": "tax"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-282",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-280",
+          "label": "string"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-283",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-280"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-284",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-280"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-285",
+          "type": "node",
+          "parent": "1",
+          "label": "form_import"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-286",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-287",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-286",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-288",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-286",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-289",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-286",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-290",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-286",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-291",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-292",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-291",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-293",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-291",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-294",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-291",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-295",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-291",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-301",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-302",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-301",
+          "label": "ID"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-303",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-301",
+          "label": "Number\nuniquie",
+          "html": "Number<br>uniquie"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-304",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-301",
+          "label": "true, tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-305",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-301",
+          "label": "124"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-306",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-307",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-306",
+          "label": "date"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-308",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-306",
+          "label": "date\nindex",
+          "html": "date<br>index"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-309",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-306",
+          "label": "true, default: Date.now"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-310",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-306",
+          "label": "ngày tạo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-311",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-312",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-311",
+          "label": "customer_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-313",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-311",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-314",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-311",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-315",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-311",
+          "label": "nhà cung cấp"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-316",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-317",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-316",
+          "label": "total_amount"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-318",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-316",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-319",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-316",
+          "label": "default = 0 (tính từ chi tiết phiếu nhập)"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-320",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-316",
+          "label": "Tổng tiền"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-321",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-322",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-321",
+          "label": "paid"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-323",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-321",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-324",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-321"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-325",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-321"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-326",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-285"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-327",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-326",
+          "label": "note"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-328",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-326"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-329",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-326"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-330",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-326"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-331",
+          "type": "node",
+          "parent": "1",
+          "label": "detail_form_import"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-332",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-333",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-332",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-334",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-332",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-335",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-332",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-336",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-332",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-337",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-338",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-337",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-339",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-337",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-340",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-337",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-341",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-337",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-342",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-343",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-342",
+          "label": "&nbsp; subcategory_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-344",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-342",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-345",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-342",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-346",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-342"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-347",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-348",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-347",
+          "label": "form_import_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-349",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-347",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-350",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-347",
+          "label": "true, default: Date.now"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-351",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-347",
+          "label": "ngày tạo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-352",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-353",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-352",
+          "label": "price"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-354",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-352",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-355",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-352",
+          "label": "default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-356",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-352",
+          "label": "nhà cung cấp"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-357",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-358",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-357",
+          "label": "warranty"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-359",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-357",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-360",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-357",
+          "label": "default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-361",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-357",
+          "label": "bảo hành"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-362",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-363",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-362",
+          "label": "vat"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-364",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-362",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-365",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-362",
+          "label": "default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-366",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-362"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-367",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-368",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-367",
+          "label": "ck"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-369",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-367",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-370",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-367",
+          "label": "default = 0, max = 100"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-371",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-367"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-374",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-375",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-374",
+          "label": "discount"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-376",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-374",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-377",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-374",
+          "label": "&nbsp;"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-378",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-374"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-379",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-331"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-380",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-379",
+          "label": "quantity"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-381",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-379"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-382",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-379"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-383",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-379"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-372",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-347",
+          "target": "aXoS3wgvJaW0N9AnGjGw-291"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-384",
+          "type": "node",
+          "parent": "1",
+          "label": "payment_form"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-385",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-386",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-385",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-387",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-385",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-388",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-385",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-389",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-385",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-390",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-391",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-390",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-392",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-390",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-393",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-390",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-394",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-390",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-395",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-396",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-395",
+          "label": "ID"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-397",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-395",
+          "label": "String"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-398",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-395",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-399",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-395"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-400",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-401",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-400",
+          "label": "amount"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-402",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-400",
+          "label": "Number"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-403",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-400",
+          "label": "default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-404",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-400",
+          "label": "ngày tạo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-405",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-406",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-405",
+          "label": "customer_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-407",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-405",
+          "label": "ObiectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-408",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-405",
+          "label": "default = 0"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-409",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-405",
+          "label": "nhà cung cấp"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-410",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-411",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-410",
+          "label": "form_import_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-412",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-410",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-413",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-410",
+          "label": "null"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-414",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-410",
+          "label": "bảo hành"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-415",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-416",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-415",
+          "label": "note"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-417",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-415",
+          "label": "String"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-418",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-415",
+          "label": "default null"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-419",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-415"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-420",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-421",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-420",
+          "label": "type_payment_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-422",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-420",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-423",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-420",
+          "label": "&nbsp; "
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-424",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-420"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-425",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-426",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-425",
+          "label": "content_payment"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-427",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-425",
+          "label": "ObjectID"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-428",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-425",
+          "label": "&nbsp;"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-429",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-425"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-430",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-384"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-431",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-430"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-432",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-430"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-433",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-430"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-434",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-430"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-435",
+          "type": "edge",
+          "parent": "1",
+          "source": "aXoS3wgvJaW0N9AnGjGw-410",
+          "target": "aXoS3wgvJaW0N9AnGjGw-291"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-436",
+          "type": "node",
+          "parent": "1",
+          "label": "debts"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-437",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-438",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-437",
+          "label": "field"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-439",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-437",
+          "label": "type"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-440",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-437",
+          "label": "required"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-441",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-437",
+          "label": "des"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-442",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-443",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-442",
+          "label": "_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-444",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-442",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-445",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-442",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-446",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-442",
+          "label": "_id hệ thống tự sinh"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-452",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-453",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-452",
+          "label": "date"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-454",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-452",
+          "label": "date"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-455",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-452",
+          "label": "true, default: Date.now"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-456",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-452",
+          "label": "ngày tạo"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-457",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-458",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-457",
+          "label": "customer_id"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-459",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-457",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-460",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-457",
+          "label": "true"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-461",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-457",
+          "label": "nhà cung cấp"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-462",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-463",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-462",
+          "label": " "
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-464",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-462",
+          "label": "ObjectId"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-465",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-462"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-466",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-462"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-467",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-468",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-467",
+          "label": "type_form"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-469",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-467",
+          "label": "String"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-470",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-467",
+          "label": "[inport, export, receive, payment]"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-471",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-467"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-472",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-473",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-472",
+          "label": "total_import"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-474",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-472"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-475",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-472",
+          "label": "5000"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-476",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-472"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-487",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-488",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-487",
+          "label": "total_payment"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-489",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-487"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-490",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-487",
+          "label": "2000"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-491",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-487"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-482",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-483",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-482",
+          "label": "total_export"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-484",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-482"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-485",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-482"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-486",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-482"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-477",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-436"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-478",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-477",
+          "label": "total_receive"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-479",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-477"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-480",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-477"
+        },
+        {
+          "id": "aXoS3wgvJaW0N9AnGjGw-481",
+          "type": "node",
+          "parent": "aXoS3wgvJaW0N9AnGjGw-477"
+        }
+      ]
+    }
+  ]
+}

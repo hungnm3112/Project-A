@@ -14,5 +14,4 @@ trigger: always_on
 Viết Unit Test (Jest) **TỐI THIỂU** cho các logic quan trọng, phức tạp sau đây:
 - `generateSlug()`: Đảm bảo chuyển đổi dấu tiếng Việt và ký tự đặc biệt chuẩn xác.
 - `SlugRegistryService.reserve()`: Đảm bảo bắt lỗi 409 Conflict khi trùng slug hoặc trùng với danh sách reserved.
-- `CategoriesService.rebuildSubtree()`: Đảm bảo logic Materialized Path (cập nhật ancestors, path) chạy đúng khi đổi cha.
-- Logic tính toán `priceFrom`, `priceTo` của `ProductsService`.
+- Logic tính toán `price_from`, `price_to` của `ProductsService`.
