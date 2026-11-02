@@ -1,7 +1,7 @@
 # TÀI LIỆU API - MODULE 02: QUẢN LÝ DANH MỤC
 
-> Đề bài: `drawio/LessonTwo/bài_tập_api.txt`. Database: `drawio/LessonTwo/Database.drawio`. Chức năng: `md/LessonTwo/so-do-phan-ra-chuc-nang-module-1-2.md` (mục 2.1 → 2.7).
-> Collection Thunder Client: `md/LessonTwo/api/warehouse-api-module-02.postman_collection.json`. Environment dùng chung: `md/LessonTwo/api/warehouse-api.postman_environment.json`.
+> Đề bài: `md/LessonTwo/bài_tập_api.txt`. Database: `drawio/LessonTwo/Database.drawio`, `md/LessonTwo/thiet-ke-database-bai-tap-2.md`. Chức năng: `md/LessonTwo/so-do-phan-ra-chuc-nang-module-1-2.md` (mục 2.1 → 2.7).
+> Collection Thunder Client: `drawio/LessonTwo/api/warehouse-api-module-02.postman_collection.json`. Environment dùng chung: `drawio/LessonTwo/api/warehouse-api.postman_environment.json`.
 > Quy ước chung (base URL, token, response, mã lỗi): giống Module 01, xem `md/LessonTwo/api-module-01.md` mục 1.
 > Trạng thái: tài liệu thiết kế, CHƯA có code.
 
@@ -12,11 +12,13 @@
 | Mục | Quy ước |
 |---|---|
 | Tên endpoint | Trùng tên collection: `/warehouses`, `/categories`, `/units`, `/customers`, `/subcategories` |
-| Sản phẩm | "CRUD sản phẩm" của đề bài = collection `subcategories` (mẫu sản phẩm, chứa `sku`, `barcode`). Không dùng `/products` vì tên này dành cho bảng sản phẩm cuối + QR ở module nhập kho |
-| Nhà cung cấp | Lưu chung trong `customers`, phân biệt bằng `type` (1 khách hàng, 2 nhà cung cấp) |
+| Danh mục sản phẩm | "CRUD danh mục sản phẩm" = collection `categories`: lưu loại sản phẩm như *Linh kiện máy tính → RAM, CPU, Pin, Main...*, phân cấp cha - con bằng `parent_id`, nối xuống bảng sản phẩm qua `subcategories.category_id` |
+| Sản phẩm | "CRUD sản phẩm" của đề bài = collection `subcategories` (trong hệ thống Laptop24h, `subcategories` chính là **bảng sản phẩm** chứa tên mặt hàng, `sku`, `barcode`, `price`, `warranty`, dùng để chọn `subcategory_id` khi lập phiếu nhập kho `import_form`). Không dùng `/products` ở Module 02 vì bảng `products` là **sản phẩm cuối + mã QR** (`status: false` = chưa xuất) tự động sinh ra sau khi nhập kho |
+| Nhà cung cấp | Lưu chung trong `customers`, phân biệt bằng `type` (1 khách hàng, 2 nhà cung cấp). Trên phiếu nhập, nhà cung cấp được tham chiếu qua `import_form.user_id` |
 | Khóa / mở khóa | `PUT /:id/status` với body `{ "status": 0 }` hoặc `{ "status": 1 }` |
-| Xóa | `DELETE /:id` chỉ xóa được khi bản ghi chưa được bản ghi khác tham chiếu; nếu đã được dùng trả 409 `CONFLICT` và phải khóa bằng `status = 0` |
-| Danh sách | Luôn có `page`, `limit`, `keyword` (tìm trong `unsign_search` hoặc `name`), `status`, `fromDate`, `toDate` (lọc theo `createdAt`) |
+| Xóa | `DELETE /:id` chỉ xóa được khi bản ghi chưa được bản ghi khác tham chiếu; nếu đã được dùng trả 409 `CONFLICT` và phải khóa bằng `status = 0` (bảng điều kiện ở mục 4) |
+| Danh sách | Luôn có `page`, `limit`, `keyword`, `status`, `fromDate`, `toDate` (lọc theo `createdAt`) |
+| Tìm kiếm `keyword` | Tìm trong `unsign_search` (không dấu) với `warehouses`, `customers`, `categories`, `subcategories`; riêng `units` (không có `unsign_search`) tìm theo `name` |
 | Sinh `unsign_search` | Service tự sinh mỗi lần tạo / sửa, client không gửi |
 
 **Phân quyền** (theo ma trận RBAC trong FDD):
@@ -69,7 +71,7 @@
 | 29 | POST | `/subcategories` | 2.4.1, 2.7.1, 2.7.2 Tạo sản phẩm kèm SKU, barcode |
 | 30 | PUT | `/subcategories/:id` | 2.4.2 Cập nhật sản phẩm, SKU, barcode |
 | 31 | PUT | `/subcategories/:id/status` | 2.4.3 Ngừng / mở kinh doanh |
-| 32 | DELETE | `/subcategories/:id` | Xóa sản phẩm chưa phát sinh giao dịch |
+| 32 | DELETE | `/subcategories/:id` | Xóa sản phẩm chưa phát sinh nhập kho |
 
 > Thứ tự khai báo route trong NestJS: `/categories/tree` và `/subcategories/lookup` phải khai báo trước `/:id` để không bị nhận nhầm là `id`.
 
@@ -93,12 +95,13 @@
 | name | Có | String, không chứa thẻ HTML |
 | phone | Không | Số điện thoại hợp lệ |
 | address | Không | String |
-| branch_id | Không | ObjectId hoặc `null` (mặc định `null`) |
+| branch_id | Không | ObjectId của chi nhánh trong `branches` hoặc `null` (mặc định `null`); gửi id không tồn tại trả 404 |
 
-- **PUT `/:id`:** gửi trường nào cập nhật trường đó (trừ `status`).
+- **Xử lý:** `status = 1`, sinh `unsign_search` từ `name` + `ID`.
+- **PUT `/:id`:** gửi trường nào cập nhật trường đó (trừ `status`); cập nhật lại `unsign_search`.
 - **GET danh sách:** nhân viên `WAREHOUSE_STAFF` chỉ nhận các kho có trong `warehouse_ids` của mình; gọi `GET /:id` kho khác trả 403.
-- **DELETE:** trả 409 nếu kho đang được gán cho nhân viên (`employees.warehouse_ids`).
-- **Lỗi:** 400, 401, 403, 404, 409 (trùng `ID`).
+- **DELETE:** trả 409 nếu kho đang được gán cho nhân viên (`employees.warehouse_ids`) hoặc đã phát sinh phiếu nhập (`import_form.warehouse_id`).
+- **Lỗi:** 400, 401, 403, 404 (kho / chi nhánh không tồn tại), 409 (trùng `ID`).
 
 **201 / 200:**
 ```json
@@ -133,29 +136,33 @@
 | email | Không | Email hợp lệ |
 | tax | Không | String (mã số thuế) |
 
-- **GET danh sách:** thêm query `type=1` (khách hàng) hoặc `type=2` (nhà cung cấp); `keyword` tìm theo tên, mã, số điện thoại.
-- **PUT `/:id`:** không cho đổi `type` sau khi tạo.
-- **DELETE:** trả 409 nếu đã phát sinh chứng từ (áp dụng khi có module nhập / xuất).
+- **Xử lý:** `status = 1`, sinh `unsign_search` từ `name` + `ID` + `phone`.
+- **GET danh sách:** thêm query `type=1` (khách hàng) hoặc `type=2` (nhà cung cấp); `keyword` tìm trong `unsign_search` (tên, mã, số điện thoại).
+- **PUT `/:id`:** không cho đổi `type` sau khi tạo; cập nhật lại `unsign_search`.
+- **DELETE:** trả 409 nếu đã phát sinh chứng từ: `import_form.user_id` (nhà cung cấp trên phiếu nhập), `payment_form.customer_id` hoặc `debts.customer_id`.
 - **Lỗi:** 400, 401, 403 (`WAREHOUSE_STAFF` không có quyền), 404, 409 (trùng `ID`).
 
 ### 3.3. Danh mục sản phẩm - `/categories`
 
+> `categories` là **danh mục sản phẩm** (VD: *Linh kiện máy tính → RAM, CPU, Pin, Main*). Mỗi sản phẩm trong `subcategories` thuộc 1 danh mục qua `category_id`.
+
 **Body tạo (POST):**
 ```json
-{ "name": "Laptop Gaming", "parent_id": "6720f1a2b3c4d5e6f7a8b601" }
+{ "name": "RAM", "parent_id": "6720f1a2b3c4d5e6f7a8b601" }
 ```
 | Trường | Bắt buộc | Kiểm tra |
 |---|---|---|
 | name | Có | String, không chứa thẻ HTML |
 | parent_id | Không | ObjectId của danh mục đang hoạt động, hoặc `null` (danh mục gốc) |
 
-- **GET `/categories`:** query thêm `parentId` (lấy danh mục con trực tiếp; `parentId=null` lấy danh mục gốc).
-- **GET `/categories/tree`:** trả cây lồng nhau:
+- **Xử lý:** `status = 1`, sinh `unsign_search` từ `name` (tạo và sửa).
+- **GET `/categories`:** query thêm `parentId` (lấy danh mục con trực tiếp; `parentId=null` lấy danh mục gốc); `keyword` tìm trong `unsign_search`.
+- **GET `/categories/tree`:** query `status` (không bắt buộc), trả cây lồng nhau:
   ```json
-  { "data": [{ "_id": "...", "name": "Laptop", "children": [{ "_id": "...", "name": "Laptop Gaming", "children": [] }] }] }
+  { "data": [{ "_id": "...", "name": "Linh kiện máy tính", "children": [{ "_id": "...", "name": "RAM", "children": [] }, { "_id": "...", "name": "CPU", "children": [] }] }] }
   ```
 - **PUT `/:id`:** đổi `parent_id` không được trỏ về chính nó hoặc danh mục con của nó (trả 400).
-- **DELETE:** trả 409 nếu còn danh mục con hoặc còn sản phẩm (`subcategories.category_id`).
+- **DELETE:** trả 409 nếu còn danh mục con (`categories.parent_id`) hoặc còn sản phẩm (`subcategories.category_id`).
 - **Lỗi:** 400, 401, 403, 404 (danh mục cha không tồn tại), 409.
 
 ### 3.4. Đơn vị tính - `/units`
@@ -166,21 +173,23 @@
 |---|---|---|
 | name | Có | String, không trùng (không phân biệt hoa thường) |
 
-- **DELETE:** trả 409 nếu còn sản phẩm dùng đơn vị tính này.
+- **DELETE:** trả 409 nếu còn sản phẩm dùng đơn vị tính này (`subcategories.unit_id`).
 - **Lỗi:** 400, 401, 403, 404, 409 (trùng `name`).
 
 ### 3.5. Sản phẩm, SKU, barcode - `/subcategories`
+
+> `subcategories` là **bảng sản phẩm** (mẫu mặt hàng), không phải danh mục con. Mỗi lần nhập kho N chiếc của 1 sản phẩm, hệ thống sinh N bản ghi `products` (mã QR) tham chiếu `subcategory_id` — việc này thuộc module Nhập kho, không thuộc Module 02.
 
 **Body tạo (POST):**
 ```json
 {
   "category_id": "6720f1a2b3c4d5e6f7a8b602",
   "unit_id": "6720f1a2b3c4d5e6f7a8b501",
-  "name": "Laptop ASUS ROG Strix G16",
-  "sku": "LAP-ASUS-G16-001",
-  "barcode": "8934567890123",
-  "price": 32990000,
-  "warranty": 24
+  "name": "RAM Kingston DDR4 8GB Bus 3200",
+  "sku": "RAM-KST-D4-8G-3200",
+  "barcode": "8936049520018",
+  "price": 650000,
+  "warranty": 36
 }
 ```
 | Trường | Bắt buộc | Kiểm tra |
@@ -193,10 +202,11 @@
 | price | Không | Number ≥ 0, mặc định `0` |
 | warranty | Không | Number ≥ 0 (tháng), mặc định `0` |
 
-- **GET danh sách:** query thêm `categoryId`, `unitId`; `keyword` tìm theo tên, SKU, barcode. Mỗi phần tử trả kèm `category: { _id, name }` và `unit: { _id, name }`.
-- **GET `/subcategories/lookup?code=8934567890123`:** tìm chính xác theo `barcode` hoặc `sku`, dùng cho máy quét. Trả 1 sản phẩm hoặc 404.
-- **PUT `/:id`:** gửi trường nào cập nhật trường đó; đổi `sku` / `barcode` vẫn kiểm tra trùng.
-- **DELETE:** trả 409 nếu sản phẩm đã phát sinh phiếu nhập / xuất (áp dụng khi có module nhập / xuất).
+- **Xử lý:** `status = 1`, sinh `unsign_search` từ `name` + `sku` + `barcode`.
+- **GET danh sách:** query thêm `categoryId`, `unitId`; `keyword` tìm trong `unsign_search` (tên, SKU, barcode). Mỗi phần tử trả kèm `category: { _id, name }` và `unit: { _id, name }`.
+- **GET `/subcategories/lookup?code=8936049520018`:** tìm chính xác theo `barcode` hoặc `sku`, dùng cho máy quét. Trả 1 sản phẩm hoặc 404.
+- **PUT `/:id`:** gửi trường nào cập nhật trường đó; đổi `sku` / `barcode` vẫn kiểm tra trùng; cập nhật lại `unsign_search`.
+- **DELETE:** trả 409 nếu sản phẩm đã phát sinh nhập kho: có trong chi tiết phiếu nhập (`import_form.product[].subcategory_id` / `import_form.service[].subcategory_id`) hoặc đã sinh sản phẩm cuối (`products.subcategory_id`).
 - **Lỗi:** 400, 401, 403, 404 (danh mục / đơn vị tính không tồn tại), 409 (trùng `sku` hoặc `barcode`).
 
 **201 / 200:**
@@ -204,13 +214,13 @@
 {
   "data": {
     "_id": "6720f1a2b3c4d5e6f7a8b401",
-    "category": { "_id": "6720f1a2b3c4d5e6f7a8b602", "name": "Laptop Gaming" },
+    "category": { "_id": "6720f1a2b3c4d5e6f7a8b602", "name": "RAM" },
     "unit": { "_id": "6720f1a2b3c4d5e6f7a8b501", "name": "Chiếc" },
-    "name": "Laptop ASUS ROG Strix G16",
-    "sku": "LAP-ASUS-G16-001",
-    "barcode": "8934567890123",
-    "price": 32990000,
-    "warranty": 24,
+    "name": "RAM Kingston DDR4 8GB Bus 3200",
+    "sku": "RAM-KST-D4-8G-3200",
+    "barcode": "8936049520018",
+    "price": 650000,
+    "warranty": 36,
     "status": 1,
     "createdAt": "2026-11-02T10:00:00.000Z",
     "updatedAt": "2026-11-02T10:00:00.000Z"
@@ -218,3 +228,9 @@
 }
 ```
 
+## 4. Tổng hợp điều kiện chặn xóa (409 CONFLICT)
+
+| API | Bị chặn khi còn tham chiếu từ |
+|---|---|
+| `DELETE /warehouses/:id` | `employees.warehouse_ids`, `import_form.warehouse_id` || `DELETE /customers/:id` | `import_form.user_id`, `payment_form.customer_id`, `debts.customer_id` || `DELETE /categories/:id` | `categories.parent_id`, `subcategories.category_id` || `DELETE /units/:id` | `subcategories.unit_id` || `DELETE /subcategories/:id` | `import_form.product[].subcategory_id`, `import_form.service[].subcategory_id`, `products.subcategory_id` |
+> Các bảng `import_form`, `products`, `payment_form`, `debts` thuộc module Nhập kho / Công nợ (Buổi học số 2), chưa có API trong bài này. Khi module đó chưa được cài đặt, điều kiện kiểm tra tương ứng luôn trả về "chưa tham chiếu".

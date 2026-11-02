@@ -1,7 +1,7 @@
 # TÀI LIỆU API - MODULE 01: QUẢN LÝ NGƯỜI DÙNG VÀ PHÂN QUYỀN
 
-> Đề bài: `drawio/LessonTwo/bài_tập_api.txt`. Database: `drawio/LessonTwo/Database.drawio`. Chức năng: `md/LessonTwo/so-do-phan-ra-chuc-nang-module-1-2.md` (mục 1.1 → 1.4).
-> Collection Thunder Client: `md/LessonTwo/api/warehouse-api-module-01.postman_collection.json` (import trong Thunder Client → Collections → Import).
+> Đề bài: `md/LessonTwo/bài_tập_api.txt`. Database: `drawio/LessonTwo/Database.drawio`. Chức năng: `md/LessonTwo/so-do-phan-ra-chuc-nang-module-1-2.md` (mục 1.1 → 1.4).
+> Collection Thunder Client: `drawio/LessonTwo/api/warehouse-api-module-01.postman_collection.json` (import trong Thunder Client → Collections → Import).
 > Trạng thái: tài liệu thiết kế, CHƯA có code.
 
 ---
