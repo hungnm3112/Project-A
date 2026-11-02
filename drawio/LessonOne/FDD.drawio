@@ -1,0 +1,173 @@
+<mxfile host="65bd71144e">
+    <diagram id="fdd-system" name="FDD System Level">
+        <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3250" pageHeight="1350" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- Title & Legend -->
+                <mxCell id="fdd_title" value="SƠ ĐỒ PHÂN RÃ CHỨC NĂNG (FDD) - HỆ THỐNG QUẢN LÝ BÁN HÀNG TẬP TRUNG (CÔNG TY TNHH ABC)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="20" width="1500" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_box" value="CHÚ THÍCH CẤU TRÚC FDD:&#10;• Cấp 0 (Gốc): Toàn bộ hệ thống quản lý bán hàng tập trung&#10;• Cấp 1 (Phân hệ): 5 khối nghiệp vụ độc lập theo nguyên tắc MECE&#10;• Cấp 2: 24 chức năng nghiệp vụ (21 do Actor kích hoạt + 3 tác vụ tự động)&#10;• Cấp 3: Các tác vụ thực thi chi tiết (bên trong mỗi thẻ Cấp 2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;fontColor=#334155;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="20" width="460" height="75" as="geometry"/>
+                </mxCell>
+
+                <!-- Root Node (Level 0) -->
+                <mxCell id="node_root" value="[0] HỆ THỐNG QUẢN LÝ BÁN HÀNG TẬP TRUNG&#10;(CÔNG TY TNHH ABC)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#1e293b;strokeColor=#0f172a;strokeWidth=3;fontColor=#ffffff;fontStyle=1;fontSize=15;align=center;verticalAlign=middle;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1380" y="70" width="440" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- ==================== CẤP 1: 5 PHÂN HỆ ==================== -->
+                <!-- Module 1 -->
+                <mxCell id="mod_1" value="1. QUẢN LÝ ĐƠN HÀNG VÀ BÁN HÀNG" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2.5;fontColor=#0369a1;fontStyle=1;fontSize=13;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="190" width="580" height="55" as="geometry"/>
+                </mxCell>
+                <!-- Module 2 -->
+                <mxCell id="mod_2" value="2. QUẢN LÝ SẢN PHẨM VÀ KHO HÀNG" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffedd5;strokeColor=#ea580c;strokeWidth=2.5;fontColor=#c2410c;fontStyle=1;fontSize=13;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="190" width="580" height="55" as="geometry"/>
+                </mxCell>
+                <!-- Module 3 -->
+                <mxCell id="mod_3" value="3. QUẢN LÝ TÀI CHÍNH VÀ CÔNG NỢ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#dcfce7;strokeColor=#16a34a;strokeWidth=2.5;fontColor=#15803d;fontStyle=1;fontSize=13;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1310" y="190" width="580" height="55" as="geometry"/>
+                </mxCell>
+                <!-- Module 4 -->
+                <mxCell id="mod_4" value="4. BÁO CÁO VÀ THỐNG KÊ QUẢN TRỊ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=2.5;fontColor=#854d0e;fontStyle=1;fontSize=13;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1940" y="190" width="580" height="55" as="geometry"/>
+                </mxCell>
+                <!-- Module 5 -->
+                <mxCell id="mod_5" value="5. QUẢN TRỊ HỆ THỐNG VÀ DANH MỤC" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ede9fe;strokeColor=#7c3aed;strokeWidth=2.5;fontColor=#6d28d9;fontStyle=1;fontSize=13;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="2570" y="190" width="580" height="55" as="geometry"/>
+                </mxCell>
+
+                <!-- Edges from Root to Modules -->
+                <mxCell id="edge_root_m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" parent="1" source="node_root" target="mod_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_root_m2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" parent="1" source="node_root" target="mod_2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_root_m3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" parent="1" source="node_root" target="mod_3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_root_m4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" parent="1" source="node_root" target="mod_4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_root_m5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" parent="1" source="node_root" target="mod_5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- ==================== CẤP 2 & CẤP 3: PHÂN HỆ 1 ==================== -->
+                <!-- 1.1 -->
+                <mxCell id="fn_1_1" value="1.1 Gửi yêu cầu đặt hàng [Khách hàng - 01]&#10;• 1.1.1 Nhập thông tin liên hệ và địa chỉ nhận hàng&#10;• 1.1.2 Chọn sản phẩm và số lượng đặt mua&#10;• 1.1.3 Gửi biểu mẫu yêu cầu đặt hàng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="280" width="580" height="80" as="geometry"/>
+                </mxCell>
+                <!-- 1.2 -->
+                <mxCell id="fn_1_2" value="1.2 Xử lý yêu cầu đặt hàng từ website [Bán hàng - 03]&#10;• 1.2.1 Tiếp nhận danh sách yêu cầu form chờ xử lý&#10;• 1.2.2 Xác nhận hoặc hủy yêu cầu sau tư vấn&#10;• 1.2.3 Chuyển đổi yêu cầu hợp lệ thành đơn hàng chính thức" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="380" width="580" height="80" as="geometry"/>
+                </mxCell>
+                <!-- 1.3 -->
+                <mxCell id="fn_1_3" value="1.3 Tạo đơn hàng đa kênh [Bán hàng - 02]&#10;• 1.3.1 Chọn chi nhánh bán và kênh tiếp nhận (Cửa hàng / Điện thoại / Zalo)&#10;• 1.3.2 Kiểm tra tồn khả dụng và giữ chỗ tồn kho tạm thời (Quyết định A1)&#10;• 1.3.3 Lưu thông tin đơn hàng và ghi nhận nhân viên phụ trách" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="480" width="580" height="80" as="geometry"/>
+                </mxCell>
+                <!-- 1.4 -->
+                <mxCell id="fn_1_4" value="1.4 Tra cứu tồn kho liên chi nhánh [Bán hàng - 01]&#10;• 1.4.1 Tìm kiếm sản phẩm theo mã hoặc tên&#10;• 1.4.2 Xem số lượng tồn thực tế, đang giữ chỗ và khả dụng theo từng kho" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="580" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 1.5 -->
+                <mxCell id="fn_1_5" value="1.5 Quản lý hồ sơ khách hàng [Bán hàng - 04]&#10;• 1.5.1 Thêm mới và cập nhật thông tin khách hàng&#10;• 1.5.2 Tra cứu lịch sử mua hàng và hạn mức công nợ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="670" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 1.6 -->
+                <mxCell id="fn_1_6" value="1.6 Tạo yêu cầu đổi trả hàng [Bán hàng - 05]&#10;• 1.6.1 Tra cứu đơn hàng gốc cần đổi trả&#10;• 1.6.2 Chọn sản phẩm, số lượng trả và ghi nhận lý do&#10;• 1.6.3 Phát hành phiếu yêu cầu đổi trả" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="760" width="580" height="80" as="geometry"/>
+                </mxCell>
+                <!-- 1.7 -->
+                <mxCell id="fn_1_7" value="1.7 Cập nhật trạng thái giao hàng [Bán hàng - 06 / Kho - 04]&#10;• 1.7.1 Cập nhật trạng thái bàn giao đơn hàng&#10;• 1.7.2 Xác nhận hoàn tất giao hàng cho khách" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="860" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 1.8 -->
+                <mxCell id="fn_1_8" value="1.8 Giải phóng tồn kho giữ chỗ quá hạn [Tự động - 01]&#10;• 1.8.1 Quét danh sách đơn hàng hết thời hạn giữ chỗ&#10;• 1.8.2 Hủy giữ chỗ và hoàn trả số lượng vào tồn khả dụng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=1.5;dashed=1;align=left;spacingLeft=12;fontSize=11;fontColor=#0369a1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="950" width="580" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- ==================== CẤP 2 & CẤP 3: PHÂN HỆ 2 ==================== -->
+                <!-- 2.1 -->
+                <mxCell id="fn_2_1" value="2.1 Quản lý thông tin sản phẩm [Kho - 01 / Quản trị - 03]&#10;• 2.1.1 Thêm mới hồ sơ và thuộc tính sản phẩm&#10;• 2.1.2 Cập nhật giá bán, thông số và trạng thái kinh doanh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ea580c;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="280" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 2.2 -->
+                <mxCell id="fn_2_2" value="2.2 Nhập kho hàng hóa [Kho - 02]&#10;• 2.2.1 Lập phiếu nhập kho theo kho nhận&#10;• 2.2.2 Ghi nhận số lượng thực nhập và chứng từ gốc&#10;• 2.2.3 Cộng tồn kho thực tế và tồn khả dụng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ea580c;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="370" width="580" height="80" as="geometry"/>
+                </mxCell>
+                <!-- 2.3 -->
+                <mxCell id="fn_2_3" value="2.3 Xuất kho chuẩn bị hàng [Kho - 03]&#10;• 2.3.1 Tiếp nhận danh sách đơn hàng chờ xuất tại kho&#10;• 2.3.2 Lập phiếu xuất kho và trừ tồn thực tế (kèm giải phóng tồn giữ chỗ)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ea580c;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="470" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 2.4 -->
+                <mxCell id="fn_2_4" value="2.4 Kiểm kê và điều chỉnh tồn kho [Kho - 05]&#10;• 2.4.1 Lập biên bản kiểm đếm số lượng thực tế tại kho&#10;• 2.4.2 Lập phiếu điều chỉnh chênh lệch và ghi nhận lý do" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ea580c;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="560" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 2.5 -->
+                <mxCell id="fn_2_5" value="2.5 Kiểm tra và nhập kho hàng trả [Kho - 06]&#10;• 2.5.1 Tiếp nhận hàng trả và đánh giá tình trạng vật lý&#10;• 2.5.2 Lập biên bản kiểm hàng và nhập lại kho tương ứng (kho tốt / kho lỗi)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ea580c;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="650" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 2.6 -->
+                <mxCell id="fn_2_6" value="2.6 Điều chuyển kho liên chi nhánh [Kho - 07]&#10;• 2.6.1 Lập phiếu điều chuyển giữa kho xuất và kho nhận&#10;• 2.6.2 Xác nhận xuất chuyển kho và xác nhận nhập kho đích" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ea580c;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="740" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 2.7 -->
+                <mxCell id="fn_2_7" value="2.7 Cảnh báo tồn kho tối thiểu [Tự động - 02]&#10;• 2.7.1 Quét định kỳ số lượng tồn theo ngưỡng tối thiểu từng kho&#10;• 2.7.2 Phát cảnh báo danh sách mặt hàng sắp hết hàng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#fff7ed;strokeColor=#ea580c;strokeWidth=1.5;dashed=1;align=left;spacingLeft=12;fontSize=11;fontColor=#c2410c;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="830" width="580" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- ==================== CẤP 2 & CẤP 3: PHÂN HỆ 3 ==================== -->
+                <!-- 3.1 -->
+                <mxCell id="fn_3_1" value="3.1 Ghi nhận thanh toán đơn hàng [Kế toán - 01]&#10;• 3.1.1 Lập phiếu thu theo phương thức thanh toán (toàn phần / từng phần)&#10;• 3.1.2 Cập nhật trạng thái thanh toán đơn hàng và dư nợ khách hàng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="1310" y="280" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 3.2 -->
+                <mxCell id="fn_3_2" value="3.2 Đối chiếu giá trị hàng trả [Kế toán - 04]&#10;• 3.2.1 Đối chiếu biên bản kiểm hàng trả với hóa đơn bán gốc&#10;• 3.2.2 Xác định số tiền được hoàn hoặc cấn trừ công nợ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="1310" y="370" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 3.3 -->
+                <mxCell id="fn_3_3" value="3.3 Hoàn tiền cho khách hàng [Kế toán - 02]&#10;• 3.3.1 Lập phiếu chi hoàn tiền hoặc hạch toán giảm trừ công nợ&#10;• 3.3.2 Cập nhật hoàn tất hồ sơ đổi trả" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="1310" y="460" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 3.4 -->
+                <mxCell id="fn_3_4" value="3.4 Đối soát công nợ khách hàng [Kế toán - 03]&#10;• 3.4.1 Tổng hợp dư nợ phát sinh và đã thu theo kỳ / chi nhánh&#10;• 3.4.2 Theo dõi danh sách khoản nợ đến hạn và quá hạn" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="1310" y="550" width="580" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- ==================== CẤP 2 & CẤP 3: PHÂN HỆ 4 ==================== -->
+                <!-- 4.1 -->
+                <mxCell id="fn_4_1" value="4.1 Xem báo cáo tổng hợp kinh doanh [Quản lý - 01]&#10;• 4.1.1 Tra cứu báo cáo doanh thu và lợi nhuận dự kiến theo chi nhánh / kênh bán&#10;• 4.1.2 Tra cứu báo cáo tổng hợp tồn kho và công nợ toàn công ty" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="1940" y="280" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 4.2 -->
+                <mxCell id="fn_4_2" value="4.2 Theo dõi hiệu quả bán hàng nhân viên [Quản lý - 02]&#10;• 4.2.1 Thống kê số lượng đơn và doanh số thực hiện theo nhân viên&#10;• 4.2.2 Đánh giá tỷ lệ đơn thành công và đơn đổi trả theo kỳ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="1940" y="370" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 4.3 -->
+                <mxCell id="fn_4_3" value="4.3 Tổng hợp dữ liệu báo cáo cuối ngày [Tự động - 03]&#10;• 4.3.1 Chốt số liệu doanh thu, công nợ và biến động tồn kho cuối ngày&#10;• 4.3.2 Lưu trữ dữ liệu tổng hợp phục vụ truy xuất báo cáo nhanh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1.5;dashed=1;align=left;spacingLeft=12;fontSize=11;fontColor=#854d0e;" parent="1" vertex="1">
+                    <mxGeometry x="1940" y="460" width="580" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- ==================== CẤP 2 & CẤP 3: PHÂN HỆ 5 ==================== -->
+                <!-- 5.1 -->
+                <mxCell id="fn_5_1" value="5.1 Quản lý tài khoản và phân quyền [Quản trị - 01]&#10;• 5.1.1 Tạo lập, khóa và cập nhật tài khoản nhân viên&#10;• 5.1.2 Phân quyền vai trò và gán chi nhánh làm việc" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="2570" y="280" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 5.2 -->
+                <mxCell id="fn_5_2" value="5.2 Quản lý danh mục ngành hàng [Quản trị - 02]&#10;• 5.2.1 Thiết lập cấu trúc danh mục sản phẩm đa cấp (cha - con)&#10;• 5.2.2 Cập nhật thông tin và trạng thái hiển thị danh mục" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="2570" y="370" width="580" height="70" as="geometry"/>
+                </mxCell>
+                <!-- 5.3 -->
+                <mxCell id="fn_5_3" value="5.3 Quản lý chi nhánh và kho hàng [Quản trị - 04]&#10;• 5.3.1 Khởi tạo và cập nhật thông tin chi nhánh hoạt động&#10;• 5.3.2 Thiết lập danh sách kho hàng trực thuộc từng chi nhánh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=1.5;align=left;spacingLeft=12;fontSize=11;fontColor=#0f172a;" parent="1" vertex="1">
+                    <mxGeometry x="2570" y="460" width="580" height="70" as="geometry"/>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

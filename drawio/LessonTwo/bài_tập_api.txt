@@ -1,0 +1,37 @@
+Công ty ABC chuyên kinh doanh thiết bị điện tử, linh kiện máy tính và phụ kiện công nghệ.
+
+Hiện tại công ty có 3 kho hàng tại các địa điểm khác nhau. Việc quản lý nhập hàng, xuất hàng và kiểm kê đang được thực hiện bằng Excel, dẫn đến các vấn đề:
+- Không kiểm soát được số lượng hàng tồn thực tế.
+- Không biết nhân viên nào thực hiện nhập hoặc xuất hàng.
+- Dễ xảy ra tình trạng xuất hàng vượt quá số lượng tồn kho.
+- Khó theo dõi lịch sử biến động hàng hóa.
+- Không kiểm soát được hàng hóa đang vận chuyển giữa các kho.
+- Khó tổng hợp báo cáo nhập xuất tồn theo thời gian.
+Ban lãnh đạo quyết định xây dựng một hệ thống quản lý kho tập trung bằng API NestJS.
+
+Module 01
+Quản lý người dùng và phân quyền
+
+Chức năng:
+- Đăng nhập, đăng xuất, refresh token.
+- Quản lý tài khoản nhân viên.
+- Phân quyền theo vai trò.
+- Gán nhân viên phụ trách kho.
+Các vai trò:
+- Admin: Toàn quyền hệ thống.
+- Warehouse Manager: Quản lý kho.
+- Warehouse Staff: Nhân viên kho.
+- Accountant: Kế toán, xem báo cáo.
+
+Module 02
+Quản lý danh mục
+Chức năng:
+CRUD sản phẩm.
+CRUD danh mục sản phẩm.
+CRUD đơn vị tính.
+CRUD nhà cung cấp.
+CRUD khách hàng.
+
+CRUD kho hàng.
+
+Quản lý mã SKU, barcode.

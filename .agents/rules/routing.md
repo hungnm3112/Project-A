@@ -120,7 +120,7 @@ export class ProductsController {
 {
   slug: string;        // unique index toàn cục
   type: 'news_category' | 'policy_page' | 'reserved';
-  refId: ObjectId | null;
+  ref_id: ObjectId | null;
 }
 ```
 - Seed sẵn các slug `reserved` (danh sách route cố định + prefix hệ thống).

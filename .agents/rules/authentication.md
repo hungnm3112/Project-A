@@ -15,8 +15,7 @@ trigger: always_on
 - Cookie flags: `httpOnly`, `secure` (production), `sameSite: 'lax'`
 
 ### 3. Mã hóa mật khẩu
-- Dùng **`bcrypt`** để băm mật khẩu (salt rounds ≥ 10)
-- KHÔNG dùng SHA512, MD5, hoặc bất kỳ thuật toán hash đơn giản nào
+- Mật khẩu lưu dạng mã hóa **sha512** (theo chuẩn leader, xem `database_design.md` mục 3.5)
 - KHÔNG log hoặc trả về password trong response (dùng `select: false` trong schema)
 
 ### 4. Bảo vệ Route (NestJS)

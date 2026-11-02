@@ -1,0 +1,1032 @@
+{
+  "version": "32.6.9",
+  "pages": [
+    {
+      "id": "fn2IwruRuoz7iebCUdh2",
+      "name": "Trang-1",
+      "cells": [
+        {
+          "id": "1",
+          "type": "layer"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-52",
+          "type": "node",
+          "parent": "1",
+          "label": "warehoueses"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-53",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-52"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-54",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-53",
+          "label": "field"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-55",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-53",
+          "label": "type",
+          "html": "type<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-56",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-53",
+          "label": "required"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-57",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-53",
+          "label": "des"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-58",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-52"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-59",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-58",
+          "label": "_id"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-60",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-58",
+          "label": "ObjectID"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-61",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-58",
+          "label": "true"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-62",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-58"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-68",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-52"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-69",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-68",
+          "label": "name"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-70",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-68",
+          "label": "String"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-71",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-68",
+          "label": "true"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-72",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-68"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-83",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-52"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-84",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-83",
+          "label": "branch_id"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-85",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-83"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-86",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-83"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-87",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-83"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-88",
+          "type": "node",
+          "parent": "1",
+          "label": "employees"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-89",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-88"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-90",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-89",
+          "label": "field"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-91",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-89",
+          "label": "type",
+          "html": "type<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-92",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-89",
+          "label": "required"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-93",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-89",
+          "label": "des"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-94",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-88"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-95",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-94",
+          "label": "_id"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-96",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-94",
+          "label": "ObjectID"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-97",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-94",
+          "label": "true"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-98",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-94"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-99",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-88"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-100",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-99",
+          "label": "name"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-101",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-99",
+          "label": "string"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-102",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-99",
+          "label": "true"
+        },
+        {
+          "id": "Ozzrfe7z8t2Gy2cOkw6F-103",
+          "type": "node",
+          "parent": "Ozzrfe7z8t2Gy2cOkw6F-99"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-1",
+          "type": "node",
+          "parent": "1",
+          "label": "subcategories"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-2",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-1"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-3",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-2",
+          "label": "field"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-4",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-2",
+          "label": "type",
+          "html": "type<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-5",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-2",
+          "label": "required"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-6",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-2",
+          "label": "des"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-7",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-1"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-8",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-7",
+          "label": "_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-9",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-7",
+          "label": "ObjectID"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-10",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-7",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-11",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-7"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-17",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-1"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-18",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-17",
+          "label": "name"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-19",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-17",
+          "label": "String"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-20",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-17",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-21",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-17"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-37",
+          "type": "node",
+          "parent": "1",
+          "label": "products (sản phẩm cuối + QR)"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-38",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-39",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-38",
+          "label": "field"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-40",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-38",
+          "label": "type",
+          "html": "type<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-41",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-38",
+          "label": "required"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-42",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-38",
+          "label": "des"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-43",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-44",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-43",
+          "label": "_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-45",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-43",
+          "label": "ObjectID"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-46",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-43",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-47",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-43"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-153",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-154",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-153",
+          "label": "ID"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-155",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-153",
+          "label": "string, unique"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-156",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-153",
+          "label": "default: Date.now"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-157",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-153"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-48",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-49",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-48",
+          "label": "subcategory_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-50",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-48",
+          "label": "string"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-51",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-48",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-52",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-48"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-143",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-144",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-143",
+          "label": "form_import_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-145",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-143"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-146",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-143"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-147",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-143"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-148",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-149",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-148",
+          "label": "index"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-150",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-148"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-151",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-148"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-152",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-148"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-168",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-169",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-168",
+          "label": "price"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-170",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-168"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-171",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-168"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-172",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-168"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-163",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-164",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-163",
+          "label": "status"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-165",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-163",
+          "label": "boolean"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-166",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-163",
+          "label": "false"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-167",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-163"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-158",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-37"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-159",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-158"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-160",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-158"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-161",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-158"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-162",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-158"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-54",
+          "type": "edge",
+          "parent": "1",
+          "source": "FMu3B2m5PBHFZeLUru99-48",
+          "target": "FMu3B2m5PBHFZeLUru99-7"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-55",
+          "type": "node",
+          "parent": "1",
+          "label": "import_form"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-56",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-57",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-56",
+          "label": "field"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-58",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-56",
+          "label": "type",
+          "html": "type<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-59",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-56",
+          "label": "required"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-60",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-56",
+          "label": "des"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-61",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-62",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-61",
+          "label": "_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-63",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-61",
+          "label": "ObjectID"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-64",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-61",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-65",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-61"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-66",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-67",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-66",
+          "label": "ID"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-68",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-66",
+          "label": "string"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-69",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-66",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-70",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-66"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-86",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-87",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-86",
+          "label": "employee_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-88",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-86"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-89",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-86"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-90",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-86"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-81",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-82",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-81",
+          "label": "user_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-83",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-81"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-84",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-81"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-85",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-81"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-71",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-72",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-71",
+          "label": "date"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-73",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-71",
+          "label": "datetime"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-74",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-71"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-75",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-71",
+          "label": "ngày tạo phiếu",
+          "html": "\n<span style=\"color: rgb(0, 0, 0); font-family: Helvetica; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">ngày tạo phiếu</span>\n\n"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-91",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-92",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-91",
+          "label": "total_amount"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-93",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-91"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-94",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-91"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-95",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-91"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-96",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-97",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-96",
+          "label": "warehouse_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-98",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-96"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-99",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-96"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-100",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-96"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-101",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-102",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-101",
+          "label": "product"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-103",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-101",
+          "label": "array"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-104",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-101"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-105",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-101",
+          "label": "chi tiết sản phẩm linh kiện"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-106",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-55"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-107",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-106",
+          "label": "service"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-108",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-106",
+          "label": "array&nbsp;"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-109",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-106"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-110",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-106",
+          "label": "chi tiết sản phẩm dich vụ"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-111",
+          "type": "edge",
+          "parent": "1",
+          "source": "FMu3B2m5PBHFZeLUru99-101",
+          "target": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-112",
+          "type": "node",
+          "parent": "1",
+          "label": "detail_product"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-113",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-114",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-113",
+          "label": "field"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-115",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-113",
+          "label": "type",
+          "html": "type<span style=\"white-space: pre;\">\t</span>"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-116",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-113",
+          "label": "required"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-117",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-113",
+          "label": "des"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-118",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-119",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-118",
+          "label": "index"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-120",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-118",
+          "label": "Number"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-121",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-118"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-122",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-118"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-128",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-129",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-128",
+          "label": "price"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-130",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-128"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-131",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-128"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-132",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-128"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-138",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-139",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-138",
+          "label": "quantity"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-140",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-138"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-141",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-138"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-142",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-138"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-133",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-134",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-133",
+          "label": "vat, ck, warranty, discount"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-135",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-133"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-136",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-133"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-137",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-133"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-123",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-112"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-124",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-123",
+          "label": "subcategory_id"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-125",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-123",
+          "label": "string"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-126",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-123",
+          "label": "true"
+        },
+        {
+          "id": "FMu3B2m5PBHFZeLUru99-127",
+          "type": "node",
+          "parent": "FMu3B2m5PBHFZeLUru99-123"
+        }
+      ]
+    }
+  ]
+}

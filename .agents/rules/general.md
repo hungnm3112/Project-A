@@ -35,9 +35,10 @@ trigger: always_on
 - Dùng `UPPER_SNAKE_CASE`
 - Ví dụ: `const MAX_RETRY_COUNT = 3;`, `const API_BASE_URL = '...'`
 
-**Tên trường Database (MongoDB):**
-- Dùng `camelCase` cho toàn bộ trường (Ngoại lệ duy nhất: `_id`)
-- Ví dụ: `fullName`, `createdAt`, `parentId`, `stockStatus`
+**Tên trường và tên bảng Database (MongoDB):**
+- Dùng `snake_case` theo chuẩn leader (xem `database_design.md` mục 3.2)
+- Ví dụ: `parent_id`, `customer_id`, `total_amount`, `unsign_search`
+- Ngoại lệ: `_id`, `ID` và 2 trường `createdAt`, `updatedAt` do `timestamps: true` tự sinh
 
 **API URL & Route:**
 - Dùng chữ thường, phân cách bằng dấu gạch ngang `-` (kebab-case)
