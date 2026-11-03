@@ -1454,6 +1454,18 @@
   ],
   "variable": [
     {
+      "key": "base_url",
+      "value": "http://localhost:8060/api/v1"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "warehouse_id",
+      "value": "6720f1a2b3c4d5e6f7a8b701"
+    },
+    {
       "key": "customer_id",
       "value": "6720f1a2b3c4d5e6f7a8b301"
     },

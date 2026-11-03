@@ -270,7 +270,7 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 | _id | ObjectId | true | _id hệ thống tự sinh |
 | date | date | true, default: Date.now | ngày tạo |
 | customer_id | ObjectId | true | nhà cung cấp (ref `customers`) |
-| (id chứng từ) | ObjectId | | id chứng từ gốc (`import_form` / `payment_form`...) |
+| bill_id | ObjectId | true | id chứng từ gốc (`import_form` / `payment_form`...) |
 | type_form | String | [import, export, receive, payment] | loại chứng từ phát sinh công nợ |
 | total_import | Number | default = 0 (VD: 5000) | tổng tiền nhập (tăng nợ phải trả NCC) |
 | total_payment | Number | default = 0 (VD: 2000) | tổng tiền đã thanh toán (giảm nợ phải trả NCC) |
