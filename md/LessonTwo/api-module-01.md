@@ -120,7 +120,7 @@
 
 ### 3.4. GET `/employees` - Danh sách nhân viên
 **Query:** `page=1&limit=20&keyword=nguyen&status=1&roleId=...&warehouseId=...&fromDate=2026-11-01&toDate=2026-11-30`
-- `keyword`: tìm trong `unsign_search` (tên, ID, số điện thoại không dấu).
+- `keyword`: tìm trong `unsign_search` (tên, ID, số điện thoại — lưu cả có dấu và không dấu).
 - `fromDate`, `toDate`: lọc theo `createdAt`.
 
 **200 OK:** danh sách có phân trang, mỗi phần tử gồm `_id, ID, name, phone, role, warehouse_ids, status, createdAt`. Không bao giờ trả `password`.
@@ -151,7 +151,7 @@
 | role_id | Có | ObjectId, vai trò tồn tại và đang hoạt động |
 | warehouse_ids | Không | Mảng ObjectId, các kho tồn tại; mặc định `[]` |
 
-**Xử lý:** sinh `unsign_search` từ tên, ID, số điện thoại; `status = 1`.
+**Xử lý:** sinh `unsign_search` (lưu cả có dấu và không dấu) từ tên, ID, số điện thoại; `status = 1`.
 
 **201 Created:** thông tin nhân viên vừa tạo (không có `password`).
 

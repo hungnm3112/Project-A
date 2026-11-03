@@ -78,7 +78,7 @@ flowchart LR
 | 401 | `UNAUTHORIZED` | Thiếu token, token sai / hết hạn, sai phone / mật khẩu |
 | 403 | `FORBIDDEN` | Không đủ quyền, tài khoản bị khóa, Staff truy cập kho không được gán |
 | 404 | `NOT_FOUND` | Không tìm thấy bản ghi hoặc bản ghi được tham chiếu |
-| 409 | `CONFLICT` | Trùng `ID` / `phone` / `sku` / `barcode`, hoặc xóa bản ghi đang được dùng |
+| 409 | `CONFLICT` | Trùng `ID` / `phone` / `sku`, hoặc xóa bản ghi đang được dùng |
 | 429 | `TOO_MANY_REQUESTS` | Đăng nhập quá 5 lần / 60 giây |
 
 ---
@@ -157,25 +157,26 @@ Theo quy ước 3.3 của leader, bản ghi được **khóa bằng `status = 0`
 
 - Nhân viên (`employees`) và vai trò (`roles`) **không có API xóa**. Nhân viên chỉ khóa, còn 4 vai trò được seed sẵn.
 
-### 4.4. `/subcategories` chứ không phải `/products`
-- Theo Buổi học số 2, `subcategories` là **bảng sản phẩm** (mẫu mặt hàng có `sku`, `barcode`, `price`, `warranty`), còn `products` là **sản phẩm cuối + mã QR**, tự sinh khi nhập kho.
+### 4.4. `/subcategories` chứ không phải `/products` (và tư duy `sku` vs `products.ID` của Leader)
+- Theo Buổi học số 2, `subcategories` là **bảng sản phẩm chung** (mẫu mặt hàng có `sku` `default: null`, `price`, `warranty`), còn `products` là **sản phẩm cuối + mã QR** (`ID`: lấy mã NCC hoặc tự sinh theo `timestamp` `Date.now` khi nhập kho).
+- Bảng `subcategories` **không lưu trường `barcode` tĩnh** vì tại Laptop24h, mỗi chiếc linh kiện nhập vào đều có mã định danh QR/barcode cá thể nằm ở `products.ID`.
 - Nếu đặt endpoint là `/products` thì sẽ trùng tên với collection `products` của module Nhập kho và vi phạm quy tắc "tên endpoint trùng tên collection".
 
-### 4.5. `/customers` gộp khách hàng và nhà cung cấp
-- Dùng chung một resource, phân biệt bằng `type` (1 khách hàng, 2 nhà cung cấp). Lọc bằng `GET /customers?type=2`.
+### 4.5. `/customers` gộp khách hàng, nhà cung cấp và khách thợ
+- Dùng chung một resource, phân biệt bằng `type` (`1` khách hàng, `2` nhà cung cấp, `3` khách thợ). Lọc bằng `GET /customers?type=2`.
 - **Không cho đổi `type` sau khi tạo**: nhà cung cấp đã gắn vào phiếu nhập (`import_form.user_id`) mà đổi thành khách hàng thì sổ công nợ sẽ sai.
 
 ### 4.6. `GET /subcategories/lookup?code=` tách khỏi `GET /subcategories?keyword=`
 
 | | `?keyword=` | `/lookup?code=` |
 |---|---|---|
-| Kiểu tìm | Gần đúng, không dấu (`unsign_search`) | **Chính xác** theo `barcode` hoặc `sku` |
+| Kiểu tìm | Gần đúng, cả có dấu và không dấu (`unsign_search`) | **Chính xác** theo `sku` (hoặc ánh xạ từ mã quét `products.ID` khi đã có module nhập kho) |
 | Kết quả | Danh sách có phân trang | **1 bản ghi** hoặc 404 |
-| Người dùng | Người gõ tìm trên giao diện | **Máy quét mã vạch** của Warehouse Staff |
+| Người dùng | Người gõ tìm trên giao diện | **Máy quét mã** của Warehouse Staff |
 
-### 4.7. `unsign_search` do server tự sinh
-- Client **không gửi** `unsign_search`. Service tự sinh mỗi lần `POST` / `PUT` (từ `name`, `ID`, `phone`, `sku`, `barcode` tùy bảng).
-- Nhờ vậy `keyword=nguyen` tìm được "Nguyễn Văn A" và dữ liệu tìm kiếm không bị lệch so với dữ liệu gốc.
+### 4.7. `unsign_search` lưu cả có dấu và không dấu (do server tự sinh)
+- Client **không gửi** `unsign_search`. Service tự sinh mỗi lần `POST` / `PUT` bằng cách ghép cả nội dung **có dấu** và **không dấu** (chữ thường) của các trường tìm kiếm (`name`, `ID`, `phone`, `sku` tùy bảng).
+- Do đặc thù tiếng Việt: lưu cả có dấu và không dấu giúp khi người dùng gõ `keyword=nguyễn` thì khớp đúng chữ có dấu *"Nguyễn"*, còn khi gõ `keyword=nguyen` vẫn tìm được *"Nguyễn Văn A"*.
 
 ### 4.8. Danh sách bắt buộc có lọc, ngày và phân trang
 Theo `ui_and_ux.md`, mọi API danh sách đều có `page`, `limit`, `keyword`, `status`, `fromDate`, `toDate` (lọc theo `createdAt`), cộng thêm bộ lọc riêng (`type`, `parentId`, `categoryId`, `roleId`, `warehouseId`...). Riêng `/roles` có đúng 4 bản ghi nên không phân trang.
@@ -219,7 +220,7 @@ flowchart TD
 | `drawio/LessonTwo/api/warehouse-api.postman_environment.json` | 11 biến: `base_url`, `access_token`, `refresh_token`, `employee_id`, `role_id`, `warehouse_id`, `customer_id`, `parent_category_id`, `category_id`, `unit_id`, `subcategory_id` |
 
 **Cách tổ chức mỗi request:**
-- **Tên request** của chức năng lá được đánh số theo FDD (`1.2.1 Tạo tài khoản nhân viên`, `2.7.3 Tra cứu theo SKU / barcode`) để người chấm đối chiếu ngay với sơ đồ. API hỗ trợ (danh sách, chi tiết) không có số.
+- **Tên request** của chức năng lá được đánh số theo FDD (`1.2.1 Tạo tài khoản nhân viên`, `2.7.3 Tra cứu theo mã SKU / mã quét`) để người chấm đối chiếu ngay với sơ đồ. API hỗ trợ (danh sách, chi tiết) không có số.
 - **Description** ghi đủ 3 ý: **Quyền**, **Xử lý / ràng buộc**, **Response 2xx và danh sách lỗi**.
 - **Không hardcode** token hay id. Mọi giá trị động dùng biến `{{...}}` từ Environment.
 
@@ -257,7 +258,7 @@ flowchart TD
 > Body là dữ liệu ghi vào DB nên dùng đúng tên field DB (`category_id`). Query là tham số điều khiển API (lọc, phân trang, sắp xếp) và theo chuẩn mẫu trong `routing.md` (`?categoryId=...&fromDate=...`), giống `page`, `limit`, `sortBy`. Hai lớp này có vai trò khác nhau nên quy ước đặt tên khác nhau.
 
 ### Câu 5: Sao không có API `/products` ở Module 02 dù đề bài ghi "CRUD sản phẩm"?
-> Trong hệ thống Laptop24h, "sản phẩm" mà người dùng CRUD là bảng `subcategories` (mẫu mặt hàng có SKU, barcode). Collection `products` là từng chiếc hàng thực tế kèm mã QR, chỉ được sinh tự động khi nhập kho, nên không có API tạo thủ công. Endpoint trùng tên collection nên phải là `/subcategories`.
+> Trong hệ thống Laptop24h, "sản phẩm" mà người dùng CRUD là bảng `subcategories` (mẫu mặt hàng có `sku` `default: null`, `price`, `warranty`). Collection `products` là từng chiếc hàng thực tế kèm mã QR (`ID`), chỉ được sinh tự động khi nhập kho, nên không có API tạo thủ công. Endpoint trùng tên collection nên phải là `/subcategories`.
 
 ### Câu 6: Access token đã có hạn 15–30 phút, sao còn cần lưu refresh token vào DB?
 > JWT không thể thu hồi trước hạn. Refresh token lưu trong DB thì thu hồi được: khi đăng xuất hoặc khi Admin khóa tài khoản, token chuyển về `status = 0` và không cấp được access token mới. Token được lưu dạng hash `sha512` nên lộ DB cũng không dùng được token.

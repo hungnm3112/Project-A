@@ -24,6 +24,7 @@ Mỗi collection là 1 bảng gồm 4 cột, dòng đầu tiên là `_id`:
 - `type`: kiểu dữ liệu, kèm `unique` / `Index` nếu có.
 - `required`: `true`, kèm giá trị mặc định nếu có (`default = 1`, `default: null`, `default : [ ]`, `default: Date.now`).
 - `des`: mô tả ý nghĩa trường; trường trạng thái ghi rõ từng giá trị.
+- Mỗi trường (`field`) bắt buộc tách thành **1 dòng riêng biệt**, tuyệt đối không gộp nhiều trường vào chung 1 dòng (VD: tách rời `vat`, `ck`, `warranty`, `discount`).
 
 ### 3. Quy ước chung
 
@@ -38,7 +39,7 @@ Mỗi collection là 1 bảng gồm 4 cột, dòng đầu tiên là `_id`:
 
 **3.3. Trạng thái:** `status: Number`, `Index`, `true, default = 1`. Quy ước: `0` dừng hoạt động, `1` đang hoạt động. (Riêng sản phẩm cuối + QR: `status: boolean`, `default false`.)
 
-**3.4. Tìm kiếm không dấu:** trường `unsign_search: String`, `Index`.
+**3.4. Tìm kiếm tiếng Việt (`unsign_search`):** trường `unsign_search: String`, `Index`. Do đặc thù tiếng Việt, trường này bắt buộc lưu **cả nội dung có dấu và không dấu** (chữ thường) của các trường tìm kiếm (VD: `"nguyễn văn a nguyen van a nv001 0901234567"`) để hỗ trợ tìm kiếm chính xác cả khi người dùng gõ có dấu lẫn không dấu.
 
 **3.5. Mật khẩu:** `password: String`, `true`, dạng mã hóa sha512.
 

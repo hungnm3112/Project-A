@@ -124,7 +124,7 @@
                 "warehouses"
               ]
             },
-            "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), name. Không bắt buộc: phone, address, branch_id (ObjectId của branches hoặc null, mặc định null).\nXử lý: status = 1, unsign_search tự sinh từ name + ID.\n201: { data: kho vừa tạo }\nLỗi: 400, 401, 403, 404 (branch_id không tồn tại trong branches), 409 (trùng ID).",
+            "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), name. Không bắt buộc: phone, address, branch_id (ObjectId của branches hoặc null, mặc định null).\nXử lý: status = 1, unsign_search (lưu cả có dấu và không dấu) tự sinh từ name + ID.\n201: { data: kho vừa tạo }\nLỗi: 400, 401, 403, 404 (branch_id không tồn tại trong branches), 409 (trùng ID).",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -291,7 +291,7 @@
                 {
                   "key": "type",
                   "value": "2",
-                  "description": "1 khách hàng, 2 nhà cung cấp"
+                  "description": "1 khách hàng, 2 nhà cung cấp, 3 khách thợ"
                 },
                 {
                   "key": "page",
@@ -325,7 +325,7 @@
                 }
               ]
             },
-            "description": "Quyền: Admin, Manager, Accountant. Warehouse Staff: 403.\ntype=1 khách hàng, type=2 nhà cung cấp. keyword tìm theo tên, mã, sđt.\n200: { data: { items: [{ _id, ID, type, name, phone, email, tax, status, createdAt }], pagination } }\nLỗi: 401, 403.",
+            "description": "Quyền: Admin, Manager, Accountant. Warehouse Staff: 403.\ntype=1 khách hàng, type=2 nhà cung cấp, type=3 khách thợ. keyword tìm theo tên, mã, sđt.\n200: { data: { items: [{ _id, ID, type, name, phone, email, tax, status, createdAt }], pagination } }\nLỗi: 401, 403.",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -390,7 +390,7 @@
                 "customers"
               ]
             },
-            "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), type (1 | 2), name, phone. Không bắt buộc: gender (mặc định 0), birthday (mặc định null), address (mảng, mặc định []), email, tax.\nXử lý: status = 1, unsign_search tự sinh từ name + ID + phone.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409 (trùng ID).",
+            "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), type (1 | 2 | 3), name, phone. Không bắt buộc: gender (mặc định 0), birthday (mặc định null), address (mảng, mặc định []), email, tax.\nXử lý: status = 1, unsign_search (lưu cả có dấu và không dấu) tự sinh từ name + ID + phone.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409 (trùng ID).",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -431,7 +431,7 @@
                 "customers"
               ]
             },
-            "description": "Quyền: Admin.\nGiống tạo nhà cung cấp, với type = 1.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409.",
+            "description": "Quyền: Admin.\nGiống tạo nhà cung cấp, với type = 1 (khách hàng) hoặc type = 3 (khách thợ).\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409.",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -737,7 +737,7 @@
                 "categories"
               ]
             },
-            "description": "Quyền: Admin.\nBắt buộc: name. Không bắt buộc: parent_id (danh mục đang hoạt động, mặc định null = danh mục gốc).\nXử lý: status = 1, unsign_search tự sinh từ name.\n201: { data: danh mục vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục cha không tồn tại).",
+            "description": "Quyền: Admin.\nBắt buộc: name. Không bắt buộc: parent_id (danh mục đang hoạt động, mặc định null = danh mục gốc).\nXử lý: status = 1, unsign_search (lưu cả có dấu và không dấu) tự sinh từ name.\n201: { data: danh mục vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục cha không tồn tại).",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -1141,7 +1141,7 @@
       ]
     },
     {
-      "name": "2.4 + 2.7 Subcategories - Sản phẩm, SKU, barcode",
+      "name": "2.4 + 2.7 Subcategories - Sản phẩm chung & mã SKU",
       "item": [
         {
           "name": "Danh sách sản phẩm",
@@ -1204,7 +1204,7 @@
                 }
               ]
             },
-            "description": "Quyền: tất cả vai trò đã đăng nhập.\nsubcategories = BẢNG SẢN PHẨM (mẫu mặt hàng), không phải danh mục con.\nkeyword tìm trong unsign_search (tên, SKU, barcode).\n200: { data: { items: [{ _id, name, sku, barcode, price, warranty, status, category: { _id, name }, unit: { _id, name }, createdAt }], pagination } }\nLỗi: 401.",
+            "description": "Quyền: tất cả vai trò đã đăng nhập.\nsubcategories = BẢNG SẢN PHẨM CHUNG (mẫu mặt hàng), không phải danh mục con.\nkeyword tìm trong unsign_search (tên, mã SKU — lưu cả có dấu và không dấu).\n200: { data: { items: [{ _id, name, sku, price, warranty, status, category: { _id, name }, unit: { _id, name }, createdAt }], pagination } }\nLỗi: 401.",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -1218,7 +1218,7 @@
           }
         },
         {
-          "name": "2.7.3 Tra cứu theo SKU / barcode",
+          "name": "2.7.3 Tra cứu sản phẩm theo mã SKU / mã quét",
           "request": {
             "method": "GET",
             "header": [
@@ -1228,7 +1228,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/subcategories/lookup?code=8936049520018",
+              "raw": "{{base_url}}/subcategories/lookup?code=RAM-KST-D4-8G-3200",
               "host": [
                 "{{base_url}}"
               ],
@@ -1239,12 +1239,12 @@
               "query": [
                 {
                   "key": "code",
-                  "value": "8936049520018",
-                  "description": "Mã barcode hoặc SKU cần tra cứu (máy quét)"
+                  "value": "RAM-KST-D4-8G-3200",
+                  "description": "Mã SKU hoặc mã quét cần tra cứu (máy quét)"
                 }
               ]
             },
-            "description": "Quyền: tất cả vai trò đã đăng nhập (dùng cho máy quét).\nTìm chính xác theo barcode hoặc sku. Khai báo route trước /subcategories/:id.\n200: { data: sản phẩm }\nLỗi: 400 (thiếu code), 401, 404.",
+            "description": "Quyền: tất cả vai trò đã đăng nhập (dùng cho máy quét).\nTìm chính xác theo mã sku (hoặc ánh xạ từ mã QR products.ID khi đã có module nhập kho). Khai báo route trước /subcategories/:id.\n200: { data: sản phẩm }\nLỗi: 400 (thiếu code), 401, 404.",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -1291,7 +1291,7 @@
           }
         },
         {
-          "name": "2.4.1 Tạo sản phẩm (kèm SKU, barcode)",
+          "name": "2.4.1 Tạo sản phẩm (kèm mã SKU)",
           "request": {
             "method": "POST",
             "header": [
@@ -1309,7 +1309,7 @@
                 "subcategories"
               ]
             },
-            "description": "Quyền: Admin, Warehouse Manager.\nBắt buộc: category_id, unit_id (đang hoạt động), name, sku (chữ, số, -, _; lưu chữ hoa; không trùng). Không bắt buộc: barcode (EAN-8 / EAN-13 / UPC, không trùng, mặc định null), price (>= 0, mặc định 0), warranty (tháng, mặc định 0).\nXử lý: status = 1, unsign_search tự sinh từ name + sku + barcode.\n201: { data: sản phẩm vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục / đơn vị tính không tồn tại), 409 (trùng sku hoặc barcode).",
+            "description": "Quyền: Admin, Warehouse Manager.\nBắt buộc: category_id, unit_id (đang hoạt động), name. Không bắt buộc: sku (mặc định null; nếu nhập thì chỉ gồm chữ, số, -, _; lưu chữ hoa; không trùng), price (>= 0, mặc định 0), warranty (tháng, mặc định 0). (Lưu ý: mã QR / barcode cá thể từng chiếc là products.ID tự sinh khi lập phiếu nhập kho import_form).\nXử lý: status = 1, unsign_search (lưu cả có dấu và không dấu) tự sinh từ name + sku.\n201: { data: sản phẩm vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục / đơn vị tính không tồn tại), 409 (trùng sku).",
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -1322,7 +1322,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"category_id\": \"{{category_id}}\",\n  \"unit_id\": \"{{unit_id}}\",\n  \"name\": \"RAM Kingston DDR4 8GB Bus 3200\",\n  \"sku\": \"RAM-KST-D4-8G-3200\",\n  \"barcode\": \"8936049520018\",\n  \"price\": 650000,\n  \"warranty\": 36\n}",
+              "raw": "{\n  \"category_id\": \"{{category_id}}\",\n  \"unit_id\": \"{{unit_id}}\",\n  \"name\": \"RAM Kingston DDR4 8GB Bus 3200\",\n  \"sku\": \"RAM-KST-D4-8G-3200\",\n  \"price\": 650000,\n  \"warranty\": 36\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1351,7 +1351,7 @@
                 "{{subcategory_id}}"
               ]
             },
-            "description": "Quyền: Admin, Warehouse Manager.\nGửi trường nào cập nhật trường đó; đổi sku / barcode vẫn kiểm tra trùng.\n200: { data: sản phẩm sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+            "description": "Quyền: Admin, Warehouse Manager.\nGửi trường nào cập nhật trường đó; đổi sku vẫn kiểm tra trùng; cập nhật lại unsign_search.\n200: { data: sản phẩm sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
             "auth": {
               "type": "bearer",
               "bearer": [

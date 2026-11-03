@@ -186,7 +186,7 @@
                                                                                 }
                                                                             ]
                                                               },
-                                                      "description":  "Quyền: Admin.\nkeyword tìm trong unsign_search (tên, ID, sđt không dấu). fromDate, toDate lọc theo createdAt.\n200: { data: { items: [{ _id, ID, name, phone, role, warehouse_ids, status, createdAt }], pagination: { page, limit, total, totalPages } } }\nKhông bao giờ trả password.\nLỗi: 401, 403.",
+                                                      "description":  "Quyền: Admin.\nkeyword tìm trong unsign_search (tên, ID, sđt — lưu cả có dấu và không dấu). fromDate, toDate lọc theo createdAt.\n200: { data: { items: [{ _id, ID, name, phone, role, warehouse_ids, status, createdAt }], pagination: { page, limit, total, totalPages } } }\nKhông bao giờ trả password.\nLỗi: 401, 403.",
                                                       "auth":  {
                                                                    "type":  "bearer",
                                                                    "bearer":  [
@@ -251,7 +251,7 @@
                                                                                "employees"
                                                                            ]
                                                               },
-                                                      "description":  "Quyền: Admin.\nBắt buộc: ID (không trùng), name, phone (không trùng), password (\u003e= 6 ký tự, lưu sha512), role_id (vai trò tồn tại). Không bắt buộc: warehouse_ids (mặc định []).\nXử lý: sinh unsign_search từ tên, ID, sđt; status = 1.\n201: { data: nhân viên vừa tạo, không có password }\nLỗi: 400, 401, 403, 404 (vai trò / kho không tồn tại), 409 CONFLICT (trùng ID hoặc phone).",
+                                                      "description":  "Quyền: Admin.\nBắt buộc: ID (không trùng), name, phone (không trùng), password (\u003e= 6 ký tự, lưu sha512), role_id (vai trò tồn tại). Không bắt buộc: warehouse_ids (mặc định []).\nXử lý: sinh unsign_search (lưu cả có dấu và không dấu) từ tên, ID, sđt; status = 1.\n201: { data: nhân viên vừa tạo, không có password }\nLỗi: 400, 401, 403, 404 (vai trò / kho không tồn tại), 409 CONFLICT (trùng ID hoặc phone).",
                                                       "auth":  {
                                                                    "type":  "bearer",
                                                                    "bearer":  [
