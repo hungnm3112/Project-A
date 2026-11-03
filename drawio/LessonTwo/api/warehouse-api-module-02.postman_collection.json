@@ -70,7 +70,101 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/branches?page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "branches"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Staff, Accountant (xem).\n200: { data: { items: [...], pagination } }\nLỗi: 401, 403.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n        \"ID\": \"CN01\",\n        \"name\": \"Chi nhánh Hà Nội\",\n        \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b202\",\n        \"ID\": \"CN02\",\n        \"name\": \"Chi nhánh TP.HCM\",\n        \"address\": \"Số 10 Lý Thường Kiệt, Q.10, TP.HCM\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 2,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết chi nhánh",
@@ -103,7 +197,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/branches/{{branch_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "branches",
+                    "{{branch_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Staff, Accountant (xem).\n200: { data: bản ghi }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"ID\": \"CN01\",\n    \"name\": \"Chi nhánh Hà Nội\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Tạo chi nhánh",
@@ -144,7 +301,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/branches",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "branches"
+                  ]
+                },
+                "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), name. Không bắt buộc: address.\nXử lý: status = 1, sinh unsign_search từ name + ID.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ID\": \"CN01\",\n  \"name\": \"Chi nhánh Hà Nội\",\n  \"address\": \"Số 1 Cầu Giấy, Hà Nội\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"ID\": \"CN01\",\n    \"name\": \"Chi nhánh Hà Nội\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Cập nhật chi nhánh",
@@ -186,7 +414,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/branches/{{branch_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "branches",
+                    "{{branch_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nGửi trường nào cập nhật trường đó.\n200: { data: bản ghi sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Chi nhánh Hà Nội - Cầu Giấy\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"ID\": \"CN01\",\n    \"name\": \"Chi nhánh Hà Nội - Cầu Giấy\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Khóa / mở khóa chi nhánh",
@@ -229,7 +529,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/branches/{{branch_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "branches",
+                    "{{branch_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin.\nstatus: 0 ngừng, 1 hoạt động.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"ID\": \"CN01\",\n    \"name\": \"Chi nhánh Hà Nội\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa chi nhánh",
@@ -262,7 +635,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/branches/{{branch_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "branches",
+                    "{{branch_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nTrả 409 nếu còn kho trực thuộc (warehouses.branch_id) hoặc phiếu nhập (import_form.branch_id). Khi đó phải khóa bằng status = 0.\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"deleted\": true,\n    \"message\": \"Xóa branches thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -331,7 +767,101 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/warehouses?page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "warehouses"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Accountant xem tất cả; Warehouse Staff chỉ nhận kho có trong warehouse_ids.\n200: { data: { items: [{ _id, ID, name, phone, address, branch_id, status, createdAt }], pagination } }\nLỗi: 401, 403.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b701\",\n        \"ID\": \"KHO01\",\n        \"name\": \"Kho Tổng Hà Nội\",\n        \"phone\": \"0241234567\",\n        \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n        \"branch_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b702\",\n        \"ID\": \"KHO02\",\n        \"name\": \"Kho Linh Kiện Cầu Giấy\",\n        \"phone\": \"0247654321\",\n        \"address\": \"Số 50 Xuân Thủy, Cầu Giấy, Hà Nội\",\n        \"branch_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 2,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết kho",
@@ -364,7 +894,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/warehouses/{{warehouse_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "warehouses",
+                    "{{warehouse_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Accountant; Staff chỉ xem kho được gán (kho khác trả 403).\n200: { data: kho }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b701\",\n    \"ID\": \"KHO01\",\n    \"name\": \"Kho Tổng Hà Nội\",\n    \"phone\": \"0241234567\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"branch_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.1.1 Tạo kho",
@@ -405,7 +998,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/warehouses",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "warehouses"
+                  ]
+                },
+                "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), name. Không bắt buộc: phone, address, branch_id (ObjectId chi nhánh tạo qua POST /branches, hoặc null; mặc định null).\nXử lý: status = 1, unsign_search (lưu cả có dấu và không dấu) tự sinh từ name + ID.\n201: { data: kho vừa tạo }\nLỗi: 400, 401, 403, 404 (branch_id không tồn tại trong branches), 409 (trùng ID).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ID\": \"KHO01\",\n  \"name\": \"Kho Hà Nội\",\n  \"phone\": \"0241234567\",\n  \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n  \"branch_id\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"ID\": \"KHO01\",\n    \"name\": \"Kho Hà Nội\",\n    \"phone\": \"0241234567\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"branch_id\": null,\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.1.2 Cập nhật kho",
@@ -447,7 +1111,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/warehouses/{{warehouse_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "warehouses",
+                    "{{warehouse_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nGửi trường nào cập nhật trường đó (trừ status). Đổi branch_id phải tồn tại trong branches. Cập nhật lại unsign_search.\n200: { data: kho sau cập nhật }\nLỗi: 400, 401, 403, 404, 409 (trùng ID).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Kho Hà Nội - Cầu Giấy\",\n  \"phone\": \"0247654321\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b701\",\n    \"ID\": \"KHO01\",\n    \"name\": \"Kho Hà Nội - Cầu Giấy\",\n    \"phone\": \"0247654321\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"branch_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.1.3 Khóa / mở khóa kho",
@@ -490,7 +1226,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/warehouses/{{warehouse_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "warehouses",
+                    "{{warehouse_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin.\nstatus: 0 khóa, 1 mở khóa.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b701\",\n    \"ID\": \"KHO01\",\n    \"name\": \"Kho Tổng Hà Nội\",\n    \"phone\": \"0241234567\",\n    \"address\": \"Số 1 Cầu Giấy, Hà Nội\",\n    \"branch_id\": \"6720f1a2b3c4d5e6f7a8b201\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa kho",
@@ -523,7 +1332,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/warehouses/{{warehouse_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "warehouses",
+                    "{{warehouse_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nTrả 409 nếu kho đã được tham chiếu: employees.warehouse_ids hoặc import_form.warehouse_id (đã phát sinh phiếu nhập). Khi đó phải khóa bằng status = 0.\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b701\",\n    \"deleted\": true,\n    \"message\": \"Xóa warehouses thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -583,7 +1455,91 @@
               ]
             },
             "description": "Lấy danh sách khách hàng hoặc nhà cung cấp theo query type kèm tìm kiếm và phân trang"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/customers?type=2&page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "2",
+                      "description": "1 = Khách hàng, 2 = Nhà cung cấp, 3 = Khách thợ"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    },
+                    {
+                      "key": "status",
+                      "value": "1"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30"
+                    }
+                  ]
+                },
+                "description": "Lấy danh sách khách hàng hoặc nhà cung cấp theo query type kèm tìm kiếm và phân trang"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b302\",\n        \"ID\": \"NCC001\",\n        \"type\": 2,\n        \"name\": \"Công ty TNHH Phân phối Kingston\",\n        \"phone\": \"0241234567\",\n        \"gender\": 0,\n        \"birthday\": null,\n        \"address\": [\n          \"Số 10 Duy Tân, Cầu Giấy, Hà Nội\"\n        ],\n        \"email\": \"contact@kingston.vn\",\n        \"tax\": \"0101234567\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 1,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết khách hàng / nhà cung cấp",
@@ -607,7 +1563,61 @@
               ]
             },
             "description": "Xem chi tiết thông tin hồ sơ của khách hàng hoặc nhà cung cấp"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/customers/{{customer_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "{{customer_id}}"
+                  ]
+                },
+                "description": "Xem chi tiết thông tin hồ sơ của khách hàng hoặc nhà cung cấp"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b301\",\n    \"ID\": \"KH001\",\n    \"type\": 1,\n    \"name\": \"Nguyễn Văn An\",\n    \"phone\": \"0987654321\",\n    \"gender\": 1,\n    \"birthday\": \"1995-05-15\",\n    \"address\": [\n      \"123 Cầu Giấy, Hà Nội\"\n    ],\n    \"email\": \"nguyenvanan@gmail.com\",\n    \"tax\": \"\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.2.1 Tạo nhà cung cấp",
@@ -639,7 +1649,69 @@
               ]
             },
             "description": "Tạo mới hồ sơ nhà cung cấp (type = 2 bắt buộc, ID duy nhất)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ID\": \"NCC001\",\n  \"name\": \"Công ty TNHH Phân phối Kingston\",\n  \"type\": 2,\n  \"phone\": \"0241234567\",\n  \"email\": \"contact@kingston.vn\",\n  \"tax\": \"0101234567\",\n  \"address\": [\n    \"Số 10 Duy Tân, Cầu Giấy, Hà Nội\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                },
+                "description": "Tạo mới hồ sơ nhà cung cấp (type = 2 bắt buộc, ID duy nhất)"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"ID\": \"NCC001\",\n    \"name\": \"Công ty TNHH Phân phối Kingston\",\n    \"type\": 2,\n    \"phone\": \"0241234567\",\n    \"email\": \"contact@kingston.vn\",\n    \"tax\": \"0101234567\",\n    \"address\": [\n      \"Số 10 Duy Tân, Cầu Giấy, Hà Nội\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\",\n    \"gender\": 0,\n    \"birthday\": null\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.3.1 Tạo khách hàng",
@@ -671,7 +1743,69 @@
               ]
             },
             "description": "Tạo mới hồ sơ khách hàng (type: 1 khách lẻ, 3 khách thợ)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ID\": \"KH001\",\n  \"name\": \"Nguyễn Văn An\",\n  \"type\": 1,\n  \"phone\": \"0987654321\",\n  \"gender\": 1,\n  \"birthday\": \"1995-05-15\",\n  \"email\": \"nguyenvanan@gmail.com\",\n  \"address\": [\n    \"123 Cầu Giấy, Hà Nội\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                },
+                "description": "Tạo mới hồ sơ khách hàng (type: 1 khách lẻ, 3 khách thợ)"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"ID\": \"KH001\",\n    \"name\": \"Nguyễn Văn An\",\n    \"type\": 1,\n    \"phone\": \"0987654321\",\n    \"gender\": 1,\n    \"birthday\": \"1995-05-15\",\n    \"email\": \"nguyenvanan@gmail.com\",\n    \"address\": [\n      \"123 Cầu Giấy, Hà Nội\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\",\n    \"tax\": \"\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Cập nhật khách hàng / nhà cung cấp",
@@ -704,7 +1838,70 @@
               ]
             },
             "description": "Cập nhật thông tin giao dịch, địa chỉ của đối tác (không cho sửa type)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Công ty TNHH Phân phối Kingston Việt Nam\",\n  \"phone\": \"0249876543\",\n  \"email\": \"support@kingston.vn\",\n  \"tax\": \"0101234567\",\n  \"address\": [\n    \"Số 10 Duy Tân, Cầu Giấy, Hà Nội\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers/{{customer_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "{{customer_id}}"
+                  ]
+                },
+                "description": "Cập nhật thông tin giao dịch, địa chỉ của đối tác (không cho sửa type)"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b301\",\n    \"ID\": \"KH001\",\n    \"type\": 1,\n    \"name\": \"Công ty TNHH Phân phối Kingston Việt Nam\",\n    \"phone\": \"0249876543\",\n    \"gender\": 1,\n    \"birthday\": \"1995-05-15\",\n    \"address\": [\n      \"Số 10 Duy Tân, Cầu Giấy, Hà Nội\"\n    ],\n    \"email\": \"support@kingston.vn\",\n    \"tax\": \"0101234567\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Khóa / mở khóa khách hàng / nhà cung cấp",
@@ -738,7 +1935,71 @@
               ]
             },
             "description": "Khóa hoặc mở khóa trạng thái đối tác (status: 0 khóa, 1 mở)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers/{{customer_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "{{customer_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Khóa hoặc mở khóa trạng thái đối tác (status: 0 khóa, 1 mở)"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b301\",\n    \"ID\": \"KH001\",\n    \"type\": 1,\n    \"name\": \"Nguyễn Văn An\",\n    \"phone\": \"0987654321\",\n    \"gender\": 1,\n    \"birthday\": \"1995-05-15\",\n    \"address\": [\n      \"123 Cầu Giấy, Hà Nội\"\n    ],\n    \"email\": \"nguyenvanan@gmail.com\",\n    \"tax\": \"\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa khách hàng / nhà cung cấp",
@@ -762,7 +2023,61 @@
               ]
             },
             "description": "Xóa đối tác chưa phát sinh phiếu nhập kho hoặc công nợ"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/customers/{{customer_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "{{customer_id}}"
+                  ]
+                },
+                "description": "Xóa đối tác chưa phát sinh phiếu nhập kho hoặc công nợ"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b301\",\n    \"deleted\": true,\n    \"message\": \"Xóa customers thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -836,7 +2151,106 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories?parentId={{parent_category_id}}&page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentId",
+                      "value": "{{parent_category_id}}",
+                      "description": "Lọc danh mục con trực tiếp (parentId=null lấy danh mục gốc)"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm (unsign_search)"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: tất cả vai trò đã đăng nhập.\ncategories = danh mục sản phẩm (VD: Linh kiện máy tính > RAM, CPU, Pin, Main...).\nparentId lọc danh mục con trực tiếp (parentId=null lấy danh mục gốc). keyword tìm trong unsign_search.\n200: { data: { items: [{ _id, parent_id, name, status, createdAt }], pagination } }\nLỗi: 401.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n        \"name\": \"Linh kiện máy tính\",\n        \"parent_id\": null,\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n        \"name\": \"RAM Laptop\",\n        \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b603\",\n        \"name\": \"Ổ cứng SSD\",\n        \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 3,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Cây danh mục",
@@ -876,7 +2290,77 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories/tree?status=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories",
+                    "tree"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "Chỉ lấy danh mục đang hoạt động (bỏ trống để lấy tất cả)"
+                    }
+                  ]
+                },
+                "description": "Quyền: tất cả vai trò đã đăng nhập.\nKhai báo route trước /categories/:id.\n200: { data: [{ _id, name: 'Linh kiện máy tính', children: [{ _id, name: 'RAM', children: [] }, { _id, name: 'CPU', children: [] }] }] }\nLỗi: 401.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n      \"name\": \"Linh kiện máy tính\",\n      \"parent_id\": null,\n      \"status\": 1,\n      \"children\": [\n        {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n          \"name\": \"RAM Laptop\",\n          \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n          \"status\": 1,\n          \"children\": []\n        },\n        {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b603\",\n          \"name\": \"Ổ cứng SSD\",\n          \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n          \"status\": 1,\n          \"children\": []\n        }\n      ]\n    }\n  ]\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết danh mục",
@@ -909,7 +2393,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories/{{category_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories",
+                    "{{category_id}}"
+                  ]
+                },
+                "description": "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: { _id, parent_id, name, status } }\nLỗi: 400, 401, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"name\": \"RAM Laptop\",\n    \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.5.1 Tạo danh mục",
@@ -950,7 +2497,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories"
+                  ]
+                },
+                "description": "Quyền: Admin.\nBắt buộc: name. Không bắt buộc: parent_id (danh mục đang hoạt động, mặc định null = danh mục gốc).\nXử lý: status = 1, unsign_search (lưu cả có dấu và không dấu) tự sinh từ name.\n201: { data: danh mục vừa tạo }\nLỗi: 400, 401, 403, 404 (danh mục cha không tồn tại).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"RAM\",\n  \"parent_id\": \"{{parent_category_id}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"name\": \"RAM\",\n    \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.5.2 Cập nhật danh mục",
@@ -992,7 +2610,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories/{{category_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories",
+                    "{{category_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nparent_id không được trỏ về chính nó hoặc danh mục con của nó (400). Cập nhật lại unsign_search khi đổi name.\n200: { data: danh mục sau cập nhật }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"RAM Laptop\",\n  \"parent_id\": \"{{parent_category_id}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"name\": \"RAM Laptop\",\n    \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.5.3 Ẩn / hiện danh mục",
@@ -1035,7 +2725,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories/{{category_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories",
+                    "{{category_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin.\nstatus: 0 ẩn, 1 hiện.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"name\": \"RAM Laptop\",\n    \"parent_id\": \"6720f1a2b3c4d5e6f7a8b601\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.5.3 Xóa danh mục",
@@ -1068,7 +2831,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories/{{category_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories",
+                    "{{category_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nTrả 409 nếu còn danh mục con hoặc còn sản phẩm (subcategories.category_id).\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"deleted\": true,\n    \"message\": \"Xóa categories thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -1137,7 +2963,101 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/units?page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "units"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: { items: [{ _id, name, status, createdAt }], pagination } }\nLỗi: 401.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n        \"name\": \"Chiếc\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b502\",\n        \"name\": \"Thanh\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b503\",\n        \"name\": \"Bộ\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 3,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết đơn vị tính",
@@ -1170,7 +3090,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/units/{{unit_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "units",
+                    "{{unit_id}}"
+                  ]
+                },
+                "description": "Quyền: tất cả vai trò đã đăng nhập.\n200: { data: { _id, name, status } }\nLỗi: 400, 401, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"name\": \"Chiếc\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.6.1 Tạo đơn vị tính",
@@ -1211,7 +3194,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/units",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "units"
+                  ]
+                },
+                "description": "Quyền: Admin.\nBắt buộc: name (không trùng, không phân biệt hoa thường).\n201: { data: đơn vị tính vừa tạo }\nLỗi: 400, 401, 403, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Chiếc\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"name\": \"Chiếc\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.6.2 Cập nhật đơn vị tính",
@@ -1253,7 +3307,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/units/{{unit_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "units",
+                    "{{unit_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\n200: { data: đơn vị tính sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Cái\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"name\": \"Cái\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.6.3 Vô hiệu hóa / kích hoạt đơn vị tính",
@@ -1296,7 +3422,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/units/{{unit_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "units",
+                    "{{unit_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin.\nstatus: 0 vô hiệu hóa, 1 kích hoạt.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"name\": \"Chiếc\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa đơn vị tính",
@@ -1329,7 +3528,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/units/{{unit_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "units",
+                    "{{unit_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nTrả 409 nếu còn sản phẩm dùng đơn vị tính này (subcategories.unit_id).\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"deleted\": true,\n    \"message\": \"Xóa units thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -1392,7 +3654,94 @@
               ]
             },
             "description": "Lấy danh sách mẫu sản phẩm chung kèm phân trang, lọc theo danh mục, đơn vị tính"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/subcategories?categoryId={{category_id}}&unitId=&page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories"
+                  ],
+                  "query": [
+                    {
+                      "key": "categoryId",
+                      "value": "{{category_id}}"
+                    },
+                    {
+                      "key": "unitId",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    },
+                    {
+                      "key": "status",
+                      "value": "1"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30"
+                    }
+                  ]
+                },
+                "description": "Lấy danh sách mẫu sản phẩm chung kèm phân trang, lọc theo danh mục, đơn vị tính"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b401\",\n        \"category_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n        \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n        \"category\": {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n          \"name\": \"RAM Laptop\"\n        },\n        \"unit\": {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n          \"name\": \"Chiếc\"\n        },\n        \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n        \"sku\": \"RAM-KST-D4-8G-3200\",\n        \"price\": 850000,\n        \"warranty\": 36,\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b402\",\n        \"category_id\": \"6720f1a2b3c4d5e6f7a8b603\",\n        \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n        \"category\": {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b603\",\n          \"name\": \"Ổ cứng SSD\"\n        },\n        \"unit\": {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n          \"name\": \"Chiếc\"\n        },\n        \"name\": \"SSD Samsung 980 PRO 500GB NVMe\",\n        \"sku\": \"SSD-SS-980PRO-500G\",\n        \"price\": 1650000,\n        \"warranty\": 60,\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 2,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.7.3 Tra cứu sản phẩm theo mã SKU / mã quét",
@@ -1423,7 +3772,68 @@
               ]
             },
             "description": "Tra cứu nhanh thông tin sản phẩm qua máy quét mã SKU (subcategories.sku) hoặc mã QR (products.ID)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/subcategories/lookup?code=RAM-KST-D4-8G-3200",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories",
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "RAM-KST-D4-8G-3200",
+                      "description": "Mã SKU hoặc mã quét"
+                    }
+                  ]
+                },
+                "description": "Tra cứu nhanh thông tin sản phẩm qua máy quét mã SKU (subcategories.sku) hoặc mã QR (products.ID)"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b401\",\n    \"category_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"category\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n      \"name\": \"RAM Laptop\"\n    },\n    \"unit\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n      \"name\": \"Chiếc\"\n    },\n    \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n    \"sku\": \"RAM-KST-D4-8G-3200\",\n    \"price\": 850000,\n    \"warranty\": 36,\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết sản phẩm",
@@ -1447,7 +3857,61 @@
               ]
             },
             "description": "Xem chi tiết thông tin mẫu sản phẩm"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/subcategories/{{subcategory_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories",
+                    "{{subcategory_id}}"
+                  ]
+                },
+                "description": "Xem chi tiết thông tin mẫu sản phẩm"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b401\",\n    \"category_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"category\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n      \"name\": \"RAM Laptop\"\n    },\n    \"unit\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n      \"name\": \"Chiếc\"\n    },\n    \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n    \"sku\": \"RAM-KST-D4-8G-3200\",\n    \"price\": 850000,\n    \"warranty\": 36,\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.4.1 Tạo sản phẩm (kèm mã SKU)",
@@ -1467,7 +3931,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"ID\": \"SP001\",\n  \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n  \"category_id\": \"{{category_id}}\",\n  \"unit_id\": \"{{unit_id}}\",\n  \"price\": 850000,\n  \"warranty\": 36,\n  \"sku\": \"RAM-KST-D4-8G-3200\"\n}"
+              "raw": "{\n  \"category_id\": \"{{category_id}}\",\n  \"unit_id\": \"{{unit_id}}\",\n  \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n  \"sku\": \"RAM-KST-D4-8G-3200\",\n  \"price\": 850000,\n  \"warranty\": 36\n}"
             },
             "url": {
               "raw": "{{base_url}}/subcategories",
@@ -1479,7 +3943,69 @@
               ]
             },
             "description": "Khởi tạo hồ sơ mẫu sản phẩm chung kèm mã SKU (tên, danh mục, đơn vị tính, giá, bảo hành)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category_id\": \"{{category_id}}\",\n  \"unit_id\": \"{{unit_id}}\",\n  \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n  \"sku\": \"RAM-KST-D4-8G-3200\",\n  \"price\": 850000,\n  \"warranty\": 36\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/subcategories",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories"
+                  ]
+                },
+                "description": "Khởi tạo hồ sơ mẫu sản phẩm chung kèm mã SKU (tên, danh mục, đơn vị tính, giá, bảo hành)"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"category_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n    \"sku\": \"RAM-KST-D4-8G-3200\",\n    \"price\": 850000,\n    \"warranty\": 36,\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\",\n    \"category\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n      \"name\": \"RAM Laptop\"\n    },\n    \"unit\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n      \"name\": \"Chiếc\"\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.4.2 Cập nhật sản phẩm",
@@ -1512,7 +4038,70 @@
               ]
             },
             "description": "Cập nhật thông tin mẫu sản phẩm, giá bán niêm yết, thời hạn bảo hành, mã SKU"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz (Chính hãng)\",\n  \"price\": 890000,\n  \"warranty\": 36,\n  \"sku\": \"RAM-KST-D4-8G-3200\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/subcategories/{{subcategory_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories",
+                    "{{subcategory_id}}"
+                  ]
+                },
+                "description": "Cập nhật thông tin mẫu sản phẩm, giá bán niêm yết, thời hạn bảo hành, mã SKU"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b401\",\n    \"category_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"category\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n      \"name\": \"RAM Laptop\"\n    },\n    \"unit\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n      \"name\": \"Chiếc\"\n    },\n    \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz (Chính hãng)\",\n    \"sku\": \"RAM-KST-D4-8G-3200\",\n    \"price\": 890000,\n    \"warranty\": 36,\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "2.4.3 Ngừng / mở kinh doanh",
@@ -1546,7 +4135,71 @@
               ]
             },
             "description": "Ngừng kinh doanh hoặc mở lại sản phẩm (status: 0 dừng, 1 hoạt động)"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/subcategories/{{subcategory_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories",
+                    "{{subcategory_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Ngừng kinh doanh hoặc mở lại sản phẩm (status: 0 dừng, 1 hoạt động)"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b401\",\n    \"category_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n    \"unit_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n    \"category\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b602\",\n      \"name\": \"RAM Laptop\"\n    },\n    \"unit\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b501\",\n      \"name\": \"Chiếc\"\n    },\n    \"name\": \"RAM Kingston Fury Beast 8GB DDR4 3200MHz\",\n    \"sku\": \"RAM-KST-D4-8G-3200\",\n    \"price\": 850000,\n    \"warranty\": 36,\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa sản phẩm",
@@ -1570,7 +4223,61 @@
               ]
             },
             "description": "Xóa mẫu sản phẩm chưa phát sinh phiếu nhập kho và cá thể hàng hóa"
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/subcategories/{{subcategory_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "subcategories",
+                    "{{subcategory_id}}"
+                  ]
+                },
+                "description": "Xóa mẫu sản phẩm chưa phát sinh phiếu nhập kho và cá thể hàng hóa"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b401\",\n    \"deleted\": true,\n    \"message\": \"Xóa subcategories thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -1639,7 +4346,101 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/type-payments?page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "type-payments"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Accountant (xem).\n200: { data: { items: [...], pagination } }\nLỗi: 401, 403.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b101\",\n        \"name\": \"Tiền mặt\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b102\",\n        \"name\": \"Chuyển khoản ngân hàng\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 2,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết hình thức thanh toán",
@@ -1672,7 +4473,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/type-payments/{{type_payment_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "type-payments",
+                    "{{type_payment_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Accountant (xem).\n200: { data: bản ghi }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b101\",\n    \"name\": \"Tiền mặt\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Tạo hình thức thanh toán",
@@ -1713,7 +4577,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/type-payments",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "type-payments"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nBắt buộc: name (không trùng, không phân biệt hoa thường). Xử lý: status = 1.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Chuyển khoản\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"name\": \"Chuyển khoản\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Cập nhật hình thức thanh toán",
@@ -1755,7 +4690,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/type-payments/{{type_payment_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "type-payments",
+                    "{{type_payment_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nGửi trường nào cập nhật trường đó.\n200: { data: bản ghi sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Chuyển khoản ngân hàng\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b101\",\n    \"name\": \"Chuyển khoản ngân hàng\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Khóa / mở khóa hình thức thanh toán",
@@ -1798,7 +4805,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/type-payments/{{type_payment_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "type-payments",
+                    "{{type_payment_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nstatus: 0 ngừng, 1 hoạt động.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b101\",\n    \"name\": \"Tiền mặt\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa hình thức thanh toán",
@@ -1831,7 +4911,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/type-payments/{{type_payment_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "type-payments",
+                    "{{type_payment_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nTrả 409 nếu đã được dùng trên phiếu thanh toán (payment_form.type_payment_id). Khi đó phải ngừng sử dụng bằng status = 0.\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b101\",\n    \"deleted\": true,\n    \"message\": \"Xóa type-payments thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -1900,7 +5043,101 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-payments?page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-payments"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Accountant (xem).\n200: { data: { items: [...], pagination } }\nLỗi: 401, 403.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b111\",\n        \"name\": \"Thanh toán tiền hàng cho nhà cung cấp\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b112\",\n        \"name\": \"Thanh toán tạm ứng nhập kho\",\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 2,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Chi tiết nội dung thanh toán",
@@ -1933,7 +5170,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-payments/{{content_payment_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-payments",
+                    "{{content_payment_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Manager, Accountant (xem).\n200: { data: bản ghi }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b111\",\n    \"name\": \"Thanh toán tiền hàng cho nhà cung cấp\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Tạo nội dung thanh toán",
@@ -1974,7 +5274,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-payments",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-payments"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nBắt buộc: name (không trùng, không phân biệt hoa thường). Xử lý: status = 1.\n201: { data: bản ghi vừa tạo }\nLỗi: 400, 401, 403, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Thanh toán nhà cung cấp\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"name\": \"Thanh toán nhà cung cấp\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Cập nhật nội dung thanh toán",
@@ -2016,7 +5387,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-payments/{{content_payment_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-payments",
+                    "{{content_payment_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nGửi trường nào cập nhật trường đó.\n200: { data: bản ghi sau cập nhật }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Thanh toán công nợ nhà cung cấp\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b111\",\n    \"name\": \"Thanh toán công nợ nhà cung cấp\",\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Khóa / mở khóa nội dung thanh toán",
@@ -2059,7 +5502,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-payments/{{content_payment_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-payments",
+                    "{{content_payment_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nstatus: 0 ngừng, 1 hoạt động.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b111\",\n    \"name\": \"Thanh toán tiền hàng cho nhà cung cấp\",\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Xóa nội dung thanh toán",
@@ -2092,7 +5608,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-payments/{{content_payment_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-payments",
+                    "{{content_payment_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin, Accountant.\nTrả 409 nếu đã được dùng trên phiếu thanh toán (payment_form.content_payment). Khi đó phải ngừng sử dụng bằng status = 0.\n200: { data: { _id } }\nLỗi: 400, 401, 403, 404, 409.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b111\",\n    \"deleted\": true,\n    \"message\": \"Xóa content-payments thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     }
@@ -2100,47 +5679,78 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://localhost:8060/api/v1"
+      "value": "http://localhost:8060/api/v1",
+      "type": "string"
     },
     {
       "key": "access_token",
-      "value": ""
+      "value": "mock_jwt_access_token_2026_valid",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "mock_jwt_refresh_token_2026_valid",
+      "type": "string"
+    },
+    {
+      "key": "employee_id",
+      "value": "6720f1a2b3c4d5e6f7a8b901",
+      "type": "string"
+    },
+    {
+      "key": "role_id",
+      "value": "6720f1a2b3c4d5e6f7a8b801",
+      "type": "string"
     },
     {
       "key": "warehouse_id",
-      "value": "6720f1a2b3c4d5e6f7a8b701"
+      "value": "6720f1a2b3c4d5e6f7a8b701",
+      "type": "string"
     },
     {
       "key": "customer_id",
-      "value": "6720f1a2b3c4d5e6f7a8b301"
+      "value": "6720f1a2b3c4d5e6f7a8b301",
+      "type": "string"
+    },
+    {
+      "key": "supplier_id",
+      "value": "6720f1a2b3c4d5e6f7a8b302",
+      "type": "string"
     },
     {
       "key": "parent_category_id",
-      "value": "6720f1a2b3c4d5e6f7a8b601"
+      "value": "6720f1a2b3c4d5e6f7a8b601",
+      "type": "string"
     },
     {
       "key": "category_id",
-      "value": "6720f1a2b3c4d5e6f7a8b602"
+      "value": "6720f1a2b3c4d5e6f7a8b602",
+      "type": "string"
     },
     {
       "key": "unit_id",
-      "value": "6720f1a2b3c4d5e6f7a8b501"
+      "value": "6720f1a2b3c4d5e6f7a8b501",
+      "type": "string"
     },
     {
       "key": "subcategory_id",
-      "value": "6720f1a2b3c4d5e6f7a8b401"
+      "value": "6720f1a2b3c4d5e6f7a8b401",
+      "type": "string"
     },
     {
       "key": "branch_id",
-      "value": "6720f1a2b3c4d5e6f7a8b201"
+      "value": "6720f1a2b3c4d5e6f7a8b201",
+      "type": "string"
     },
     {
       "key": "type_payment_id",
-      "value": "6720f1a2b3c4d5e6f7a8b101"
+      "value": "6720f1a2b3c4d5e6f7a8b101",
+      "type": "string"
     },
     {
       "key": "content_payment_id",
-      "value": "6720f1a2b3c4d5e6f7a8b111"
+      "value": "6720f1a2b3c4d5e6f7a8b111",
+      "type": "string"
     }
   ]
 }
