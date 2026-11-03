@@ -41,7 +41,76 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});",
+                  "var res = pm.response.json();",
+                  "if (res.data && res.data.access_token) {",
+                  "    pm.environment.set(\"access_token\", res.data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/auth/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                },
+                "description": "Quyền: Public.\nXử lý: tìm nhân viên theo phone, so khớp mật khẩu sha512, kiểm tra status = 1, cấp access_token (15-30 phút) + refresh_token (7 ngày), lưu refresh_token vào refresh_tokens.\n200: { data: { access_token, refresh_token, employee: { _id, ID, name, phone, role, warehouse_ids } } }\nLỗi: 400 VALIDATION_ERROR, 401 UNAUTHORIZED (sai phone / mật khẩu), 403 FORBIDDEN (tài khoản bị khóa), 429 TOO_MANY_REQUESTS (quá 5 lần / 60 giây).\nSau khi gọi: copy access_token, refresh_token vào Environment.",
+                "auth": {
+                  "type": "noauth"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"0901234567\",\n  \"password\": \"123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"access_token\": \"mock_jwt_access_token_2026_valid\",\n    \"refresh_token\": \"mock_jwt_refresh_token_2026_valid\",\n    \"employee\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n      \"ID\": \"NV001\",\n      \"name\": \"Nguyễn Văn Quản Trị\",\n      \"phone\": \"0901234567\",\n      \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"role\": {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n        \"ID\": \"ADMIN\",\n        \"name\": \"Quản trị viên hệ thống\"\n      },\n      \"warehouse_ids\": [\n        \"6720f1a2b3c4d5e6f7a8b701\",\n        \"6720f1a2b3c4d5e6f7a8b702\"\n      ],\n      \"status\": 1,\n      \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n      \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.1.2 Cấp mới phiên làm việc",
@@ -76,7 +145,76 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});",
+                  "var res = pm.response.json();",
+                  "if (res.data && res.data.access_token) {",
+                  "    pm.environment.set(\"access_token\", res.data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/auth/refresh-token",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "refresh-token"
+                  ]
+                },
+                "description": "Quyền: Public.\nXử lý: tìm token trong refresh_tokens có status = 1 và chưa quá expired_at, thu hồi token cũ (status = 0), cấp access_token + refresh_token mới.\n200: { data: { access_token, refresh_token } }\nLỗi: 400, 401 (token không tồn tại / đã thu hồi / hết hạn).",
+                "auth": {
+                  "type": "noauth"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"access_token\": \"mock_jwt_access_token_refreshed_2026\",\n    \"refresh_token\": \"mock_jwt_refresh_token_refreshed_2026\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.1.3 Đăng xuất",
@@ -118,7 +256,83 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});",
+                  "var res = pm.response.json();",
+                  "if (res.data && res.data.access_token) {",
+                  "    pm.environment.set(\"access_token\", res.data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/auth/logout",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "logout"
+                  ]
+                },
+                "description": "Quyền: đã đăng nhập.\nXử lý: chuyển refresh_token về status = 0.\n200: { data: { message: 'Đăng xuất thành công' } }\nLỗi: 401.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"message\": \"Đăng xuất thành công\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -197,7 +411,111 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees?page=1&limit=20&keyword=nguyen&status=1&roleId={{role_id}}&warehouseId={{warehouse_id}}&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "nguyen",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 khóa, 1 hoạt động"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "{{role_id}}",
+                      "description": "Lọc theo vai trò"
+                    },
+                    {
+                      "key": "warehouseId",
+                      "value": "{{warehouse_id}}",
+                      "description": "Lọc theo kho phụ trách"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: Admin.\nkeyword tìm trong unsign_search (tên, ID, sđt — lưu cả có dấu và không dấu). fromDate, toDate lọc theo createdAt.\n200: { data: { items: [{ _id, ID, name, phone, role, warehouse_ids, status, createdAt }], pagination: { page, limit, total, totalPages } } }\nKhông bao giờ trả password.\nLỗi: 401, 403.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n        \"ID\": \"NV001\",\n        \"name\": \"Nguyễn Văn Quản Trị\",\n        \"phone\": \"0901234567\",\n        \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n        \"role\": {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n          \"ID\": \"ADMIN\",\n          \"name\": \"Quản trị viên hệ thống\"\n        },\n        \"warehouse_ids\": [\n          \"6720f1a2b3c4d5e6f7a8b701\",\n          \"6720f1a2b3c4d5e6f7a8b702\"\n        ],\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b902\",\n        \"ID\": \"NV002\",\n        \"name\": \"Trần Thị Thủ Kho\",\n        \"phone\": \"0902345678\",\n        \"role_id\": \"6720f1a2b3c4d5e6f7a8b803\",\n        \"role\": {\n          \"_id\": \"6720f1a2b3c4d5e6f7a8b803\",\n          \"ID\": \"WAREHOUSE_STAFF\",\n          \"name\": \"Nhân viên kho\"\n        },\n        \"warehouse_ids\": [\n          \"6720f1a2b3c4d5e6f7a8b701\"\n        ],\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 2,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.2 Chi tiết nhân viên",
@@ -230,7 +548,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees/{{employee_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "{{employee_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\n200: { data: { _id, ID, name, phone, role, warehouses: [{ _id, ID, name }], status, createdAt, updatedAt } }\nLỗi: 400 (id sai ObjectId), 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n    \"ID\": \"NV001\",\n    \"name\": \"Nguyễn Văn Quản Trị\",\n    \"phone\": \"0901234567\",\n    \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"role\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"ID\": \"ADMIN\",\n      \"name\": \"Quản trị viên hệ thống\"\n    },\n    \"warehouse_ids\": [\n      \"6720f1a2b3c4d5e6f7a8b701\",\n      \"6720f1a2b3c4d5e6f7a8b702\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\",\n    \"warehouses\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b701\",\n        \"ID\": \"KHO01\",\n        \"name\": \"Kho Tổng Hà Nội\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b702\",\n        \"ID\": \"KHO02\",\n        \"name\": \"Kho Linh Kiện Cầu Giấy\"\n      }\n    ]\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.2.1 Tạo tài khoản nhân viên",
@@ -271,7 +652,78 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "201 Created - Mock Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                },
+                "description": "Quyền: Admin.\nBắt buộc: ID (không trùng), name, phone (không trùng), password (>= 6 ký tự, lưu sha512), role_id (vai trò tồn tại). Không bắt buộc: warehouse_ids (mặc định []).\nXử lý: sinh unsign_search (lưu cả có dấu và không dấu) từ tên, ID, sđt; status = 1.\n201: { data: nhân viên vừa tạo, không có password }\nLỗi: 400, 401, 403, 404 (vai trò / kho không tồn tại), 409 CONFLICT (trùng ID hoặc phone).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ID\": \"NV001\",\n  \"name\": \"Nguyễn Văn A\",\n  \"phone\": \"0901234567\",\n  \"password\": \"123456\",\n  \"role_id\": \"{{role_id}}\",\n  \"warehouse_ids\": [\"{{warehouse_id}}\"]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b999\",\n    \"ID\": \"NV001\",\n    \"name\": \"Nguyễn Văn A\",\n    \"phone\": \"0901234567\",\n    \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"warehouse_ids\": [\n      \"6720f1a2b3c4d5e6f7a8b701\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\",\n    \"role\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"ID\": \"ADMIN\",\n      \"name\": \"Quản trị viên hệ thống\"\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.2.2 Cập nhật thông tin tài khoản",
@@ -313,7 +765,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees/{{employee_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "{{employee_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nGửi trường nào cập nhật trường đó (name, phone). Không cập nhật password, role_id, warehouse_ids, status ở API này. Cập nhật lại unsign_search.\n200: { data: nhân viên sau cập nhật }\nLỗi: 400, 401, 403, 404, 409 (trùng phone).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Nguyễn Văn B\",\n  \"phone\": \"0907654321\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n    \"ID\": \"NV001\",\n    \"name\": \"Nguyễn Văn B\",\n    \"phone\": \"0907654321\",\n    \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"role\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"ID\": \"ADMIN\",\n      \"name\": \"Quản trị viên hệ thống\"\n    },\n    \"warehouse_ids\": [\n      \"6720f1a2b3c4d5e6f7a8b701\",\n      \"6720f1a2b3c4d5e6f7a8b702\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.2.3 Khóa / mở khóa tài khoản",
@@ -356,7 +880,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees/{{employee_id}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "{{employee_id}}",
+                    "status"
+                  ]
+                },
+                "description": "Quyền: Admin.\nstatus: 0 khóa, 1 mở khóa. Khi khóa: thu hồi toàn bộ refresh_token đang hiệu lực của nhân viên. Admin không được tự khóa chính mình.\n200: { data: { _id, status } }\nLỗi: 400, 401, 403 (tự khóa chính mình), 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n    \"ID\": \"NV001\",\n    \"name\": \"Nguyễn Văn Quản Trị\",\n    \"phone\": \"0901234567\",\n    \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"role\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"ID\": \"ADMIN\",\n      \"name\": \"Quản trị viên hệ thống\"\n    },\n    \"warehouse_ids\": [\n      \"6720f1a2b3c4d5e6f7a8b701\",\n      \"6720f1a2b3c4d5e6f7a8b702\"\n    ],\n    \"status\": 0,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.2.4 Đặt lại mật khẩu nhân viên",
@@ -399,7 +996,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees/{{employee_id}}/password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "{{employee_id}}",
+                    "password"
+                  ]
+                },
+                "description": "Quyền: Admin.\nBắt buộc: password (>= 6 ký tự). Xử lý: lưu sha512, thu hồi toàn bộ refresh_token đang hiệu lực của nhân viên (bắt buộc đăng nhập lại).\n200: { data: { _id, message: 'Đặt lại mật khẩu thành công' } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"Abc@1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"message\": \"Đặt lại mật khẩu thành công\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.2.5 Đổi mật khẩu của chính mình",
@@ -441,7 +1111,83 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});",
+                  "var res = pm.response.json();",
+                  "if (res.data && res.data.access_token) {",
+                  "    pm.environment.set(\"access_token\", res.data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/auth/password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "password"
+                  ]
+                },
+                "description": "Quyền: đã đăng nhập (mọi vai trò).\nBắt buộc: old_password, new_password (>= 6 ký tự, khác mật khẩu cũ). Xử lý: so khớp old_password sha512, lưu new_password sha512, thu hồi các refresh_token khác.\n200: { data: { message: 'Đổi mật khẩu thành công' } }\nLỗi: 400, 401 (sai mật khẩu cũ).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"old_password\": \"123456\",\n  \"new_password\": \"Abc@1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"message\": \"Đổi mật khẩu thành công, vui lòng đăng nhập lại\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -510,7 +1256,101 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/roles?page=1&limit=20&keyword=&status=1&fromDate=2026-11-01&toDate=2026-11-30",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Trang hiện tại"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20",
+                      "description": "Số bản ghi / trang"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "",
+                      "description": "Từ khóa tìm kiếm"
+                    },
+                    {
+                      "key": "status",
+                      "value": "1",
+                      "description": "0 dừng hoạt động, 1 đang hoạt động"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2026-11-01",
+                      "description": "Từ ngày tạo"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2026-11-30",
+                      "description": "Đến ngày tạo"
+                    }
+                  ]
+                },
+                "description": "Quyền: Admin.\n4 vai trò seed sẵn: ADMIN, WAREHOUSE_MANAGER, WAREHOUSE_STAFF, ACCOUNTANT. Có phân trang và bộ lọc theo quy tắc chung (page, limit, keyword, status, fromDate, toDate).\n200: { data: { items: [{ _id, ID, name, permissions, status }], pagination } }\nLỗi: 401, 403.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n        \"ID\": \"ADMIN\",\n        \"name\": \"Quản trị viên hệ thống\",\n        \"permissions\": [\n          \"employees.read\",\n          \"employees.write\",\n          \"roles.read\",\n          \"roles.write\",\n          \"branches.read\",\n          \"branches.write\",\n          \"warehouses.read\",\n          \"warehouses.write\",\n          \"customers.read\",\n          \"customers.write\",\n          \"categories.read\",\n          \"categories.write\",\n          \"units.read\",\n          \"units.write\",\n          \"subcategories.read\",\n          \"subcategories.write\",\n          \"type_payments.read\",\n          \"type_payments.write\",\n          \"content_payments.read\",\n          \"content_payments.write\"\n        ],\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b802\",\n        \"ID\": \"WAREHOUSE_MANAGER\",\n        \"name\": \"Quản lý kho\",\n        \"permissions\": [\n          \"branches.read\",\n          \"warehouses.read\",\n          \"customers.read\",\n          \"categories.read\",\n          \"categories.write\",\n          \"units.read\",\n          \"units.write\",\n          \"subcategories.read\",\n          \"subcategories.write\"\n        ],\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b803\",\n        \"ID\": \"WAREHOUSE_STAFF\",\n        \"name\": \"Nhân viên kho\",\n        \"permissions\": [\n          \"warehouses.read\",\n          \"categories.read\",\n          \"units.read\",\n          \"subcategories.read\"\n        ],\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      },\n      {\n        \"_id\": \"6720f1a2b3c4d5e6f7a8b804\",\n        \"ID\": \"ACCOUNTANT\",\n        \"name\": \"Kế toán kho\",\n        \"permissions\": [\n          \"branches.read\",\n          \"warehouses.read\",\n          \"customers.read\",\n          \"categories.read\",\n          \"units.read\",\n          \"subcategories.read\",\n          \"type_payments.read\",\n          \"type_payments.write\",\n          \"content_payments.read\",\n          \"content_payments.write\"\n        ],\n        \"status\": 1,\n        \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n        \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 4,\n      \"totalPages\": 1\n    }\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.3.1 Chi tiết vai trò",
@@ -543,7 +1383,70 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/roles/{{role_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "roles",
+                    "{{role_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\n200: { data: { _id, ID, name, permissions, status } }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"ID\": \"ADMIN\",\n    \"name\": \"Quản trị viên hệ thống\",\n    \"permissions\": [\n      \"employees.read\",\n      \"employees.write\",\n      \"roles.read\",\n      \"roles.write\",\n      \"branches.read\",\n      \"branches.write\",\n      \"warehouses.read\",\n      \"warehouses.write\",\n      \"customers.read\",\n      \"customers.write\",\n      \"categories.read\",\n      \"categories.write\",\n      \"units.read\",\n      \"units.write\",\n      \"subcategories.read\",\n      \"subcategories.write\",\n      \"type_payments.read\",\n      \"type_payments.write\",\n      \"content_payments.read\",\n      \"content_payments.write\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.3.1 Cập nhật vai trò",
@@ -585,7 +1488,79 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/roles/{{role_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "roles",
+                    "{{role_id}}"
+                  ]
+                },
+                "description": "Quyền: Admin.\nCập nhật name, permissions. Không cho sửa ID (code dùng ID để kiểm tra quyền).\npermissions phải thuộc danh mục quyền chuẩn <resource>.<read|write|delete> (xem api-module-01.md mục 5); gửi mã quyền ngoài danh mục trả 400.\n200: { data: vai trò sau cập nhật }\nLỗi: 400, 401, 403, 404.",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Quản lý kho\",\n  \"permissions\": [\n    \"subcategories.read\",\n    \"subcategories.write\",\n    \"warehouses.read\",\n    \"customers.read\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"ID\": \"ADMIN\",\n    \"name\": \"Quản lý kho\",\n    \"permissions\": [\n      \"subcategories.read\",\n      \"subcategories.write\",\n      \"warehouses.read\",\n      \"customers.read\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "1.3.2 Gán vai trò cho nhân viên",
@@ -628,7 +1603,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees/{{employee_id}}/role",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "{{employee_id}}",
+                    "role"
+                  ]
+                },
+                "description": "Quyền: Admin.\n200: { data: { _id, role: { _id, ID, name } } }\nLỗi: 400, 401, 403, 404 (nhân viên / vai trò không tồn tại).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_id\": \"{{role_id}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n    \"ID\": \"NV001\",\n    \"name\": \"Nguyễn Văn Quản Trị\",\n    \"phone\": \"0901234567\",\n    \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"role\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"ID\": \"ADMIN\",\n      \"name\": \"Quản trị viên hệ thống\"\n    },\n    \"warehouse_ids\": [\n      \"6720f1a2b3c4d5e6f7a8b701\",\n      \"6720f1a2b3c4d5e6f7a8b702\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -676,7 +1724,80 @@
                 }
               }
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP Status la 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response tra ve dung dinh dang JSON chuan { data }\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": [
+            {
+              "name": "200 OK - Mock Example",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/employees/{{employee_id}}/warehouses",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "{{employee_id}}",
+                    "warehouses"
+                  ]
+                },
+                "description": "Quyền: Admin.\nThay toàn bộ danh sách kho phụ trách bằng mảng gửi lên. Gửi [] để gỡ hết kho.\n200: { data: { _id, warehouses: [{ _id, ID, name }] } }\nLỗi: 400, 401, 403, 404 (nhân viên / kho không tồn tại).",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"warehouse_ids\": [\"{{warehouse_id}}\"]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"_id\": \"6720f1a2b3c4d5e6f7a8b901\",\n    \"ID\": \"NV001\",\n    \"name\": \"Nguyễn Văn Quản Trị\",\n    \"phone\": \"0901234567\",\n    \"role_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n    \"role\": {\n      \"_id\": \"6720f1a2b3c4d5e6f7a8b801\",\n      \"ID\": \"ADMIN\",\n      \"name\": \"Quản trị viên hệ thống\"\n    },\n    \"warehouse_ids\": [\n      \"6720f1a2b3c4d5e6f7a8b701\"\n    ],\n    \"status\": 1,\n    \"createdAt\": \"2026-11-03T15:00:00.000Z\",\n    \"updatedAt\": \"2026-11-03T15:00:00.000Z\"\n  }\n}"
+            }
+          ]
         }
       ]
     }
@@ -684,27 +1805,78 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://localhost:8060/api/v1"
+      "value": "http://localhost:8060/api/v1",
+      "type": "string"
     },
     {
       "key": "access_token",
-      "value": ""
+      "value": "mock_jwt_access_token_2026_valid",
+      "type": "string"
     },
     {
       "key": "refresh_token",
-      "value": ""
+      "value": "mock_jwt_refresh_token_2026_valid",
+      "type": "string"
     },
     {
       "key": "employee_id",
-      "value": "6720f1a2b3c4d5e6f7a8b901"
+      "value": "6720f1a2b3c4d5e6f7a8b901",
+      "type": "string"
     },
     {
       "key": "role_id",
-      "value": "6720f1a2b3c4d5e6f7a8b801"
+      "value": "6720f1a2b3c4d5e6f7a8b801",
+      "type": "string"
     },
     {
       "key": "warehouse_id",
-      "value": "6720f1a2b3c4d5e6f7a8b701"
+      "value": "6720f1a2b3c4d5e6f7a8b701",
+      "type": "string"
+    },
+    {
+      "key": "customer_id",
+      "value": "6720f1a2b3c4d5e6f7a8b301",
+      "type": "string"
+    },
+    {
+      "key": "supplier_id",
+      "value": "6720f1a2b3c4d5e6f7a8b302",
+      "type": "string"
+    },
+    {
+      "key": "parent_category_id",
+      "value": "6720f1a2b3c4d5e6f7a8b601",
+      "type": "string"
+    },
+    {
+      "key": "category_id",
+      "value": "6720f1a2b3c4d5e6f7a8b602",
+      "type": "string"
+    },
+    {
+      "key": "unit_id",
+      "value": "6720f1a2b3c4d5e6f7a8b501",
+      "type": "string"
+    },
+    {
+      "key": "subcategory_id",
+      "value": "6720f1a2b3c4d5e6f7a8b401",
+      "type": "string"
+    },
+    {
+      "key": "branch_id",
+      "value": "6720f1a2b3c4d5e6f7a8b201",
+      "type": "string"
+    },
+    {
+      "key": "type_payment_id",
+      "value": "6720f1a2b3c4d5e6f7a8b101",
+      "type": "string"
+    },
+    {
+      "key": "content_payment_id",
+      "value": "6720f1a2b3c4d5e6f7a8b111",
+      "type": "string"
     }
   ]
 }
