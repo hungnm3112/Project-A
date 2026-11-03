@@ -1,4 +1,4 @@
-# TỔNG HỢP TƯ DUY: BÓC TÁCH TÁC NHÂN (ACTOR) & THIẾT KẾ DFD LEVEL 0
+# TỔNG HẬP TƯ DUY: BÓC TÁCH TÁC NHÂN (ACTOR) & THIẾT KẾ DFD LEVEL 0
 
 > **Phạm vi tài liệu:** Đúc kết phương pháp luận, tư duy kiến trúc và bộ luận cứ bảo vệ đồ án cho **Chặng 1 (Module 01 & Module 02 - Hệ thống Quản lý Kho tập trung Công ty ABC)**.
 > **Tài liệu đối chiếu:** `md/LessonTwo/bài_tập_api.txt`, `md/LessonTwo/so-do-actor-module-1-2.md`, sơ đồ `drawio/LessonTwo/Actor.drawio`.
@@ -33,9 +33,9 @@ Tổng số 18 hành động trên sơ đồ DFD Level 0 được phân bổ ch�
 
 | STT | Actor | Số hành động | Mã hành động | Căn cứ phân bổ nghiệp vụ |
 |:---:|---|:---:|:---:|---|
-| 1 | **Admin** | 10 | `[Quản trị - 01..10]` | **Toàn quyền hệ thống:**<br>• Module 01 (4 action): Đăng nhập (`01`), Quản lý tài khoản nhân viên (`02`), Phân quyền vai trò (`03`), Gán nhân viên phụ trách kho (`04`).<br>• Module 02 (6 action): Thiết lập danh mục gốc toàn công ty: Kho hàng (`05`), Danh mục SP (`06`), Đơn vị tính (`07`), Nhà cung cấp (`08`), Khách hàng (`09`), Mẫu sản phẩm & SKU/Barcode (`10`). |
-| 2 | **Warehouse Manager** | 3 | `[Quản lý kho - 01..03]` | **Điều hành chuyên môn kho:**<br>• Đăng nhập & phiên làm việc (`01`).<br>• Quản lý trực tiếp sản phẩm, mã SKU và tạo mã Barcode khi có hàng hóa mới về kho (`02`).<br>• Tra cứu các danh mục Master Data (Kho, Danh mục, ĐVT, NCC) phục vụ giám sát (`03`). |
-| 3 | **Warehouse Staff** | 3 | `[Nhân viên kho - 01..03]` | **Thực thi tác nghiệp hiện trường:**<br>• Đăng nhập & phiên làm việc (`01`).<br>• Cầm máy quét Barcode hoặc gõ mã SKU để tra cứu thông tin hàng hóa (`02`).<br>• Tra cứu phạm vi kho mà mình được phân công phụ trách (`03`). |
+| 1 | **Admin** | 10 | `[Quản trị - 01..10]` | **Toàn quyền hệ thống:**<br>• Module 01 (4 action): Đăng nhập (`01`), Quản lý tài khoản nhân viên (`02`), Phân quyền vai trò (`03`), Gán nhân viên phụ trách kho (`04`).<br>• Module 02 (6 action): Thiết lập danh mục gốc toàn công ty: Kho hàng (`05`), Danh mục SP (`06`), Đơn vị tính (`07`), Nhà cung cấp (`08`), Khách hàng (`09`), Sản phẩm chung & mã SKU (`10`). |
+| 2 | **Warehouse Manager** | 3 | `[Quản lý kho - 01..03]` | **Điều hành chuyên môn kho:**<br>• Đăng nhập & phiên làm việc (`01`).<br>• Quản lý trực tiếp sản phẩm chung (`subcategories`) và mã SKU khi có mặt hàng mới về kho (`02`).<br>• Tra cứu các danh mục Master Data (Kho, Danh mục, ĐVT, NCC) phục vụ giám sát (`03`). |
+| 3 | **Warehouse Staff** | 3 | `[Nhân viên kho - 01..03]` | **Thực thi tác nghiệp hiện trường:**<br>• Đăng nhập & phiên làm việc (`01`).<br>• Quét mã vạch / QR hoặc gõ mã SKU để tra cứu thông tin hàng hóa (`02`).<br>• Tra cứu phạm vi kho mà mình được phân công phụ trách (`03`). |
 | 4 | **Accountant** | 2 | `[Kế toán - 01..02]` | **Giám sát & Đối soát tài chính:**<br>• Đăng nhập & phiên làm việc (`01`).<br>• Tra cứu danh mục Master Data ở chế độ chỉ đọc (Read-only) để kiểm tra chứng từ, mã thuế, đối soát số liệu (`02`). |
 
 ---
@@ -55,9 +55,8 @@ flowchart TD
     end
 
     subgraph Operation["2. KHỐI VẬN HÀNH LINH HOẠT TẠI HIỆN TRƯỜNG (WAREHOUSE MANAGER ĐẢM NHIỆM)"]
-        P["Sản phẩm mới (subcategories)"]
-        SKU["Mã định danh SKU"]
-        BAR["Mã vạch Barcode dán tem"]
+        P["Sản phẩm chung (subcategories)"]
+        SKU["Mã sản phẩm SKU (default: null)"]
     end
 
     Governance -->|Thiết lập khung dữ liệu chuẩn| Operation
@@ -70,25 +69,27 @@ flowchart TD
    * Trong kiểm soát nội bộ, **người giữ kho không được tự tạo đối tác mua hàng**. 
    * Nếu Quản lý kho vừa có quyền tạo Nhà cung cấp, vừa có quyền tạo phiếu nhập kho, họ có thể thông đồng tạo "Nhà cung cấp ma" để đưa hàng giả, hàng trôi nổi vào hệ thống. Nhà cung cấp bắt buộc phải do Admin hoặc Phòng Mua hàng/Kế toán thẩm định tạo trước.
 
-### 3.2. Tại sao Warehouse Manager phải được Toàn quyền (Full CRUD) với Sản phẩm, SKU và Barcode?
-* **Đảm bảo tính linh hoạt tối đa (Agility):** Hàng hóa, phụ kiện điện tử mới về kho liên tục. Nếu mỗi lần có linh kiện mới về kho mà Quản lý kho phải làm đơn chờ Admin/IT tạo sản phẩm thì toàn bộ dây chuyền dán tem, nhập kho và bán hàng sẽ bị đình trệ.
-* Do đó, Quản lý kho được trao toàn quyền tạo mẫu sản phẩm (`subcategories`), sinh mã SKU nội bộ và gán mã vạch Barcode để nhân viên kho có thể quét mã vận hành tức thì.
+### 3.2. Tại sao Warehouse Manager phải được Toàn quyền (Full CRUD) với Sản phẩm và mã SKU?
+* **Đảm bảo tính linh hoạt tối đa (Agility):** Hàng hóa, phụ kiện điện tử mới về kho liên tục. Nếu mỗi lần có linh kiện mới về kho mà Quản lý kho phải làm đơn chờ Admin/IT tạo sản phẩm thì toàn bộ dây chuyền nhập kho và bán hàng sẽ bị đình trệ.
+* Do đó, Quản lý kho được trao toàn quyền tạo sản phẩm chung (`subcategories`) và khai báo mã `sku` nội bộ để sẵn sàng lập phiếu nhập kho (`import_form`) và sinh mã QR (`products.ID`) cho từng chiếc hàng hóa thực tế.
 
 ---
 
-## 4. Phân biệt nghiệp vụ cốt lõi: SKU và Barcode
+## 4. Phân biệt nghiệp vụ cốt lõi theo thực tế vận hành Laptop24h: Mã SKU (`subcategories.sku`) và Mã QR / Barcode cá thể (`products.ID`)
 
-Trong collection `subcategories`, hệ thống lưu trữ đồng thời cả hai mã định danh:
+Theo tư duy thực tế của Leader tại hệ thống **Laptop24h** (Buổi học số 2), hệ thống **không lưu cột `barcode` tĩnh trên bảng `subcategories`**, mà tách bạch rõ ràng giữa **Mã sản phẩm chung (`sku`)** và **Mã định danh từng cá thể hàng hóa (`products.ID` - Mã QR)**:
 
-| Tiêu chí | Mã SKU (Stock Keeping Unit) | Mã Barcode (Mã vạch) |
+| Tiêu chí | Mã sản phẩm chung (`subcategories.sku`) | Mã QR / Barcode cá thể (`products.ID`) |
 |---|---|---|
-| **Bản chất** | Mã định danh nội bộ do công ty **tự quy ước** | Mã vạch biểu diễn dữ liệu bằng các vạch quang học |
-| **Đối tượng đọc** | **Con người đọc** (Bán hàng, Kế toán, Quản trị) | **Máy móc đọc** (Máy quét Barcode Scanner, Camera) |
-| **Định dạng** | Chữ + Số gợi nhớ (Alpha-numeric): `LAP-ASUS-G16-001` | Dãy số chuẩn quốc tế (EAN-13: `893...`) hoặc nội bộ |
-| **Cách dùng** | Gõ bàn phím để tra cứu, tìm kiếm trên màn hình | Cầm máy quét bắn "tít" trong 0.1 giây |
-| **Ràng buộc DB** | `required: true, unique: true` (Bắt buộc phải có) | `unique: true, default: null` (Cho phép bổ sung sau) |
+| **Nằm ở bảng nào?** | Collection **`subcategories`** (Bảng sản phẩm chung / mẫu mặt hàng) | Collection **`products`** (Bảng sản phẩm cuối + QR) |
+| **Bản chất** | Mã quy ước cho **dòng mặt hàng chung** (VD: dòng *RAM Kingston DDR4 8GB*) | Mã định danh **từng chiếc linh kiện vật lý cụ thể** nằm trên kệ kho (serial / tem QR từng chiếc) |
+| **Thời điểm sinh ra** | Khi tạo/cập nhật mặt hàng ở **Module 02** (hoặc để trống `default: null`) | **Tự động sinh ra SAU KHI nhập kho (`import_form`)**: nhập `quantity = 10` chiếc thì sinh 10 bản ghi `products` với 10 mã `ID` khác nhau |
+| **Quy tắc giá trị** | Không bắt buộc (`default: null`); nếu nhập thì không trùng | `String, unique, default: Date.now` — Dùng mã của Nhà cung cấp nếu có sẵn trên hàng hóa, hoặc tự động sinh theo `timestamp` (`Date.now`) |
+| **Trạng thái đi kèm** | `status: Number` (`1` đang kinh doanh, `0` ngừng kinh doanh) | `status: Boolean` (`default: false` = chưa xuất kho, `true` = đã xuất kho) |
+| **Cách dùng thực tế** | Tra cứu dòng sản phẩm chung, chọn mặt hàng khi lập phiếu nhập | Cầm máy quét bắn mã QR/Barcode trên từng chiếc linh kiện để kiểm kho, xuất kho, truy xuất đúng phiếu nhập (`form_import_id`) và bảo hành |
 
-> 💡 **Giải thích cấu trúc DB:** Mọi mặt hàng đều bắt buộc có mã SKU để phân loại quản lý. Tuy nhiên, một số linh kiện rời, hàng tháo máy cũ không có sẵn mã vạch nhà sản xuất nên trường `barcode` cho phép `default: null`, khi nào kho in tem dán mã nội bộ thì sẽ cập nhật sau.
+> 💡 **Tại sao thiết kế của Leader ưu việt cho ngành linh kiện / sửa chữa Laptop24h?**
+> Hai thanh RAM cùng một mẫu `subcategories` nhưng nhập từ 2 lô/nhà cung cấp khác nhau với giá nhập và hạn bảo hành khác nhau. Nếu dùng chung 1 mã `barcode` cố định ở `subcategories`, khi khách mang 1 thanh RAM đến bảo hành sẽ không biết thanh RAM đó thuộc phiếu nhập nào. Nhờ gắn mã QR (`products.ID`) cho từng cá thể sinh ra từ `import_form`, chỉ cần bắn mã trên tem là truy xuất được ngay phiếu nhập (`form_import_id`), dòng thứ tự (`index`), giá nhập (`price`) và trạng thái xuất kho (`status`)!
 
 ---
 
@@ -107,13 +108,12 @@ Trong collection `subcategories`, hệ thống lưu trữ đồng thời cả ha
 ## 6. Bộ câu hỏi vấn đáp trọng tâm (Q&A) khi nộp bài
 
 ### Câu 1: Tại sao không gộp Warehouse Manager và Warehouse Staff thành 1 Actor là "Nhân viên kho"?
-> **Đáp án:** Vì ranh giới trách nhiệm hoàn toàn khác nhau. `Warehouse Manager` là cấp quản trị kho, có quyền tạo sửa mặt hàng, định giá, thiết lập mã SKU và cấu hình Barcode. Trong khi đó, `Warehouse Staff` là nhân viên tác nghiệp thuần túy, chỉ được cấp quyền tra cứu/quét mã và chỉ được thao tác trong phạm vi các kho mà Admin đã gán (`warehouse_ids`), không được phép sửa đổi thông tin danh mục.
+> **Đáp án:** Vì ranh giới trách nhiệm hoàn toàn khác nhau. `Warehouse Manager` là cấp quản trị kho, có quyền tạo sửa mặt hàng (`subcategories`), định giá và thiết lập mã SKU. Trong khi đó, `Warehouse Staff` là nhân viên tác nghiệp thuần túy, chỉ được cấp quyền tra cứu/quét mã và chỉ được thao tác trong phạm vi các kho mà Admin đã gán (`warehouse_ids`), không được phép sửa đổi thông tin danh mục.
 
 ### Câu 2: Khách hàng và Nhà cung cấp lưu chung một bảng `customers` có hợp lý không?
-> **Đáp án:** Rất hợp lý và bám sát chuẩn thiết kế của Leader. Cả Khách hàng và Nhà cung cấp đều có chung các thuộc tính pháp nhân (Tên, SĐT, Địa chỉ, Mã số thuế, Email). Việc dùng chung bảng và phân biệt bằng cột `type` (1: Khách hàng, 2: Nhà cung cấp) giúp tối ưu hóa cấu trúc cơ sở dữ liệu và tái sử dụng toàn bộ logic quản lý đối tác công nợ ở các module chứng từ sau này.
+> **Đáp án:** Rất hợp lý và bám sát chuẩn thiết kế của Leader. Cả Khách hàng, Khách thợ và Nhà cung cấp đều có chung các thuộc tính pháp nhân (Tên, SĐT, Địa chỉ, Mã số thuế, Email). Việc dùng chung bảng và phân biệt bằng cột `type` (`1`: Khách hàng, `2`: Nhà cung cấp, `3`: Khách thợ) giúp tối ưu hóa cấu trúc cơ sở dữ liệu và tái sử dụng toàn bộ logic quản lý đối tác công nợ ở các module chứng từ sau này.
 
 ### Câu 3: DFD Level 0 khác gì với Sơ đồ phân rã chức năng (FDD)?
 > **Đáp án:**
 > * **DFD Level 0** nhìn hệ thống **từ ngoài vào**: Trả lời câu hỏi *"Ai (Who) tương tác và trao đổi luồng dữ liệu gì với hệ thống?"*. Hành động được phân nhóm theo Actor.
 > * **FDD** mở hộp đen hệ thống, nhìn **từ trong ra**: Trả lời câu hỏi *"Hệ thống gồm những khối chức năng nào (What)?"*. Các chức năng được gom nhóm theo Miền nghiệp vụ / Đối tượng dữ liệu theo nguyên tắc MECE (không trùng lặp, không bỏ sót), bỏ qua yếu tố ai là người bấm nút.
-

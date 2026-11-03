@@ -68,6 +68,8 @@
 | 11 | PUT | `/roles/:id` | 1.3.1 Cập nhật tên, quyền của vai trò | Admin |
 | 12 | PUT | `/employees/:id/role` | 1.3.2 Gán vai trò cho nhân viên | Admin |
 | 13 | PUT | `/employees/:id/warehouses` | 1.4.1, 1.4.2 Gán / gỡ kho phụ trách | Admin |
+| 14 | PUT | `/employees/:id/password` | 1.2.4 Đặt lại mật khẩu nhân viên | Admin |
+| 15 | PUT | `/auth/password` | 1.2.5 Đổi mật khẩu của chính mình | Đã đăng nhập |
 
 > 4 vai trò (`ADMIN`, `WAREHOUSE_MANAGER`, `WAREHOUSE_STAFF`, `ACCOUNTANT`) được seed sẵn khi khởi tạo hệ thống, nên không có API tạo / xóa vai trò.
 > Nhân viên không bị xóa cứng, chỉ khóa bằng `status = 0` (quy ước 3.3 của leader).
@@ -120,7 +122,7 @@
 
 ### 3.4. GET `/employees` - Danh sách nhân viên
 **Query:** `page=1&limit=20&keyword=nguyen&status=1&roleId=...&warehouseId=...&fromDate=2026-11-01&toDate=2026-11-30`
-- `keyword`: tìm trong `unsign_search` (tên, ID, số điện thoại không dấu).
+- `keyword`: tìm trong `unsign_search` (tên, ID, số điện thoại — lưu cả có dấu và không dấu).
 - `fromDate`, `toDate`: lọc theo `createdAt`.
 
 **200 OK:** danh sách có phân trang, mỗi phần tử gồm `_id, ID, name, phone, role, warehouse_ids, status, createdAt`. Không bao giờ trả `password`.
@@ -151,7 +153,7 @@
 | role_id | Có | ObjectId, vai trò tồn tại và đang hoạt động |
 | warehouse_ids | Không | Mảng ObjectId, các kho tồn tại; mặc định `[]` |
 
-**Xử lý:** sinh `unsign_search` từ tên, ID, số điện thoại; `status = 1`.
+**Xử lý:** sinh `unsign_search` (lưu cả có dấu và không dấu) từ tên, ID, số điện thoại; `status = 1`.
 
 **201 Created:** thông tin nhân viên vừa tạo (không có `password`).
 
@@ -172,15 +174,15 @@ Không cập nhật `password`, `role_id`, `warehouse_ids`, `status` ở API nà
 **200 OK:** `{ "data": { "_id": "...", "status": 0 } }`. **Lỗi:** 400, 403 (tự khóa chính mình), 404.
 
 ### 3.9. GET `/roles` - Danh sách vai trò
-**200 OK:** `{ "data": [{ "_id": "...", "ID": "ADMIN", "name": "Quản trị viên", "permissions": [], "status": 1 }] }` (4 vai trò, không phân trang).
+**200 OK:** danh sách có phân trang theo quy tắc chung. **Query:** `page=1&limit=20&keyword=quan ly&status=1&fromDate=2026-11-01&toDate=2026-11-30` (`keyword` tìm theo `ID`, `name`). Mỗi phần tử: `{ "_id": "...", "ID": "ADMIN", "name": "Quản trị viên", "permissions": [], "status": 1 }`. Hệ thống seed sẵn 4 vai trò.
 
 ### 3.10. GET `/roles/:id` - Chi tiết vai trò
 **200 OK:** thông tin vai trò. **Lỗi:** 400, 404.
 
 ### 3.11. PUT `/roles/:id` - Cập nhật vai trò
-**Body:** `{ "name": "Quản lý kho", "permissions": ["employees.read", "products.write"] }`
+**Body:** `{ "name": "Quản lý kho", "permissions": ["subcategories.read", "subcategories.write", "warehouses.read", "customers.read"] }`
 
-Không cho sửa `ID` của vai trò (code đang dùng `ID` để kiểm tra quyền).
+Không cho sửa `ID` của vai trò (code đang dùng `ID` để kiểm tra quyền). Mỗi phần tử `permissions` phải thuộc danh mục quyền chuẩn ở mục 5, gửi mã ngoài danh mục trả 400.
 
 **200 OK:** vai trò sau cập nhật. **Lỗi:** 400, 404.
 
@@ -203,3 +205,43 @@ Không cho sửa `ID` của vai trò (code đang dùng `ID` để kiểm tra quy
 ## 4. Kiểm tra phạm vi kho (FDD 1.4.3)
 Áp dụng cho các API nghiệp vụ kho ở các module sau: nhân viên có vai trò `WAREHOUSE_STAFF` chỉ được thao tác với dữ liệu thuộc các kho nằm trong `warehouse_ids` của mình, ngược lại trả 403.
 
+
+
+## 3b. API bổ sung: mật khẩu (FDD 1.2.4, 1.2.5)
+
+### 3.14. PUT `/employees/:id/password` - Đặt lại mật khẩu nhân viên
+**Quyền:** Admin. Dùng khi nhân viên quên mật khẩu.
+
+**Body:** `{ "password": "Abc@1234" }` (bắt buộc, tối thiểu 6 ký tự)
+
+**Xử lý:** lưu mật khẩu mới dạng sha512 → thu hồi toàn bộ refresh token đang hiệu lực của nhân viên (`status = 0`) để bắt buộc đăng nhập lại.
+
+**200 OK:** `{ "data": { "_id": "...", "message": "Đặt lại mật khẩu thành công" } }`. **Lỗi:** 400, 401, 403, 404.
+
+### 3.15. PUT `/auth/password` - Đổi mật khẩu của chính mình
+**Quyền:** đã đăng nhập (mọi vai trò). Nhân viên lấy từ access token, không truyền `id`.
+
+**Body:** `{ "old_password": "123456", "new_password": "Abc@1234" }`
+
+**Xử lý:** so khớp `old_password` (sha512) → `new_password` tối thiểu 6 ký tự và khác mật khẩu cũ → lưu sha512 → thu hồi các refresh token khác của nhân viên.
+
+**200 OK:** `{ "data": { "message": "Đổi mật khẩu thành công" } }`. **Lỗi:** 400, 401 (sai mật khẩu cũ).
+
+## 5. Danh mục quyền chuẩn (`roles.permissions`)
+
+Mã quyền có dạng `<resource>.<action>`. `action` gồm `read` (xem), `write` (tạo, sửa, đổi trạng thái), `delete` (xóa). Mọi giá trị trong `permissions` phải thuộc bảng dưới.
+
+| Resource | Bảng DB | Quyền hợp lệ |
+|---|---|---|
+| `employees` | `employees` | `employees.read`, `employees.write` |
+| `roles` | `roles` | `roles.read`, `roles.write` |
+| `branches` | `branches` | `branches.read`, `branches.write`, `branches.delete` |
+| `warehouses` | `warehouses` | `warehouses.read`, `warehouses.write`, `warehouses.delete` |
+| `customers` | `customers` | `customers.read`, `customers.write`, `customers.delete` |
+| `categories` | `categories` | `categories.read`, `categories.write`, `categories.delete` |
+| `units` | `units` | `units.read`, `units.write`, `units.delete` |
+| `subcategories` | `subcategories` | `subcategories.read`, `subcategories.write`, `subcategories.delete` |
+| `type-payments` | `type_payments` | `type-payments.read`, `type-payments.write`, `type-payments.delete` |
+| `content-payments` | `content_payments` | `content-payments.read`, `content-payments.write`, `content-payments.delete` |
+
+> `employees` và `roles` không có quyền `delete` vì nhân viên chỉ khóa, vai trò được seed sẵn.
