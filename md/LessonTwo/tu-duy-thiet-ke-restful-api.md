@@ -150,7 +150,7 @@ Theo quy ước 3.3 của leader, bản ghi được **khóa bằng `status = 0`
 | API | Bị chặn (409) khi còn tham chiếu từ |
 |---|---|
 | `DELETE /warehouses/:id` | `employees.warehouse_ids`, `import_form.warehouse_id` |
-| `DELETE /customers/:id` | `import_form.user_id`, `payment_form.customer_id`, `debts.customer_id` |
+| `DELETE /customers/:id` | `import_form.customer_id`, `payment_form.customer_id`, `debts.customer_id` |
 | `DELETE /categories/:id` | `categories.parent_id` (còn danh mục con), `subcategories.category_id` |
 | `DELETE /units/:id` | `subcategories.unit_id` |
 | `DELETE /subcategories/:id` | `import_form.product[]` / `service[]`.`subcategory_id`, `products.subcategory_id` |
@@ -164,7 +164,7 @@ Theo quy ước 3.3 của leader, bản ghi được **khóa bằng `status = 0`
 
 ### 4.5. `/customers` gộp khách hàng, nhà cung cấp và khách thợ
 - Dùng chung một resource, phân biệt bằng `type` (`1` khách hàng, `2` nhà cung cấp, `3` khách thợ). Lọc bằng `GET /customers?type=2`.
-- **Không cho đổi `type` sau khi tạo**: nhà cung cấp đã gắn vào phiếu nhập (`import_form.user_id`) mà đổi thành khách hàng thì sổ công nợ sẽ sai.
+- **Không cho đổi `type` sau khi tạo**: nhà cung cấp đã gắn vào phiếu nhập (`import_form.customer_id`) mà đổi thành khách hàng thì sổ công nợ sẽ sai.
 
 ### 4.6. `GET /subcategories/lookup?code=` tách khỏi `GET /subcategories?keyword=`
 

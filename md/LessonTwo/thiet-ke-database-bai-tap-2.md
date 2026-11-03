@@ -24,7 +24,7 @@ Nhiều người khi mới nhìn tên bảng tiếng Anh thường hiểu sai `s
 * **Ở sơ đồ cũ (`Sơ đồ phần ra _ database.json`):** Bảng sản phẩm có cột `quantity: Number` cộng/trừ trực tiếp và tách bảng `form_import` + `detail_form_import` rời nhau.
 * **Ở sơ đồ mới chuẩn Laptop24h (`bảng 2.json`):**
   1. Bỏ cột `quantity` tổng trên bảng sản phẩm.
-  2. Phiếu nhập kho (`import_form`) gồm: `ID`, `date` riêng, `employee_id`, `user_id` (nhà cung cấp), `total_amount`, `warehouse_id`, `branch_id` (chi nhánh), và **nhúng trực tiếp 2 mảng chi tiết**:
+  2. Phiếu nhập kho (`import_form`) gồm: `ID`, `date` riêng, `employee_id`, `customer_id` (nhà cung cấp), `total_amount`, `warehouse_id`, `branch_id` (chi nhánh), và **nhúng trực tiếp 2 mảng chi tiết**:
      * `product` (Array): Chi tiết **sản phẩm linh kiện** (hàng vật lý).
      * `service` (Array): Chi tiết **sản phẩm dịch vụ**.
      * Mỗi phần tử chi tiết (`detail_product`) gồm 8 trường riêng biệt: `index` (số thứ tự dòng), `subcategory_id` (sản phẩm nhập), `price` (giá nhập), `quantity` (số lượng nhập), `vat` (thuế VAT), `ck` (chiết khấu %, max 100), `warranty` (bảo hành), `discount` (giảm giá).
@@ -37,7 +37,7 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 1. **Bảng `payment_form` (Chứng từ Phiếu Thanh Toán — Phiếu Chi / Thu) & 2 bảng cấu hình động (`type_payments`, `content_payments`):**
    * Ghi nhận sự kiện **tiền thực tế đi ra / đi vào quỹ** (`ID` mã phiếu, `amount` số tiền thanh toán, `customer_id` đối tác, `type_payment_id` hình thức thanh toán, `content_payment` nội dung thanh toán, `note` ghi chú).
    * Do **Hình thức thanh toán** (*tiền mặt, chuyển khoản, quẹt thẻ...*) và **Nội dung thanh toán** (*thanh toán cho nhà cung cấp, thanh toán phòng ban nội bộ...*) là **dữ liệu động** thay đổi theo thực tế vận hành, hệ thống tách thành **2 bảng cấu hình riêng (`type_payments` và `content_payments`)** cho phép người dùng tự cấu hình, và `payment_form` tham chiếu qua `ObjectId` (`type_payment_id` và `content_payment`).
-   * Có trường `form_import_id` (`default: null`) nối sang `import_form`: cho phép trả tiền đích danh cho 1 phiếu nhập cụ thể, hoặc để `null` nếu trả công nợ gộp nhiều lần.
+   * Có trường `form_import_id` (`required: true`) nối sang `import_form`: bắt buộc mọi phiếu thanh toán tiền hàng cho NCC phải gắn liền với một phiếu nhập kho cụ thể đã được nghiệm thu (đảm bảo tính hợp lệ chứng từ, đối soát chi tiết và chống chi khống).
 2. **Bảng `debts` (Sổ cái theo dõi biến động Công nợ — Debt Ledger):**
    * Ghi nhận **mọi biến động làm tăng/giảm công nợ** theo từng chứng từ gốc (`type_form` thuộc `[import, export, receive, payment]`).
    * Sử dụng **4 cột tiền tách biệt** cho 2 chiều công nợ (kèm ví dụ `5000` và `2000` của Leader):
@@ -52,9 +52,9 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 
 ---
 
-## 2. Đặc tả chi tiết 8 Collection của Bài tập 2 (Module 01 & Module 02)
+## 2. Đặc tả chi tiết 11 Collection của Bài tập 2 (Module 01 & Module 02)
 
-> Toàn bộ 8 bảng dưới đây đồng bộ 100% với sơ đồ `drawio/LessonTwo/Database.drawio` và tài liệu API (`api-module-01.md`, `api-module-02.md`). Mọi collection đều bật `timestamps: true` (tự sinh `createdAt`, `updatedAt`).
+> Toàn bộ 11 bảng (3 bảng Module 01 + 8 bảng Module 02, gồm cả `branches`, `type_payments`, `content_payments` đặc tả ở mục 3.2) đồng bộ với sơ đồ `drawio/LessonTwo/Database.drawio` và tài liệu API (`api-module-01.md`, `api-module-02.md`). Mọi collection đều bật `timestamps: true` (tự sinh `createdAt`, `updatedAt`).
 
 ### 2.1. Phân hệ Module 01: Người dùng & Phân quyền (3 bảng)
 
@@ -91,7 +91,17 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 
 ---
 
-### 2.2. Phân hệ Module 02: Quản lý Danh mục - Master Data (5 bảng)
+### 2.2. Phân hệ Module 02: Quản lý Danh mục - Master Data (8 bảng)
+
+**4a. `branches` — Chi nhánh (FDD 2.8)**
+| field | type | required | des |
+|---|---|---|---|
+| _id | ObjectId | true | _id hệ thống tự sinh |
+| ID | String, unique | true | mã chi nhánh (VD: `CN01`) |
+| name | String | true | tên chi nhánh |
+| address | String | | địa chỉ chi nhánh |
+| status | Number, Index | true, default = 1 | 0 dừng hoạt động, 1 đang hoạt động |
+| unsign_search | String, Index | | tên, mã chi nhánh (lưu cả có dấu và không dấu) |
 
 **4. `warehouses` — Kho hàng (kế thừa bảng mẫu `warehouses` trong `bảng 2.json`)**
 | field | type | required | des |
@@ -110,10 +120,10 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 |---|---|---|---|
 | _id | ObjectId | true | _id hệ thống tự sinh |
 | ID | String, unique | true | mã khách hàng / nhà cung cấp (VD: `KH001`, `NCC001`) |
-| type | Number, Index | true, default = 1 | 1 khách hàng, 2 nhà cung cấp, 3 khách thợ |
+| type | Number, Index | true | 1 khách hàng, 2 nhà cung cấp, 3 khách thợ (bắt buộc chọn khi tạo, không cho đổi) |
 | name | String | true | tên khách hàng / nhà cung cấp |
 | phone | String | true | số điện thoại |
-| gender | Number | default: 0 | giới tính |
+| gender | Number | default: 0 | giới tính: 0 không xác định, 1 nam, 2 nữ |
 | birthday | Date | default: null | ngày sinh |
 | address | Array | default : [ ] | danh sách địa chỉ |
 | email | String | | email |
@@ -144,7 +154,7 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 | category_id | ObjectId, Index | true | danh mục sản phẩm (ref `categories`) |
 | unit_id | ObjectId | true | đơn vị tính (ref `units`) |
 | name | String | true | tên sản phẩm cụ thể |
-| sku | String | default: null | mã sản phẩm (SKU) |
+| sku | String, unique (partial) | default: null | mã sản phẩm (SKU); unique chỉ áp dụng khi `sku` khác null (partial index), nhiều sản phẩm được để trống |
 | price | Number | default = 0 | giá bán niêm yết |
 | warranty | Number | default = 0 | bảo hành (tháng) |
 | status | Number, Index | true, default = 1 | 0 dừng hoạt động, 1 đang hoạt động |
@@ -175,7 +185,7 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 | _id | ObjectId | true | |
 | ID | String | true | |
 | employee_id | | | nhân viên lập phiếu |
-| user_id | | | nhà cung cấp |
+| user_id | | | nhà cung cấp (bản gốc leader; thiết kế chuẩn hóa thành `customer_id` theo quy tắc 3.10) |
 | date | datetime | | ngày tạo phiếu |
 | total_amount | | | tổng tiền |
 | warehouse_id | | | kho nhập |
@@ -242,22 +252,22 @@ Trong thiết kế của Leader, `payment_form` và `debts` là **2 bảng hoàn
 | field | type | required | des |
 |---|---|---|---|
 | _id | ObjectId | true | _id hệ thống tự sinh |
-| ID | String | true | mã phiếu thanh toán (phiếu chi / thu) |
+| ID | String, unique | true | mã phiếu thanh toán (phiếu chi / thu) |
 | amount | Number | default = 0 | số tiền thanh toán |
-| customer_id | ObjectId | default = 0 | nhà cung cấp (ref `customers`) |
-| form_import_id | ObjectId | null | phiếu nhập liên quan (ref `import_form`) |
+| customer_id | ObjectId | true | đối tác thanh toán: nhà cung cấp / khách hàng (ref `customers`) |
+| form_import_id | ObjectId | true | phiếu nhập bắt buộc phát sinh thanh toán (ref `import_form`) |
 | note | String | default null | ghi chú |
 | type_payment_id | ObjectId | true | hình thức thanh toán (ref `type_payments`) |
 | content_payment | ObjectId | true | nội dung thanh toán (ref `content_payments`) |
 
-**`type_payments` — Bảng Danh mục Hình thức thanh toán (Cấu hình động)**
+**`type_payments` — Bảng Danh mục Hình thức thanh toán (Cấu hình động, Module 02 - FDD 2.9, API `/type-payments`)**
 | field | type | required | des |
 |---|---|---|---|
 | _id | ObjectId | true | _id hệ thống tự sinh |
 | name | String, unique | true | tên hình thức thanh toán (tiền mặt, chuyển khoản...) |
 | status | Number, Index | true, default = 1 | 0 dừng hoạt động, 1 đang hoạt động |
 
-**`content_payments` — Bảng Danh mục Nội dung thanh toán (Cấu hình động)**
+**`content_payments` — Bảng Danh mục Nội dung thanh toán (Cấu hình động, Module 02 - FDD 2.10, API `/content-payments`)**
 | field | type | required | des |
 |---|---|---|---|
 | _id | ObjectId | true | _id hệ thống tự sinh |

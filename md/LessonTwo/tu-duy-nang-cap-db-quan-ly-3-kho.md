@@ -47,8 +47,8 @@ Trong Buổi học số 2, do dừng sớm để xử lý phần thuế nên sơ
 ```mermaid
 flowchart TD
     subgraph ChungTuKho["1. KHỐI CHỨNG TỪ VẬN HÀNH 3 KHO"]
-        IMP["import_form\n(Phiếu nhập kho - Đã có)\nemployee_id, warehouse_id, user_id"]
-        EXP["export_form\n(Phiếu xuất kho - MỚI)\nemployee_id, warehouse_id, user_id"]
+        IMP["import_form\n(Phiếu nhập kho - Đã có)\nemployee_id, warehouse_id, customer_id"]
+        EXP["export_form\n(Phiếu xuất kho - MỚI)\nemployee_id, warehouse_id, customer_id"]
         TRF["transfer_form\n(Phiếu chuyển kho - MỚI)\nfrom_warehouse_id -> to_warehouse_id\nstatus: 1 Đang chuyển | 2 Đã nhận"]
         CHK["inventory_check_form\n(Phiếu kiểm kê - MỚI)\nwarehouse_id, employee_id"]
     end
@@ -138,7 +138,7 @@ Cơ chế 3 lớp này đảm bảo **không mất dữ liệu gốc** và **h�
 | _id | ObjectId | true | _id hệ thống tự sinh |
 | ID | String, unique | true | mã phiếu xuất (VD: `PX001`) |
 | employee_id | ObjectId, Index | true | nhân viên lập phiếu xuất (ref `employees`) |
-| user_id | ObjectId, Index | true | khách hàng / khách thợ mua hàng (ref `customers`) |
+| customer_id | ObjectId, Index | true | khách hàng / khách thợ mua hàng (ref `customers`) |
 | warehouse_id | ObjectId, Index | true | kho xuất hàng (ref `warehouses`) |
 | branch_id | ObjectId | default: null | chi nhánh (ref `branches`) |
 | date | Date, Index | true, default: Date.now | ngày tạo phiếu xuất |

@@ -6,22 +6,22 @@
                 <mxCell id="1" parent="0"/>
 
                 <!-- Header Title -->
-                <mxCell id="title" value="SƠ ĐỒ NGỮ CẢNH TÁC NHÂN (DFD LEVEL 0) - HỆ THỐNG QUẢN LÝ KHO ABC&#10;MODULE 01: QUẢN LÝ NGƯỜI DÙNG &amp; PHÂN QUYỀN | MODULE 02: QUẢN LÝ DANH MỤC" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1">
+                <mxCell id="title" value="SƠ ĐỒ NGỮ CẢNH TÁC NHÂN (DFD LEVEL 0) - HỆ THỐNG QUẢN LÝ KHO ABC / LAPTOP24H&#10;MODULE 01: QUẢN LÝ NGƯỜI DÙNG &amp; PHÂN QUYỀN | MODULE 02: QUẢN LÝ DANH MỤC" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1">
                     <mxGeometry x="400" y="20" width="1200" height="40" as="geometry"/>
                 </mxCell>
 
                 <!-- Legend Box -->
-                <mxCell id="legend_box" value="CHÚ THÍCH SƠ ĐỒ NGỮ CẢNH:&#10;• Mũi tên màu: Input (Actor gửi vào hệ thống API)&#10;• Mũi tên xanh lá (#16a34a): Output (Hệ thống phản hồi cho Actor)&#10;• Mã định danh chuẩn hóa: [Tên vai trò - STT]&#10;• Scope: Module 01 (Auth, User, Role, Kho phụ trách) &amp; Module 02 (Product, Category, Unit, Supplier, Customer, Warehouse, SKU/Barcode)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;fontColor=#334155;" parent="1" vertex="1">
-                    <mxGeometry x="50" y="15" width="480" height="75" as="geometry"/>
+                <mxCell id="legend_box" value="CHÚ THÍCH SƠ ĐỒ NGỮ CẢNH:&#10;• Mũi tên màu: Input (Actor gửi vào hệ thống API)&#10;• Mũi tên xanh lá (#16a34a): Output (Hệ thống phản hồi cho Actor)&#10;• Mã định danh chuẩn hóa: [Tên vai trò - STT]&#10;• Scope: Module 01 (Auth, User, Role, Kho phụ trách) &amp; Module 02 (Sản phẩm chung &amp; SKU, Danh mục, ĐVT, NCC, Khách lẻ/Khách thợ, Kho/Chi nhánh, Cấu hình thanh toán)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;fontColor=#334155;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="15" width="520" height="75" as="geometry"/>
                 </mxCell>
 
                 <!-- Central System Box -->
-                <mxCell id="central_system" value="[0]&#10;HỆ THỐNG QUẢN LÝ KHO TẬP TRUNG&#10;(CÔNG TY TNHH ABC)&#10;&#10;• MODULE 01: USERS &amp; RBAC&#10;• MODULE 02: MASTER DATA MANAGEMENT" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#1e293b;strokeColor=#0f172a;strokeWidth=3;fontColor=#ffffff;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;shadow=1;" parent="1" vertex="1">
+                <mxCell id="central_system" value="[0]&#10;HỆ THỐNG QUẢN LÝ KHO TẬP TRUNG&#10;(CÔNG TY TNHH ABC / LAPTOP24H)&#10;&#10;• MODULE 01: USERS &amp; RBAC&#10;• MODULE 02: MASTER DATA MANAGEMENT" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#1e293b;strokeColor=#0f172a;strokeWidth=3;fontColor=#ffffff;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="720" y="110" width="460" height="980" as="geometry"/>
                 </mxCell>
 
                 <!-- ==================== LEFT SIDE: ADMIN ==================== -->
-                <mxCell id="btn_admin" value="ADMIN&#10;(Quản trị viên hệ thống)&#10;&#10;Toàn quyền quản trị:&#10;• Tài khoản &amp; phân quyền&#10;• Gán phụ trách kho&#10;• Quản lý 6 danh mục chính&#10;• Quản lý SKU &amp; Barcode" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ede9fe;strokeColor=#7c3aed;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#6d28d9;align=center;shadow=1;" parent="1" vertex="1">
+                <mxCell id="btn_admin" value="ADMIN&#10;(Quản trị viên hệ thống)&#10;&#10;Toàn quyền quản trị:&#10;• Tài khoản &amp; phân quyền&#10;• Gán phụ trách kho&#10;• Quản lý danh mục Master Data&#10;• Quản lý sản phẩm, mã SKU &amp; cấu hình thanh toán" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ede9fe;strokeColor=#7c3aed;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#6d28d9;align=center;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="50" y="110" width="220" height="880" as="geometry"/>
                 </mxCell>
 
@@ -40,7 +40,7 @@
                 </mxCell>
 
                 <!-- Admin Action 2: Quản lý tài khoản nhân viên -->
-                <mxCell id="adm2_in" value="[Quản trị - 02] Quản lý tài khoản nhân viên (CRUD)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="adm2_in" value="[Quản trị - 02] Quản lý tài khoản nhân viên (Tạo, sửa, khóa/mở khóa)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="270" y="220" as="sourcePoint"/>
                         <mxPoint x="720" y="220" as="targetPoint"/>
@@ -81,14 +81,14 @@
                     </mxGeometry>
                 </mxCell>
 
-                <!-- Admin Action 5: Quản lý kho hàng -->
-                <mxCell id="adm5_in" value="[Quản trị - 05] Quản lý kho hàng (CRUD 3 kho)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <!-- Admin Action 5: Quản lý chi nhánh & kho hàng -->
+                <mxCell id="adm5_in" value="[Quản trị - 05] Quản lý chi nhánh &amp; kho hàng (CRUD 3 kho)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="270" y="460" as="sourcePoint"/>
                         <mxPoint x="720" y="460" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="adm5_out" value="[Quản trị - 05] Kết quả quản lý kho hàng (Mã kho, địa chỉ)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="adm5_out" value="[Quản trị - 05] Kết quả quản lý kho hàng (Mã kho, địa chỉ, chi nhánh)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="720" y="490" as="sourcePoint"/>
                         <mxPoint x="270" y="490" as="targetPoint"/>
@@ -96,7 +96,7 @@
                 </mxCell>
 
                 <!-- Admin Action 6: Quản lý danh mục sản phẩm -->
-                <mxCell id="adm6_in" value="[Quản trị - 06] Quản lý danh mục sản phẩm (CRUD Category)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="adm6_in" value="[Quản trị - 06] Quản lý danh mục sản phẩm đa cấp (CRUD Category)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="270" y="540" as="sourcePoint"/>
                         <mxPoint x="720" y="540" as="targetPoint"/>
@@ -124,7 +124,7 @@
                 </mxCell>
 
                 <!-- Admin Action 8: Quản lý nhà cung cấp -->
-                <mxCell id="adm8_in" value="[Quản trị - 08] Quản lý nhà cung cấp (CRUD Supplier)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="adm8_in" value="[Quản trị - 08] Quản lý nhà cung cấp (customers type = 2)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="270" y="700" as="sourcePoint"/>
                         <mxPoint x="720" y="700" as="targetPoint"/>
@@ -137,28 +137,28 @@
                     </mxGeometry>
                 </mxCell>
 
-                <!-- Admin Action 9: Quản lý khách hàng -->
-                <mxCell id="adm9_in" value="[Quản trị - 09] Quản lý khách hàng (CRUD Customer)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <!-- Admin Action 9: Quản lý khách hàng lẻ & khách thợ -->
+                <mxCell id="adm9_in" value="[Quản trị - 09] Quản lý khách hàng lẻ &amp; khách thợ (customers type = 1, 3)" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="270" y="780" as="sourcePoint"/>
                         <mxPoint x="720" y="780" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="adm9_out" value="[Quản trị - 09] Kết quả quản lý khách hàng" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="adm9_out" value="[Quản trị - 09] Kết quả quản lý hồ sơ khách hàng &amp; khách thợ" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="720" y="810" as="sourcePoint"/>
                         <mxPoint x="270" y="810" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
 
-                <!-- Admin Action 10: Quản lý sản phẩm & SKU/Barcode -->
-                <mxCell id="adm10_in" value="[Quản trị - 10] Quản lý sản phẩm &amp; SKU, Barcode" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <!-- Admin Action 10: Quản lý sản phẩm chung, mã SKU & cấu hình thanh toán -->
+                <mxCell id="adm10_in" value="[Quản trị - 10] Quản lý sản phẩm chung, mã SKU &amp; cấu hình thanh toán động" style="endArrow=classic;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=10;fontColor=#6d28d9;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="270" y="860" as="sourcePoint"/>
                         <mxPoint x="720" y="860" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="adm10_out" value="[Quản trị - 10] Kết quả quản lý sản phẩm (Mã SKU, Barcode)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="adm10_out" value="[Quản trị - 10] Kết quả lưu mẫu sản phẩm, mã SKU &amp; danh mục thanh toán" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="720" y="890" as="sourcePoint"/>
                         <mxPoint x="270" y="890" as="targetPoint"/>
@@ -167,7 +167,7 @@
 
                 <!-- ==================== RIGHT SIDE: 3 ACTORS ==================== -->
                 <!-- Actor 2: Warehouse Manager -->
-                <mxCell id="btn_manager" value="WAREHOUSE MANAGER&#10;(Quản lý kho)&#10;&#10;Trách nhiệm:&#10;• Quản lý sản phẩm, SKU, Barcode&#10;• Tra cứu danh mục, kho, NCC" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffedd5;strokeColor=#ea580c;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#c2410c;align=center;shadow=1;" parent="1" vertex="1">
+                <mxCell id="btn_manager" value="WAREHOUSE MANAGER&#10;(Quản lý kho)&#10;&#10;Trách nhiệm:&#10;• Quản lý sản phẩm chung &amp; mã SKU&#10;• Tra cứu danh mục, kho, NCC" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffedd5;strokeColor=#ea580c;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#c2410c;align=center;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1630" y="110" width="230" height="260" as="geometry"/>
                 </mxCell>
 
@@ -185,14 +185,14 @@
                     </mxGeometry>
                 </mxCell>
 
-                <!-- Manager Action 2: Quản lý sản phẩm & SKU/Barcode -->
-                <mxCell id="mgr2_in" value="[Quản lý kho - 02] Quản lý sản phẩm, SKU &amp; Barcode" style="endArrow=classic;html=1;strokeColor=#ea580c;strokeWidth=2;fontSize=10;fontColor=#c2410c;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <!-- Manager Action 2: Quản lý sản phẩm chung & SKU -->
+                <mxCell id="mgr2_in" value="[Quản lý kho - 02] Quản lý mẫu sản phẩm chung &amp; mã SKU" style="endArrow=classic;html=1;strokeColor=#ea580c;strokeWidth=2;fontSize=10;fontColor=#c2410c;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1630" y="220" as="sourcePoint"/>
                         <mxPoint x="1180" y="220" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="mgr2_out" value="[Quản lý kho - 02] Kết quả cập nhật sản phẩm &amp; mã SKU/Barcode" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="mgr2_out" value="[Quản lý kho - 02] Kết quả cập nhật sản phẩm chung &amp; mã SKU" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1180" y="250" as="sourcePoint"/>
                         <mxPoint x="1630" y="250" as="targetPoint"/>
@@ -200,13 +200,13 @@
                 </mxCell>
 
                 <!-- Manager Action 3: Tra cứu danh mục Master Data -->
-                <mxCell id="mgr3_in" value="[Quản lý kho - 03] Tra cứu danh mục dùng chung (Category, Unit, Kho, NCC)" style="endArrow=classic;html=1;strokeColor=#ea580c;strokeWidth=2;fontSize=10;fontColor=#c2410c;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="mgr3_in" value="[Quản lý kho - 03] Tra cứu danh mục dùng chung (Danh mục, ĐVT, Kho, Đối tác)" style="endArrow=classic;html=1;strokeColor=#ea580c;strokeWidth=2;fontSize=10;fontColor=#c2410c;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1630" y="300" as="sourcePoint"/>
                         <mxPoint x="1180" y="300" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="mgr3_out" value="[Quản lý kho - 03] Danh sách danh mục, đơn vị tính, kho, NCC" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="mgr3_out" value="[Quản lý kho - 03] Danh sách danh mục, đơn vị tính, kho, đối tác" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1180" y="330" as="sourcePoint"/>
                         <mxPoint x="1630" y="330" as="targetPoint"/>
@@ -214,7 +214,7 @@
                 </mxCell>
 
                 <!-- Actor 3: Warehouse Staff -->
-                <mxCell id="btn_staff" value="WAREHOUSE STAFF&#10;(Nhân viên kho)&#10;&#10;Trách nhiệm:&#10;• Tra cứu hàng theo Barcode/SKU&#10;• Xem thông tin kho được gán" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#0369a1;align=center;shadow=1;" parent="1" vertex="1">
+                <mxCell id="btn_staff" value="WAREHOUSE STAFF&#10;(Nhân viên kho)&#10;&#10;Trách nhiệm:&#10;• Quét mã SKU / mã QR tra cứu hàng&#10;• Xem thông tin kho được gán" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#0369a1;align=center;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1630" y="420" width="230" height="260" as="geometry"/>
                 </mxCell>
 
@@ -232,14 +232,14 @@
                     </mxGeometry>
                 </mxCell>
 
-                <!-- Staff Action 2: Tra cứu sản phẩm theo SKU/Barcode -->
-                <mxCell id="stf2_in" value="[Nhân viên kho - 02] Quét Barcode / Tra cứu SKU sản phẩm" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=10;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <!-- Staff Action 2: Tra cứu sản phẩm theo SKU / mã QR -->
+                <mxCell id="stf2_in" value="[Nhân viên kho - 02] Quét mã SKU / mã QR tra cứu sản phẩm" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=10;fontColor=#0369a1;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1630" y="530" as="sourcePoint"/>
                         <mxPoint x="1180" y="530" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="stf2_out" value="[Nhân viên kho - 02] Thông tin chi tiết sản phẩm (Tên, ĐVT, Barcode)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="stf2_out" value="[Nhân viên kho - 02] Thông tin chi tiết sản phẩm (Tên, ĐVT, mã SKU)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=2;fontSize=10;fontColor=#15803d;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1180" y="560" as="sourcePoint"/>
                         <mxPoint x="1630" y="560" as="targetPoint"/>
@@ -261,7 +261,7 @@
                 </mxCell>
 
                 <!-- Actor 4: Accountant -->
-                <mxCell id="btn_acc" value="ACCOUNTANT&#10;(Kế toán)&#10;&#10;Trách nhiệm:&#10;• Tra cứu danh mục, đối tượng&#10;• Đối soát dữ liệu Master Data" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#854d0e;align=center;shadow=1;" parent="1" vertex="1">
+                <mxCell id="btn_acc" value="ACCOUNTANT&#10;(Kế toán)&#10;&#10;Trách nhiệm:&#10;• Tra cứu danh mục, đối tác&#10;• Cấu hình/đối soát danh mục thanh toán" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#854d0e;align=center;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1630" y="730" width="230" height="260" as="geometry"/>
                 </mxCell>
 
@@ -280,7 +280,7 @@
                 </mxCell>
 
                 <!-- Accountant Action 2: Tra cứu danh mục & đối tượng kinh doanh -->
-                <mxCell id="acc2_in" value="[Kế toán - 02] Tra cứu danh mục sản phẩm, đơn vị tính, kho, NCC, khách hàng" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=10;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
+                <mxCell id="acc2_in" value="[Kế toán - 02] Tra cứu danh mục sản phẩm, ĐVT, kho, NCC, khách hàng/khách thợ, cấu hình thanh toán" style="endArrow=classic;html=1;strokeColor=#ca8a04;strokeWidth=2;fontSize=10;fontColor=#854d0e;labelBackgroundColor=#ffffff;align=center;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1630" y="850" as="sourcePoint"/>
                         <mxPoint x="1180" y="850" as="targetPoint"/>
@@ -294,8 +294,8 @@
                 </mxCell>
 
                 <!-- Note Footer -->
-                <mxCell id="note_footer" value="QUY TẮC PHÂN QUYỀN RBAC (MODULE 01 &amp; 02):&#10;1. Admin: Độc quyền CRUD Users, Roles, Warehouse Assignment, Warehouse list, Categories, Units, Suppliers, Customers.&#10;2. Warehouse Manager: Được tạo/sửa Product, Barcode, SKU; tra cứu Master Data toàn hệ thống.&#10;3. Warehouse Staff: Tra cứu Product qua SKU/Barcode; chỉ truy cập dữ liệu liên quan đến kho mình được gán.&#10;4. Accountant: Quyền xem (Read-only) toàn bộ Master Data phục vụ nghiệp vụ hạch toán, báo cáo." style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;dashed=1;fillColor=#f1f5f9;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;fontColor=#475569;align=left;spacingLeft=15;" parent="1" vertex="1">
-                    <mxGeometry x="50" y="1030" width="1810" height="60" as="geometry"/>
+                <mxCell id="note_footer" value="QUY TẮC PHÂN QUYỀN RBAC (MODULE 01 &amp; 02 - ĐỒNG BỘ DATABASE LAPTOP24H):&#10;1. Admin: Toàn quyền CRUD Nhân viên, Vai trò, Gán kho, Kho/Chi nhánh, Danh mục, ĐVT, Đối tác (NCC, Khách lẻ, Khách thợ), Cấu hình thanh toán động.&#10;2. Warehouse Manager: Được tạo/sửa Mẫu sản phẩm chung (subcategories) và mã SKU; tra cứu Master Data toàn hệ thống.&#10;3. Warehouse Staff: Quét và tra cứu sản phẩm qua mã SKU / mã QR cá thể; chỉ truy cập dữ liệu liên quan đến kho mình được gán.&#10;4. Accountant: Xem toàn bộ Master Data và cấu hình danh mục thanh toán phục vụ nghiệp vụ hạch toán, công nợ, báo cáo." style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;dashed=1;fillColor=#f1f5f9;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;fontColor=#475569;align=left;spacingLeft=15;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="1030" width="1810" height="65" as="geometry"/>
                 </mxCell>
 
             </root>
